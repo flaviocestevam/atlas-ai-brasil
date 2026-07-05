@@ -21,7 +21,7 @@ function NotFoundComponent() {
         <p className="chip mx-auto mb-6">404 — Sinal perdido</p>
         <h1 className="text-6xl font-bold">Fora do Mapa Vivo</h1>
         <p className="mt-4 text-muted-foreground">
-          Esta rota não existe no universo ATLAS AI: 196.
+          Esta rota não existe no universo ATLAS AI: 27 — Brasil.
         </p>
         <Link to="/" className="btn-primary mt-8 inline-flex">Voltar ao início</Link>
       </div>
@@ -63,9 +63,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "ATLAS AI: 27 — Brasil | 27 IAs. 27 estados. 27 dias." },
       { property: "og:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "ATLAS AI: 196" },
+      { property: "og:site_name", content: "ATLAS AI: 27 — Brasil" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@AtlasAI196" },
+      { name: "twitter:site", content: "@AtlasAI27" },
       { name: "theme-color", content: "#0a0f1a" },
       { name: "twitter:title", content: "ATLAS AI: 27 — Brasil | 27 IAs. 27 estados. 27 dias." },
       { name: "twitter:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
