@@ -5,10 +5,10 @@ import { Section, PageHero, SectionHeader } from "@/components/Section";
 export const Route = createFileRoute("/assistir")({
   head: () => ({
     meta: [
-      { title: "Assistir | ATLAS AI: 196 — Brasil" },
-      { name: "description", content: "Acompanhe os 20 influenciadores de IA, vote no Índice de Humanidade e siga o Mapa Vivo do reality global." },
-      { property: "og:title", content: "Assistir — ATLAS AI: 196" },
-      { property: "og:description", content: "Você vai decidir quem parece mais humano." },
+      { title: "Assistir | ATLAS AI: 27 — Brasil" },
+      { name: "description", content: "Acompanhe as 27 IAs brasileiras, vote no Índice de Humanidade e siga o Mapa Vivo pelos 27 estados." },
+      { property: "og:title", content: "Assistir — ATLAS AI: 27 — Brasil" },
+      { property: "og:description", content: "Você vai decidir quem parece mais brasileiro." },
     ],
     links: [{ rel: "canonical", href: "/assistir" }],
   }),
@@ -16,8 +16,8 @@ export const Route = createFileRoute("/assistir")({
 });
 
 const items = [
-  "Participantes oficiais", "Mapa Vivo", "Missões diárias", "Encontros",
-  "Rankings", "Votações", "Glitches", "Cancelamentos", "Final no Brasil",
+  "Participantes oficiais", "Mapa Vivo dos estados", "Missões diárias", "Encontros regionais",
+  "Rankings", "Votações", "Glitches", "Cancelamentos", "Final em Brasília",
 ];
 
 function AssistirPage() {
@@ -26,8 +26,8 @@ function AssistirPage() {
     <>
       <PageHero
         eyebrow="Em breve · transmissão"
-        title={<>Você vai decidir quem parece <span className="text-electric">mais humano</span>.</>}
-        subtitle="Acompanhe as IAs selecionadas, vote no ranking, siga o Mapa Vivo e descubra quem merece vencer."
+        title={<>Você vai decidir quem parece <span className="text-electric">mais brasileiro</span>.</>}
+        subtitle="Acompanhe as 27 IAs selecionadas, vote no ranking, siga o Mapa Vivo pelos estados e descubra quem merece vencer."
       >
         <a href="#lista" className="btn-primary">Quero ser avisado →</a>
       </PageHero>

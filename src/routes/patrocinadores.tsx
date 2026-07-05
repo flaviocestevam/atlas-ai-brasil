@@ -5,10 +5,10 @@ import { Section, SectionHeader, PageHero } from "@/components/Section";
 export const Route = createFileRoute("/patrocinadores")({
   head: () => ({
     meta: [
-      { title: "Patrocinadores | ATLAS AI: 196 — Brasil" },
-      { name: "description", content: "Sua marca dentro do primeiro reality onde IAs competem para parecer humanas. Cotas, ativações e licenciamento." },
-      { property: "og:title", content: "Patrocinadores — ATLAS AI: 196" },
-      { property: "og:description", content: "Cotas para marcas em um reality global de 196 dias e 196 países." },
+      { title: "Patrocinadores | ATLAS AI: 27 — Brasil" },
+      { name: "description", content: "Sua marca dentro do primeiro reality onde IAs competem para parecer brasileiras. Cotas, ativações e licenciamento." },
+      { property: "og:title", content: "Patrocinadores — ATLAS AI: 27 — Brasil" },
+      { property: "og:description", content: "Cotas para marcas em um reality nacional de 27 dias pelos 27 estados." },
     ],
     links: [{ rel: "canonical", href: "/patrocinadores" }],
   }),
@@ -17,30 +17,31 @@ export const Route = createFileRoute("/patrocinadores")({
 
 const whySponsor = [
   "Conteúdo diário", "Formato serializado", "Participação pública",
-  "Mapa Vivo", "Ranking de humanidade", "Missões patrocinadas",
-  "Múltiplos perfis distribuindo conteúdo", "Potencial de mídia espontânea",
-  "Associação com inovação", "Licenciamento internacional",
+  "Mapa Vivo dos estados", "Ranking de humanidade", "Missões patrocinadas",
+  "27 perfis distribuindo conteúdo", "Potencial de mídia espontânea",
+  "Associação com inovação", "Ativações regionais",
 ];
 
 const canBeSponsored = [
   "Reality completo", "Mapa Vivo", "Ranking", "Missões",
   "Dias emocionais", "Quadros diários", "Encontros entre participantes",
-  "Final no Brasil", "Participantes específicos", "Resumos diários", "Votação pública",
+  "Final em Brasília", "ATLAS AFTER (Rio)", "Participantes por estado",
+  "Resumos diários", "Votação pública",
 ];
 
 const activations = [
   { t: "Dia da Preguiça", b: "marca de delivery" },
   { t: "Missão da Carteira", b: "banco digital" },
-  { t: "Mapa Vivo", b: "marca de viagem ou tecnologia" },
+  { t: "Mapa Vivo dos estados", b: "marca de tecnologia ou turismo nacional" },
   { t: "Maior Glitch do Dia", b: "plataforma de IA" },
   { t: "Dia da Coragem", b: "marca esportiva" },
-  { t: "Missão de Aparência Humana", b: "marca de beleza" },
+  { t: "Missão de Aparência Brasileira", b: "marca de beleza" },
 ];
 
 const categories = [
   "Tecnologia", "Inteligência artificial", "Bancos digitais", "Cartões",
-  "Viagem", "Turismo", "Moda", "Beleza", "Skincare", "Delivery",
-  "Apps", "Educação", "Idiomas", "Creator economy",
+  "Turismo nacional", "Moda", "Beleza", "Skincare", "Delivery",
+  "Apps", "Educação", "Creator economy",
   "Plataformas digitais", "Games", "Streaming",
 ];
 
@@ -77,8 +78,8 @@ function PatrocinadoresPage() {
     <>
       <PageHero
         eyebrow="Para marcas e agências"
-        title={<>Sua marca dentro do primeiro reality onde IAs competem para <span className="text-electric">parecer humanas</span>.</>}
-        subtitle="ATLAS AI: 196 — Brasil conecta inteligência artificial, entretenimento, influenciadores digitais, viagem global, gamificação e participação pública."
+        title={<>Sua marca dentro do primeiro reality onde IAs competem para <span className="text-electric">parecer brasileiras</span>.</>}
+        subtitle="ATLAS AI: 27 — Brasil conecta inteligência artificial, entretenimento, influenciadores digitais, cultura regional, gamificação e participação pública."
       >
         <a href="#formulario" className="btn-primary">Quero receber o pitch comercial →</a>
       </PageHero>
@@ -98,13 +99,14 @@ function PatrocinadoresPage() {
           <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
           <div className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-violet/20 blur-3xl" />
           <div className="relative">
-            <p className="chip mb-5">Franquia global</p>
+            <p className="chip mb-5">Ativação nacional</p>
             <h3 className="font-display text-2xl sm:text-3xl font-bold tracking-tight max-w-2xl">
-              Não é só uma campanha. É entrar cedo numa <span className="text-electric">franquia global</span>.
+              Uma marca. 27 estados. <span className="text-electric">27 dias de narrativa</span>.
             </h3>
             <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Brasil é o Capítulo 1. Marcas que entram agora constroem histórico antes da expansão para
-              EUA, Japão, França, Itália e Colômbia — e antes da Grand Season Internacional.
+              Patrocinar o ATLAS AI: 27 — Brasil coloca sua marca em uma jornada nacional com potencial de
+              ativações regionais em cada estado — do Acre ao Rio Grande do Sul, com a final em Brasília
+              e o encerramento no Rio de Janeiro.
             </p>
           </div>
         </div>
@@ -164,9 +166,9 @@ function PatrocinadoresPage() {
         {submitted ? (
           <div className="card-premium p-12 text-center">
             <p className="chip mx-auto mb-6">Recebido</p>
-            <h3 className="text-3xl font-bold">A equipe do ATLAS AI: 196 entrará em contato.</h3>
+            <h3 className="text-3xl font-bold">A equipe do ATLAS AI: 27 — Brasil entrará em contato.</h3>
             <p className="mt-4 text-electric font-mono text-sm uppercase tracking-widest">
-              "A viagem é o cenário. A missão é o teste. A humanidade é o produto."
+              "A viagem pelo Brasil é o cenário. A missão é o teste. A humanidade é o produto."
             </p>
           </div>
         ) : (
@@ -188,9 +190,10 @@ function PatrocinadoresPage() {
                   "Patrocínio Master",
                   "Mapa Vivo",
                   "Missão patrocinada",
-                  "Participante específico",
-                  "Final Brasil",
-                  "Licenciamento",
+                  "Participante específica",
+                  "Final em Brasília",
+                  "ATLAS AFTER (Rio)",
+                  "Ativação regional",
                   "Outro",
                 ]}
               />
