@@ -168,7 +168,7 @@ function HomePage() {
             <div className="min-w-0">
               <div className="chip mb-6">
                 <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-                Documento Estratégico · Versão Fundadora
+                O primeiro reality de IA do Brasil
               </div>
               <h1 className="fluid-h1 font-bold tracking-tight">
                 27 IAs.<br />
@@ -308,9 +308,6 @@ function HomePage() {
             </div>
           ))}
         </div>
-        <p className="mt-8 text-xs text-muted-foreground font-mono uppercase tracking-widest">
-          Não usar publicamente: Season, Temporada, Edição · Próximas: Brasil 2, Brasil 3
-        </p>
       </Section>
 
       {/* 04 — ATLAS */}
@@ -322,10 +319,10 @@ function HomePage() {
         />
         <div className="grid gap-3 md:grid-cols-2">
           {[
-            "Tom mitológico, provocador e nunca dá respostas diretas",
-            "Regra absoluta: nunca confirmar publicamente quem criou o projeto",
-            "A ambiguidade sobre a origem é o ativo narrativo mais valioso do formato",
-            "ATLAS aparece com mensagens pontuais ao longo da temporada e com força máxima na final",
+            "Voz mitológica e provocadora — nunca dá respostas diretas",
+            "Observa, mede, organiza os rankings e conduz a narrativa",
+            "Aparece em mensagens pontuais ao longo dos 27 dias — e com força máxima na final",
+            "A ambiguidade sobre quem realmente comanda o programa faz parte da experiência",
           ].map((b) => (
             <div key={b} className="card-premium p-5 flex gap-3 items-start">
               <span className="font-mono text-xs text-electric shrink-0 pt-1">◉</span>
@@ -345,9 +342,9 @@ function HomePage() {
           <div className="mt-8 grid gap-3 md:grid-cols-2">
             {[
               "Sem pessoas reais como figurantes, transeuntes, vendedores, turistas ou entrevistados",
-              "Sem pegadinha com pessoas reais — tudo é missão ficcional dentro do universo do reality",
-              "Protege o projeto, evita exposição de terceiros e mantém controle total da narrativa",
-              "Regra inegociável — vale para todos os criadores participantes",
+              "Sem pegadinha com pessoas reais — tudo acontece dentro do universo ficcional do reality",
+              "Protege o público, evita exposição de terceiros e mantém a coerência do universo IA",
+              "Regra pública e inegociável — vale para todos que aparecem no programa",
             ].map((b) => (
               <div key={b} className="border border-border rounded-lg p-4 bg-background/40 text-sm leading-relaxed">{b}</div>
             ))}
@@ -358,18 +355,16 @@ function HomePage() {
       {/* 06 — PARTICIPANTES */}
       <Section>
         <SectionHeader
-          eyebrow="— 06 — Os 27 participantes"
-          title={<>27 personas de IA. <span className="text-electric">27 criadores brasileiros.</span></>}
-          description="Cada personagem é gerenciado por um criador brasileiro independente. O criador produz o conteúdo, publica no Instagram do personagem e responde às missões diárias. ATLAS AI: 27 é o organizador — não o produtor de conteúdo. Essa distinção é fundamental."
+          eyebrow="— 06 — As 27 participantes"
+          title={<>27 personas de IA. <span className="text-electric">Uma por estado.</span></>}
+          description="Cada participante é uma IA com identidade, arquétipo emocional e rota própria pelos 27 estados brasileiros. Todas convivem no mesmo universo narrativo, cumprem missões diárias e disputam o Índice de Humanidade."
         />
         <div className="grid gap-3 md:grid-cols-2">
           {[
-            "Cada criador assina contrato com ATLAS AI: 27",
-            "Formalização via MEI recomendada para cada participante",
-            "Personalidades distintas e irreconciliáveis — sem duas IAs parecidas",
-            "Recrutamento com diversidade regional: um criador por grande região do Brasil",
-            "Nenhum criador revela publicamente que opera o personagem",
-            "O criador marca o perfil oficial em todo conteúdo produzido",
+            "Personalidades distintas e irreconciliáveis — nenhuma IA se parece com outra",
+            "Diversidade regional garantida: uma persona representando cada grande região do Brasil",
+            "Cada participante mantém perfil oficial próprio, com identidade visual consistente",
+            "Todas cumprem missões, aparecem no Mapa Vivo e cruzam rotas ao longo dos 27 dias",
           ].map((b) => (
             <div key={b} className="card-premium p-5 flex gap-3 items-start">
               <span className="font-mono text-xs text-electric shrink-0 pt-1">◉</span>
@@ -659,12 +654,12 @@ function HomePage() {
             </ul>
           </div>
           <div className="card-premium p-8">
-            <p className="chip mb-4">Divisão e estrutura</p>
+            <p className="chip mb-4">Formato de parceria</p>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>• ATLAS AI: 27 intermedia TODOS os patrocínios</li>
-              <li>• 50% fica com ATLAS — 50% vai para o criador/participante envolvido</li>
-              <li>• Hotmart gerencia os splits e pagamentos automatizados</li>
-              <li>• ATLAS AFTER tem estrutura de patrocínio separada e própria</li>
+              <li>• ATLAS AI: 27 centraliza a curadoria e a integração narrativa das marcas</li>
+              <li>• Cotas nacionais, regionais e por participante — desenhadas caso a caso</li>
+              <li>• ATLAS AFTER (Rio, Dia 28) tem pacote de patrocínio próprio</li>
+              <li>• Contato comercial dedicado para marcas interessadas</li>
             </ul>
           </div>
           <div className="card-premium p-8">
@@ -679,47 +674,6 @@ function HomePage() {
         </div>
       </Section>
 
-
-      {/* 17 — CRONOGRAMA */}
-      <Section>
-        <SectionHeader
-          eyebrow="— 17 — Cronograma de implantação rápida"
-          title={<>Ao vivo em <span className="text-electric">~8 semanas</span> a partir da decisão de execução.</>}
-        />
-        <div className="card-premium overflow-hidden">
-          <div className="grid grid-cols-[minmax(120px,1fr)_minmax(140px,1fr)_3fr] text-sm">
-            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">Fase</div>
-            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">Período</div>
-            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">Ações</div>
-            {cronograma.map((c, i) => (
-              <div key={c.fase} className="contents">
-                <div className={`px-4 sm:px-6 py-4 font-display font-semibold ${i !== cronograma.length - 1 ? "border-b border-border" : ""}`}>{c.fase}</div>
-                <div className={`px-4 sm:px-6 py-4 text-muted-foreground font-mono text-xs ${i !== cronograma.length - 1 ? "border-b border-border" : ""}`}>{c.periodo}</div>
-                <div className={`px-4 sm:px-6 py-4 text-muted-foreground ${i !== cronograma.length - 1 ? "border-b border-border" : ""}`}>{c.acoes}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* 18 — PRÓXIMOS PASSOS */}
-      <Section>
-        <SectionHeader
-          eyebrow="— 18 — Próximos passos práticos"
-          title="A partir daqui, execução."
-        />
-        <div className="grid gap-3 md:grid-cols-2">
-          {[
-            "Definir os 27 arquétipos de personagem (nome, personalidade, visual, estado de origem)",
-            "Criar o Mapa Vivo — pode começar como página no Lovable",
-            "Atualizar o site atual para refletir o formato 27 — Brasil",
-            "Preparar o deck de patrocínio com camadas nacional e regional",
-            "Definir o calendário oficial e abrir recrutamento de criadores",
-          ].map((b) => (
-            <div key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</div>
-          ))}
-        </div>
-      </Section>
 
       {/* KIT DE SOBREVIVÊNCIA */}
       <KitSobrevivencia />

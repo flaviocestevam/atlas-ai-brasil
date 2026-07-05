@@ -14,17 +14,22 @@ const ALL_EMOTIONS: EmotionalStatus[] = [
   "Melancolia", "Coragem", "Saudade", "Glitch",
 ];
 
-// Background dot field (decorative continents)
+// Background dot field — silhueta aproximada do território brasileiro
 function useBackdropDots() {
   return useMemo(() => {
     const dots: Array<{ x: number; y: number; r: number; bright: boolean }> = [];
     let s = 7;
     const rand = () => ((s = (s * 9301 + 49297) % 233280) / 233280);
+    // Blobs cobrindo Norte, Nordeste, Centro-Oeste, Sudeste e Sul
     const blobs: Array<[number, number, number, number]> = [
-      [180, 180, 90, 70], [240, 320, 60, 80], [430, 180, 70, 60],
-      [470, 290, 90, 100], [580, 200, 130, 90], [660, 380, 60, 40],
+      [280, 90, 180, 60],   // Norte
+      [420, 140, 160, 60],  // Norte-Nordeste
+      [680, 160, 90, 90],   // Nordeste
+      [430, 260, 140, 70],  // Centro-Oeste
+      [600, 320, 90, 70],   // Sudeste
+      [480, 410, 90, 50],   // Sul
     ];
-    for (let i = 0; i < 750; i++) {
+    for (let i = 0; i < 900; i++) {
       const b = blobs[Math.floor(rand() * blobs.length)];
       const a = rand() * Math.PI * 2;
       const r = Math.sqrt(rand());
