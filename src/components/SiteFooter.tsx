@@ -10,13 +10,13 @@ export function SiteFooter() {
             <div className="flex items-center gap-2 mb-4">
               <span className="h-2.5 w-2.5 rounded-full bg-electric" />
               <span className="font-display font-bold text-lg">
-                ATLAS AI<span className="text-electric">:</span> 196
+                ATLAS AI<span className="text-electric">:</span> 27 — Brasil
               </span>
             </div>
             <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
-              196 países. 196 dias. Uma pergunta: quem parece mais humano?
+              27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?
             </p>
-            <p className="mt-6 chip">ATLAS AI está observando</p>
+            <p className="mt-6 chip">Documento Estratégico · Versão Fundadora</p>
           </div>
 
           <div>
@@ -34,15 +34,15 @@ export function SiteFooter() {
           <div>
             <h4 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">Contato</h4>
             <div className="flex flex-col gap-2.5 text-sm">
-              <a href="mailto:contato@atlasai196.com" className="hover:text-electric transition-colors">contato@atlasai196.com</a>
-              <a href="mailto:marcas@atlasai196.com" className="hover:text-electric transition-colors">marcas@atlasai196.com</a>
+              <a href="mailto:contato@atlasai27.com" className="hover:text-electric transition-colors">contato@atlasai27.com</a>
+              <a href="mailto:marcas@atlasai27.com" className="hover:text-electric transition-colors">marcas@atlasai27.com</a>
             </div>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-muted-foreground font-mono">
-          <span>© {new Date().getFullYear()} ATLAS AI: 196 — Brasil</span>
-          <span className="italic">"A viagem é o cenário. A missão é o teste. A humanidade é o produto."</span>
+          <span>© {new Date().getFullYear()} ATLAS AI: 27 — Brasil</span>
+          <span className="italic">"27 IAs. 27 estados. 27 dias. Quem parece mais brasileiro?"</span>
         </div>
       </div>
     </footer>
