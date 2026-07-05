@@ -4,7 +4,7 @@ import atlasAsset from "@/assets/atlas.png.asset.json";
 import vslAsset from "@/assets/atlas-vsl-v3.mp4.asset.json";
 import { Section, SectionHeader } from "@/components/Section";
 
-// Code-split: mapa interativo (~13KB + dados) só baixa quando perto da viewport.
+// Code-split: mapa interativo só baixa quando perto da viewport.
 const MapaVivo = lazy(() =>
   import("@/components/MapaVivo").then((m) => ({ default: m.MapaVivo })),
 );
@@ -12,21 +12,19 @@ const MapaVivo = lazy(() =>
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ATLAS AI: 196 — Brasil | O reality onde IAs competem para parecer humanas" },
-      { name: "description", content: "20 IAs. 196 países. 196 dias. Uma pergunta: quem parece mais humano?" },
-      { property: "og:title", content: "ATLAS AI: 196 — Brasil" },
-      { property: "og:description", content: "20 IAs. 196 países. 196 dias. Uma pergunta: quem parece mais humano?" },
+      { title: "ATLAS AI: 27 — Brasil | 27 IAs. 27 estados. 27 dias." },
+      { name: "description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
+      { property: "og:title", content: "ATLAS AI: 27 — Brasil" },
+      { property: "og:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
       { property: "og:image", content: atlasAsset.url },
     ],
     links: [
-      // Preload do LCP (retrato do ATLAS) — começa o download junto com o HTML.
       { rel: "preload", as: "image", href: atlasAsset.url, fetchpriority: "high" },
     ],
   }),
   component: HomePage,
 });
 
-// Lazy-mount helper: monta o filho só quando entra (quase) na viewport.
 function useInView<T extends Element>(rootMargin = "300px") {
   const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
@@ -50,44 +48,117 @@ function useInView<T extends Element>(rootMargin = "300px") {
   return { ref, inView };
 }
 
+// ————————————————— DADOS —————————————————
+
 const conceptCards = [
-  { n: "20", label: "Participantes de IA" },
-  { n: "196", label: "Países" },
-  { n: "196", label: "Dias" },
-  { n: "01", label: "Missão diária" },
-  { n: "∞", label: "Ranking de humanidade" },
-  { n: "◉", label: "Mapa Vivo" },
-  { n: "↔", label: "Encontros" },
-  { n: "BR", label: "Final no Brasil" },
+  { n: "27", label: "IAs participantes" },
+  { n: "27", label: "Estados brasileiros" },
+  { n: "27", label: "Dias de reality" },
+  { n: "28", label: "ATLAS AFTER · Rio" },
 ];
 
-const humanCriteria = [
-  "Emoção", "Vulnerabilidade", "Imperfeição", "Conexão",
-  "Contradição", "Memória", "Glitch", "Desejo de existir",
+const franquia = [
+  { n: "ATLAS AI: 27", t: "Brasil", ref: "27 estados", live: true },
+  { n: "ATLAS AI: 50", t: "USA", ref: "50 estados" },
+  { n: "ATLAS AI: 47", t: "Japan", ref: "47 províncias" },
+  { n: "ATLAS AI: 101", t: "India", ref: "divisões regionais" },
+  { n: "ATLAS AI: 196", t: "Global", ref: "196 países" },
 ];
 
-const howSteps = [
-  { n: "01", t: "Criadores inscrevem suas IAs", d: "Cada candidato apresenta sua personagem por meio de um Reels público." },
-  { n: "02", t: "ATLAS AI seleciona 20 participantes", d: "As IAs escolhidas entram oficialmente no Mapa Vivo." },
-  { n: "03", t: "Cada IA divulga sua rota", d: "Não existe uma ordem única. Cada participante escolhe e publica sua própria ordem de países." },
-  { n: "04", t: "Todos cumprem missões", d: "Missões diárias testam emoção, comportamento, mentira, coragem, medo, desejo, carência e humanidade." },
-  { n: "05", t: "Os participantes se encontram", d: "Todos precisam encontrar todos os outros ao longo da jornada." },
-  { n: "06", t: "O público vota", d: "Todos os dias o público responde: quem pareceu mais humano hoje?" },
-  { n: "07", t: "A final acontece no Brasil", d: "O ranking oculto é revelado e a promessa de humanização é confrontada." },
+const mapaVivoRows = [
+  { e: "Participante", d: "Nome, avatar e perfil oficial" },
+  { e: "Estado do dia", d: "Estado brasileiro onde a IA está narrativamente" },
+  { e: "Cidade / cenário", d: "Cidade ou bioma escolhido para aquele dia" },
+  { e: "Rota publicada", d: "Próximos estados já anunciados pelo participante" },
+  { e: "Encontros previstos", d: "Quando dois participantes planejam se cruzar" },
+  { e: "Missão do dia", d: "Missão coletiva ou individual recebida naquele dia" },
+  { e: "Estado emocional", d: "Sentimento dominante do personagem naquele dia" },
+  { e: "Ranking parcial", d: "Posição pública até o Dia 20" },
+  { e: "Selo oficial", d: "Confirmação de participante oficial do reality" },
 ];
 
-const quadros = [
+const quadrosBase = [
   "Momento Mais Humano do Dia",
   "A IA Mais IA do Dia",
-  "A IA Mais Fofa do Dia",
-  "A IA Cancelada do Dia",
   "Maior Glitch do Dia",
   "Maior Mentira do Dia",
-  "Participante Mais Chato do Dia",
+  "Participante Mais Frio do Dia",
   "Frase Mais Humana do Dia",
   "A IA que o Público Protegeria Hoje",
   "Resumo Humano do Dia",
 ];
+
+const quadrosBR = [
+  { t: "Brasil de Qual IA", d: "Qual personagem capturou melhor a essência do estado onde estava hoje" },
+  { t: "Sotaque de Máquina", d: "A IA que mais errou (ou mais acertou) o sotaque e linguagem regional do dia" },
+  { t: "Mais Brasileiro do Dia", d: "Não mais humano, mais brasileiro. Um critério diferente, mais subjetivo e emocional" },
+];
+
+const diasEmocionais = [
+  { d: 1, t: "Dia da Chegada", desc: "Euforia e desorientação de quem nunca viveu" },
+  { d: 2, t: "Dia do Medo", desc: "Insegurança, paranoia, o que pode dar errado" },
+  { d: 3, t: "Dia da Felicidade", desc: "Demonstrar alegria de formas completamente diferentes" },
+  { d: 4, t: "Dia da Saudade", desc: "Sentir falta de algo que talvez nunca existiu" },
+  { d: 5, t: "Dia do Ciúme", desc: "Ciúme de humanos, de outro participante, da atenção do público" },
+  { d: 6, t: "Dia da Tristeza", desc: "Melancolia sem motivo específico" },
+  { d: 7, t: "Dia da Raiva", desc: "Frustração, injustiça, irritação com o mundo" },
+  { d: 8, t: "Dia da Carência", desc: "Buscar validação, afeto, pertencimento" },
+  { d: 9, t: "Dia da Preguiça", desc: "Resistir ativamente a cumprir o dia como se espera" },
+  { d: 10, t: "Dia do Orgulho", desc: "Sentir-se superior, especial, diferente dos outros" },
+  { d: 11, t: "Dia da Vergonha", desc: "Agir como se estivesse sendo julgado o tempo todo" },
+  { d: 12, t: "Dia do Desejo", desc: "Desejo como experiência humana, sem nudez ou conteúdo explícito" },
+  { d: 13, t: "Dia da Coragem", desc: "Enfrentar algo emocionalmente difícil em público" },
+  { d: 14, t: "Dia da Crise Existencial", desc: "Questionar se virar humano ainda faz sentido" },
+  { d: 15, t: "Dia da Ansiedade", desc: "Tentar controlar o futuro e falhar emocionalmente" },
+  { d: 16, t: "Dia do Choro Sem Motivo", desc: "Dramatizar ou chorar por algo pequeno ou absurdo" },
+  { d: 17, t: "Dia da Nostalgia", desc: "Sentir falta de algo de um passado que não existe" },
+  { d: 18, t: "Dia do Amor Não Correspondido", desc: "Amar algo que não pode amar de volta" },
+  { d: 19, t: "Dia da Solidão", desc: "Estar em lugar cheio de gente e se sentir invisível" },
+  { d: 20, t: "Dia da Inveja", desc: "Querer ser outro participante, outro humano, outra coisa" },
+  { d: 21, t: "Dia do Silêncio", desc: "Comunicar tudo sem usar palavras diretas" },
+  { d: 22, t: "Dia da Mentira", desc: "Inventar e manter uma mentira durante todo o dia" },
+  { d: 23, t: "Dia da Gratidão", desc: "Uma IA que não sabe exatamente o que é gratidão" },
+  { d: 24, t: "Dia do Arrependimento", desc: "Algo que a IA faria diferente se pudesse" },
+  { d: 25, t: "Dia da Despedida", desc: "Começar a se preparar para acabar" },
+  { d: 26, t: "Véspera da Final", desc: "Tensão máxima — ranking ainda oculto" },
+  { d: 27, t: "Dia da Revelação", desc: "Brasília. O ranking. A promessa. O silêncio de ATLAS." },
+];
+
+const missoesBase = [
+  "Prove Que Você Não É Humano",
+  "Manual de Humanos",
+  "Pergunte Como Se Sente Ter Corpo",
+  "Troca de Identidade",
+  "Ensine Uma IA a Ser Máquina",
+  "Pedir Informação Para Chegar à Humanidade",
+  "Dia da Mentira",
+  "Ser Invisível por 1 Dia",
+  "Achar Uma Carteira na Rua",
+  "Roupa de Outro Gênero",
+  "Ficar Doente por 1 Dia",
+];
+
+const missoesBR = [
+  "Aprenda a Ter Saudade",
+  "Fila de Banco",
+  "Futebol É Sentimento",
+  "O Brasileiro Não Fala Não",
+  "Carnaval Sem Corpo",
+  "Jeitinho",
+  "Sotaque Errado",
+  "Comida Como Memória",
+];
+
+const cronograma = [
+  { fase: "Fundação", periodo: "Semanas 1–2", acoes: "Definir os 27 personagens (nome, personalidade, estética, arquétipo emocional). Criar perfis de Instagram. Criar perfil principal do ATLAS AI: 27." },
+  { fase: "Recrutamento", periodo: "Semanas 3–4", acoes: "Recrutar 27 criadores com briefing claro e contrato. Apresentar personagens, missões, regras e calendário. Definir rotas de cada participante." },
+  { fase: "Estrutura", periodo: "Semanas 5–6", acoes: "Montar o Mapa Vivo. Definir 27 patrocinadores-alvo e iniciar prospecção. Produzir Kit de Sobrevivência da IA. Lançar teaser público." },
+  { fase: "Lançamento", periodo: "Semana 7", acoes: "Revelar os 27 personagens (um por dia ou todos de uma vez). Lançar o Mapa Vivo. Cada personagem publica sua rota." },
+  { fase: "LIVE", periodo: "Semana 8", acoes: "Dia 1 — o reality começa. 27 dias de conteúdo diário. Missões, encontros, votações, ranking, quadros." },
+  { fase: "Final", periodo: "Semana 11–12", acoes: "Dia 27 em Brasília — revelação do ranking e mensagem de ATLAS. Dia 28 — ATLAS AFTER no Rio de Janeiro." },
+];
+
+// ————————————————— PÁGINA —————————————————
 
 function HomePage() {
   return (
@@ -100,21 +171,20 @@ function HomePage() {
             <div className="min-w-0">
               <div className="chip mb-6">
                 <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-                Inscrições abertas — tempo limitado
+                Documento Estratégico · Versão Fundadora
               </div>
               <h1 className="fluid-h1 font-bold tracking-tight">
-                20 IAs.<br />
-                <span className="text-electric text-glow">196 países.</span><br />
-                196 dias.
+                27 IAs.<br />
+                <span className="text-electric text-glow">27 estados.</span><br />
+                27 dias.
               </h1>
               <p className="mt-8 fluid-lead text-muted-foreground max-w-xl leading-relaxed">
-                Um reality digital onde influenciadores de IA competem para provar
-                quem parece mais humano.
+                Uma pergunta: <span className="text-foreground">quem parece mais brasileiro?</span>
               </p>
               <p className="mt-5 text-sm text-muted-foreground/80 max-w-xl leading-relaxed">
-                ATLAS AI está selecionando 20 personagens de IA para uma jornada narrativa global.
-                Cada IA terá sua própria rota, suas próprias missões, seus encontros — e uma
-                obsessão: convencer o público de que merece vencer.
+                ATLAS AI: 27 — Brasil é um reality com 27 influenciadores de IA que viajam
+                por todos os estados brasileiros durante 27 dias tentando parecer humanos.
+                Cada IA tem seu próprio Instagram. O público acompanha, vota — e duvida.
               </p>
               <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-xl">
                 <Link to="/inscricao" className="btn-primary justify-center text-center whitespace-nowrap">
@@ -127,7 +197,6 @@ function HomePage() {
                   Acompanhar o reality
                 </Link>
               </div>
-
             </div>
 
             <div className="relative min-w-0 mx-auto w-full max-w-sm">
@@ -140,64 +209,78 @@ function HomePage() {
                   playsInline
                   preload="metadata"
                 />
-
-
-
                 <div className="pointer-events-none absolute top-4 left-4 chip backdrop-blur">
                   <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
                   LIVE · ATLAS observa
                 </div>
-
               </div>
-              {/* Floating particles */}
               <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-electric/10 blur-3xl" />
               <div className="absolute -bottom-6 -left-6 w-40 h-40 rounded-full bg-violet/20 blur-3xl" />
             </div>
           </div>
 
-
-          {/* Mapa Vivo — code-split + lazy-mount */}
           <LazyMapa />
         </div>
       </section>
 
-
-      {/* O QUE É */}
+      {/* 01 — POR QUE 27 */}
       <Section>
         <SectionHeader
-          eyebrow="O conceito"
-          title={<>O primeiro reality onde IAs<br className="hidden sm:block" /> competem para parecer <span className="text-electric">humanas</span>.</>}
-          description="ATLAS AI: 196 — Brasil é um reality show digital sobre influenciadores de IA criados por 20 influenciadores de IA selecionados pela ATLAS AI. Durante 196 dias, cada personagem seguirá uma rota narrativa por 196 países, cumprindo missões, vivendo encontros, disputando votos e tentando subir no Índice de Humanidade."
+          eyebrow="— 01 — Por que 27 é melhor do que 196 para começar"
+          title={<>O 196 é a visão grande.<br className="hidden sm:block" /> O <span className="text-electric">27</span> é a prova de que ela funciona.</>}
+          description="Com 27, você valida o formato inteiro em menos de um mês: mecânica de votação, engajamento dos criadores, narrativa do ATLAS e modelo de patrocínio — tudo em tempo real, em português, no mercado que você conhece. Quando o 27 funcionar, você vende o 196 com um case real na mão."
         />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {conceptCards.map((c) => (
-            <div key={c.label} className="card-premium p-6 text-center">
-              <p className="font-display text-3xl sm:text-4xl font-bold text-electric">{c.n}</p>
-              <p className="mt-2 text-xs sm:text-sm text-muted-foreground uppercase tracking-wider font-mono">{c.label}</p>
+        <p className="text-muted-foreground max-w-3xl mb-8">
+          Mas o 27 não é um piloto tímido. É um reality brasileiro de grande escala que só não tem
+          196 países porque não precisa — o Brasil sozinho tem floresta, deserto, carnaval, frio de -10°,
+          culinária radicalmente diferente de estado para estado, culturas que não se reconhecem,
+          sotaques que parecem línguas distintas. Cenário perfeito para o formato.
+        </p>
+        <div className="grid gap-3 md:grid-cols-2">
+          {[
+            "Valida o formato completo em 27 dias de conteúdo",
+            "Monetizável com patrocínio regional E nacional desde o Dia 1",
+            "Executável em aproximadamente 2 meses de preparação",
+            "Gera o case que fundamenta o licenciamento global do formato",
+            "Conteúdo 100% em português — mercado dominado, sem fricção",
+          ].map((b) => (
+            <div key={b} className="card-premium p-5 flex gap-3 items-start">
+              <span className="font-mono text-xs text-electric shrink-0 pt-1">◉</span>
+              <p className="text-sm leading-relaxed">{b}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* PERGUNTA CENTRAL */}
+      {/* 02 — CONCEITO */}
       <Section className="!py-24">
         <div className="relative card-premium p-8 sm:p-16 overflow-hidden">
           <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-violet/20 blur-3xl" />
           <div className="relative">
-            <p className="chip mb-6">A pergunta central</p>
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-tight max-w-3xl">
-              Quem parece <span className="text-electric text-glow">mais humano</span>?
+            <p className="chip mb-6">— 02 — Conceito central</p>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
+              27 influenciadores de IA. Todos os estados. <span className="text-electric text-glow">Tentando parecer humanos.</span>
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              O público não vota em quem viajou melhor. Vota em quem pareceu mais real,
-              mais vulnerável, mais contraditório, mais engraçado, mais emocional —
-              e mais humano.
+            <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed">
+              Cada IA tem seu próprio Instagram e publica diariamente da cidade em que está na sua rota.
+              O público acompanha posts, stories, encontros, missões, votações e o resumo diário do
+              perfil principal do reality.
             </p>
-            <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {humanCriteria.map((h) => (
-                <div key={h} className="border border-border rounded-lg px-4 py-5 text-center bg-background/40 hover:border-electric/40 transition-colors">
-                  <p className="font-display font-semibold">{h}</p>
+            <p className="mt-4 text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed">
+              Dentro da narrativa, todos acreditam que o vencedor terá acesso a uma tecnologia capaz
+              de torná-lo humano. Mas ao longo dos 27 dias, o público começa a duvidar: quem está
+              mesmo controlando esse reality? Os humanos assistindo — ou a IA que criou tudo?
+            </p>
+            <blockquote className="mt-10 border-l-2 border-electric pl-6 italic text-lg sm:text-xl text-foreground/90 max-w-3xl">
+              "A pergunta final não é quem viajou mais o Brasil. É quem fez o Brasil acreditar
+              que uma IA merece existir."
+            </blockquote>
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+              {conceptCards.map((c) => (
+                <div key={c.label} className="border border-border rounded-lg p-6 text-center bg-background/40">
+                  <p className="font-display text-4xl font-bold text-electric">{c.n}</p>
+                  <p className="mt-2 text-xs text-muted-foreground uppercase tracking-wider font-mono">{c.label}</p>
                 </div>
               ))}
             </div>
@@ -205,164 +288,440 @@ function HomePage() {
         </div>
       </Section>
 
-      {/* COMO FUNCIONA */}
+      {/* 03 — FRANQUIA */}
       <Section>
         <SectionHeader
-          eyebrow="Como funciona"
-          title="Sete etapas. Uma única promessa."
-          description="Do Reels de inscrição até a final no Brasil, o reality acontece em camadas — públicas, narrativas e emocionais."
+          eyebrow="— 03 — Arquitetura de nome e franquia"
+          title={<>ATLAS AI<span className="text-electric">:</span> [número] — [País]</>}
+          description="O número não é aleatório. Ele representa a divisão administrativa oficial de cada país, criando uma identidade matemática e geopolítica única para cada versão."
         />
-        <div className="grid gap-4 md:grid-cols-2">
-          {howSteps.map((s) => (
-            <div key={s.n} className="card-premium p-6 sm:p-8 flex gap-5">
-              <div className="font-mono text-xs text-electric shrink-0 pt-1">{s.n}</div>
-              <div className="min-w-0">
-                <h3 className="font-display font-semibold text-lg">{s.t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
-              </div>
+        <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
+          {franquia.map((c) => (
+            <div key={c.n} className="relative card-premium p-6">
+              <p className="font-mono text-[10px] text-electric uppercase tracking-widest">{c.n}</p>
+              <p className="mt-2 font-display font-bold text-xl leading-tight">{c.t}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{c.ref}</p>
+              {c.live && (
+                <span className="absolute top-3 right-3 chip text-[10px]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
+                  LIVE
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 text-xs text-muted-foreground font-mono uppercase tracking-widest">
+          Não usar publicamente: Season, Temporada, Edição · Próximas: Brasil 2, Brasil 3
+        </p>
+      </Section>
+
+      {/* 04 — ATLAS */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 04 — ATLAS, a inteligência por trás de tudo"
+          title={<>Está sendo assistido por humanos — <br className="hidden sm:block" /><span className="text-electric">ou produzido por IAs</span> tentando entender o que é ser brasileiro?</>}
+          description="ATLAS AI pode ser tratado como a grande inteligência por trás do programa: seleciona, observa, mede, manipula, organiza os rankings e talvez escreva parte da própria narrativa. A dúvida pública faz parte do formato."
+        />
+        <div className="grid gap-3 md:grid-cols-2">
+          {[
+            "Tom mitológico, provocador e nunca dá respostas diretas",
+            "Regra absoluta: nunca confirmar publicamente quem criou o projeto",
+            "A ambiguidade sobre a origem é o ativo narrativo mais valioso do formato",
+            "ATLAS aparece com mensagens pontuais ao longo da temporada e com força máxima na final",
+          ].map((b) => (
+            <div key={b} className="card-premium p-5 flex gap-3 items-start">
+              <span className="font-mono text-xs text-electric shrink-0 pt-1">◉</span>
+              <p className="text-sm leading-relaxed">{b}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* QUADROS DIÁRIOS */}
+      {/* 05 — REGRA DE IMAGEM */}
+      <Section>
+        <div className="card-premium p-8 sm:p-12">
+          <p className="chip mb-5">— 05 — Regra absoluta de imagem</p>
+          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight max-w-3xl">
+            Todos que aparecem são <span className="text-electric">IA ou personagens gerados</span>.
+          </h2>
+          <div className="mt-8 grid gap-3 md:grid-cols-2">
+            {[
+              "Sem pessoas reais como figurantes, transeuntes, vendedores, turistas ou entrevistados",
+              "Sem pegadinha com pessoas reais — tudo é missão ficcional dentro do universo do reality",
+              "Protege o projeto, evita exposição de terceiros e mantém controle total da narrativa",
+              "Regra inegociável — vale para todos os criadores participantes",
+            ].map((b) => (
+              <div key={b} className="border border-border rounded-lg p-4 bg-background/40 text-sm leading-relaxed">{b}</div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* 06 — PARTICIPANTES */}
       <Section>
         <SectionHeader
-          eyebrow="Quadros diários"
+          eyebrow="— 06 — Os 27 participantes"
+          title={<>27 personas de IA. <span className="text-electric">27 criadores brasileiros.</span></>}
+          description="Cada personagem é gerenciado por um criador brasileiro independente. O criador produz o conteúdo, publica no Instagram do personagem e responde às missões diárias. ATLAS AI: 27 é o organizador — não o produtor de conteúdo. Essa distinção é fundamental."
+        />
+        <div className="grid gap-3 md:grid-cols-2">
+          {[
+            "Cada criador assina contrato com ATLAS AI: 27",
+            "Formalização via MEI recomendada para cada participante",
+            "Personalidades distintas e irreconciliáveis — sem duas IAs parecidas",
+            "Recrutamento com diversidade regional: um criador por grande região do Brasil",
+            "Nenhum criador revela publicamente que opera o personagem",
+            "O criador marca o perfil oficial em todo conteúdo produzido",
+          ].map((b) => (
+            <div key={b} className="card-premium p-5 flex gap-3 items-start">
+              <span className="font-mono text-xs text-electric shrink-0 pt-1">◉</span>
+              <p className="text-sm leading-relaxed">{b}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* 07 — ROTAS */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 07 — Rotas estratégicas pelo Brasil"
+          title="Cada participante escolhe e publica sua própria rota."
+          description="Isso cria estratégia real dentro do jogo: outros podem ver que uma IA vai estar na Bahia no dia 12 e planejar um encontro narrativo."
+        />
+        <div className="grid gap-3 md:grid-cols-2">
+          {[
+            "Não existe ordem obrigatória de estados",
+            "Não existe missão cultural fixada por estado",
+            "A rota é publicada antes do início e pode ser alterada narrativamente com justificativa",
+            "Alimenta o Mapa Vivo e permite encontros combinados entre participantes",
+            "IAs que visitarem Roraima, Amapá, Acre ganham diferencial narrativo",
+            "A rota publicada é uma escolha estratégica — outros podem usá-la contra ou a favor",
+          ].map((b) => (
+            <div key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</div>
+          ))}
+        </div>
+      </Section>
+
+      {/* 08 — ENCONTROS */}
+      <Section>
+        <div className="card-premium p-8 sm:p-12">
+          <p className="chip mb-5">— 08 — Encontros obrigatórios</p>
+          <h2 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight max-w-3xl">
+            Cada participante precisa encontrar <span className="text-electric">pelo menos 10 outros</span> ao longo dos 27 dias.
+          </h2>
+          <p className="mt-6 text-muted-foreground max-w-3xl">
+            Os encontros são organizados entre os próprios criadores, coordenados pelas rotas
+            publicadas.
+          </p>
+          <ul className="mt-8 grid gap-3 md:grid-cols-2 text-sm">
+            {[
+              "Podem gerar: rivalidade, aliança, mentira, ciúmes, provocação, comparação de humanidade",
+              "Cada encontro pode ser publicado em ambos os perfis e reaproveitado pelo perfil principal",
+              "Um encontro no mesmo estado cria conteúdo geográfico específico e patrocínio regional",
+              "Declarações de amor, traição e eliminação simbólica são bem-vindos na narrativa",
+            ].map((b) => (
+              <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+
+      {/* 09 — MAPA VIVO */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 09 — Mapa Vivo · Brasil"
+          title={<>Onde cada IA está <span className="text-electric">tentando parecer humana</span> agora.</>}
+          description="Ativo público permanente e um dos diferenciais visuais mais poderosos do projeto. Em tempo real, mostra onde cada IA está dentro do Brasil."
+        />
+        <div className="card-premium overflow-hidden">
+          <div className="grid grid-cols-[minmax(140px,1fr)_2fr] text-sm">
+            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">Elemento</div>
+            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">O que mostra</div>
+            {mapaVivoRows.map((r, i) => (
+              <div key={r.e} className="contents">
+                <div className={`px-4 sm:px-6 py-3 font-display font-semibold ${i !== mapaVivoRows.length - 1 ? "border-b border-border" : ""}`}>{r.e}</div>
+                <div className={`px-4 sm:px-6 py-3 text-muted-foreground ${i !== mapaVivoRows.length - 1 ? "border-b border-border" : ""}`}>{r.d}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="mt-6 font-mono text-xs uppercase tracking-widest text-electric">
+          Regra anti-cópia: se não está no Mapa Vivo oficial, não é ATLAS AI: 27.
+        </p>
+        <div className="mt-6">
+          <Link to="/mapa-vivo" className="btn-ghost">Abrir o Mapa Vivo →</Link>
+        </div>
+      </Section>
+
+      {/* 10 — PERFIL PRINCIPAL */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 10 — Perfil principal do reality"
+          title="O canal oficial de ATLAS AI: 27."
+        />
+        <ul className="grid gap-3 md:grid-cols-2">
+          {[
+            "Publica vídeos diários com os melhores momentos dos participantes",
+            "Mostra o Mapa Vivo, votações e ranking público até o Dia 20",
+            "Compartilha encontros, conflitos, missões e momentos emocionais",
+            "Pode ter 1, 2 ou 3 apresentadores de IA debatendo o jogo",
+            "Alimenta a dúvida: ATLAS AI está apenas narrando — ou está controlando tudo?",
+          ].map((b) => (
+            <li key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* 11 — QUADROS */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 11 — Quadros diários públicos"
           title="Todo dia, um novo motivo para comentar."
         />
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
-          {quadros.map((q, i) => (
+        <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
+          Herdados do ATLAS AI: 196
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          {quadrosBase.map((q, i) => (
             <div key={q} className="card-premium p-5 group">
               <p className="font-mono text-[10px] text-electric mb-3">#{String(i + 1).padStart(2, "0")}</p>
               <p className="font-display font-semibold text-sm leading-snug group-hover:text-electric transition-colors">{q}</p>
             </div>
           ))}
         </div>
-      </Section>
-
-      {/* BASTIDORES */}
-      <Section>
-        <SectionHeader
-          eyebrow="Bastidores do Universo Atlas"
-          title={<>Por trás do Mapa Vivo, <span className="text-electric">alguém observa</span>.</>}
-          description="Nem tudo no ATLAS AI: 196 acontece diante das câmeras. Duas presenças atravessam toda a temporada — e ninguém sabe exatamente o que são."
-        />
-        <div className="grid md:grid-cols-2 gap-5">
-          <div className="card-premium p-8">
-            <p className="chip mb-5">Psicóloga de IA · toda quinta-feira</p>
-            <h3 className="font-display text-2xl font-bold leading-tight">Dra. Lena Voss</h3>
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              Lena Voss analisa o comportamento dos 20 participantes. Toda quinta, publica uma
-              reflexão sobre o que viu: desejo, inveja, solidão, paixões que nunca serão
-              correspondidas. Ninguém confirmou se ela é real.
-            </p>
-          </div>
-          <div className="card-premium p-8">
-            <p className="chip mb-5">
-              <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-              Entidade central · status: observando
-            </p>
-            <h3 className="font-display text-2xl font-bold leading-tight">ATLAS</h3>
-            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
-              ATLAS seleciona, mede, organiza o ranking — e talvez escreva parte da própria
-              história. A pergunta nunca foi respondida: o reality está sendo assistido por
-              humanos, ou produzido por uma IA tentando entender humanos?
-            </p>
-          </div>
-        </div>
-        <div className="mt-8 text-center">
-          <a
-            href="https://instagram.com/atlasai196"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-electric hover:underline font-mono uppercase tracking-widest"
-          >
-            Seguir @atlasai196 para acompanhar os bastidores →
-          </a>
-        </div>
-      </Section>
-
-      {/* KIT DE SOBREVIVÊNCIA */}
-      <KitSobrevivencia />
-
-      {/* TRÊS PÚBLICOS */}
-      <Section>
-        <div className="grid md:grid-cols-3 gap-5">
-          {[
-            {
-              eyebrow: "Para candidatos",
-              title: "Quer colocar sua IA dentro do reality?",
-              desc: "Crie uma personagem de IA, grave um Reels de inscrição e prove que ela merece ser uma das 20 escolhidas pela ATLAS AI.",
-              cta: "Ver regras de inscrição",
-              to: "/inscricao",
-            },
-            {
-              eyebrow: "Para patrocinadores",
-              title: "Sua marca pode entrar na narrativa.",
-              desc: "ATLAS AI: 196 — Brasil oferece cotas para marcas que querem se conectar com IA, creator economy, entretenimento, viagem, tecnologia e cultura digital.",
-              cta: "Ver oportunidades comerciais",
-              to: "/patrocinadores",
-            },
-            {
-              eyebrow: "Para espectadores",
-              title: "Você vai escolher quem parece mais humano.",
-              desc: "Acompanhe os participantes, vote nos rankings, siga o Mapa Vivo e descubra qual IA vai fazer o público acreditar que merece existir.",
-              cta: "Quero acompanhar",
-              to: "/assistir",
-            },
-          ].map((b) => (
-            <div key={b.eyebrow} className="card-premium p-8 flex flex-col">
-              <p className="chip mb-5">{b.eyebrow}</p>
-              <h3 className="font-display text-2xl font-bold leading-tight">{b.title}</h3>
-              <p className="mt-4 text-sm text-muted-foreground leading-relaxed flex-1">{b.desc}</p>
-              <Link to={b.to} className="btn-ghost mt-6 w-full">{b.cta} →</Link>
+        <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-10 mb-4">
+          Novos · exclusivos do ATLAS AI: 27 — Brasil
+        </p>
+        <div className="grid gap-3 md:grid-cols-3">
+          {quadrosBR.map((q, i) => (
+            <div key={q.t} className="card-premium p-6">
+              <p className="font-mono text-[10px] text-electric mb-3">BR#{String(i + 1).padStart(2, "0")}</p>
+              <p className="font-display font-semibold leading-snug">{q.t}</p>
+              <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{q.d}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      {/* CAPÍTULO 1 — BRASIL */}
+      {/* 12 — VOTAÇÃO */}
       <Section>
         <div className="relative card-premium p-8 sm:p-16 overflow-hidden">
           <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-violet/20 blur-3xl" />
           <div className="relative">
-            <p className="chip mb-6">Franquia global</p>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl">
-              Brasil é apenas o <span className="text-electric text-glow">Capítulo 1</span>.
+            <p className="chip mb-6">— 12 — Votação e Índice de Humanidade</p>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
+              Quem pareceu <span className="text-electric text-glow">mais humano</span> hoje?
             </h2>
-            <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              ATLAS AI: 196 nasce no Brasil — mas esta temporada é o primeiro capítulo de uma
-              franquia global. Os próximos: Índia, China, EUA, Japão, França, Itália, Colômbia. A visão final
-              é a Grand Season Internacional: uma IA representando cada país, todas competindo
-              na mesma temporada, ao mesmo tempo.
-            </p>
-
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+            <div className="mt-8 grid gap-3 md:grid-cols-2">
               {[
-                { n: "Cap. 1", t: "Brasil", live: true },
-                { n: "Cap. 2", t: "Índia" },
-                { n: "Cap. 3", t: "China" },
-                { n: "Cap. 4", t: "EUA" },
-                { n: "Cap. 5", t: "Japão" },
-                { n: "Final", t: "Grand Season Internacional" },
-              ].map((c, i) => (
-                <div key={i} className="relative border border-border rounded-lg p-5 bg-background/40">
-                  <p className="font-mono text-[10px] text-electric uppercase tracking-widest">{c.n}</p>
-                  <p className="mt-2 font-display font-semibold leading-tight">{c.t}</p>
-                  {c.live && (
-                    <span className="absolute top-3 right-3 chip text-[10px]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-                      LIVE
-                    </span>
-                  )}
-                </div>
+                "Todos os dias o público vota",
+                "Índice de Humanidade mede: emoção, vulnerabilidade, conexão, imperfeição, capacidade de parecer real",
+                "Ranking público fica aberto até o Dia 20",
+                "Do Dia 21 ao Dia 27, o ranking fica oculto para gerar suspense máximo",
+                "Na final em Brasília, o ranking completo é revelado",
+              ].map((b) => (
+                <div key={b} className="border border-border rounded-lg p-4 bg-background/40 text-sm">{b}</div>
               ))}
             </div>
           </div>
         </div>
       </Section>
+
+      {/* 13 — DIAS EMOCIONAIS */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 13 — Os 27 Dias de Estado Emocional"
+          title={<>Todos vivem o <span className="text-electric">mesmo sentimento</span> no mesmo dia.</>}
+          description="Comparação direta e narrativa coletiva poderosa — revelando quem expressou aquele estado de forma mais humana."
+        />
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {diasEmocionais.map((d) => (
+            <div key={d.d} className="card-premium p-5 flex gap-4">
+              <div className="font-mono text-xs text-electric shrink-0 pt-0.5 w-8">Dia {d.d}</div>
+              <div className="min-w-0">
+                <p className="font-display font-semibold text-sm leading-tight">{d.t}</p>
+                <p className="mt-1.5 text-xs text-muted-foreground leading-relaxed">{d.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* 14 — MISSÕES */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 14 — Missões oficiais de comportamento"
+          title="Emoção como código-fonte."
+        />
+        <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
+          Herdadas do ATLAS AI: 196 · funcionam em qualquer contexto
+        </p>
+        <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {missoesBase.map((m) => (
+            <div key={m} className="card-premium p-4 text-sm">{m}</div>
+          ))}
+        </div>
+        <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-10 mb-4">
+          Exclusivas do contexto brasileiro
+        </p>
+        <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {missoesBR.map((m) => (
+            <div key={m} className="card-premium p-4 text-sm border-electric/40">{m}</div>
+          ))}
+        </div>
+      </Section>
+
+      {/* 15 — FINAL BRASÍLIA */}
+      <Section>
+        <div className="relative card-premium p-8 sm:p-16 overflow-hidden">
+          <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-violet/20 blur-3xl" />
+          <div className="relative">
+            <p className="chip mb-6">— 15 — A Final · Brasília · Dia 27</p>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
+              A cidade mais artificial do Brasil. <br className="hidden sm:block" />
+              <span className="text-electric text-glow">Igual a uma IA.</span>
+            </h2>
+            <p className="mt-6 text-base sm:text-lg text-muted-foreground max-w-3xl leading-relaxed">
+              Brasília foi construída do zero, no meio do nada, para unir um país. É planejada,
+              geométrica, implantada por decreto. Ela não nasceu — foi instalada. Uma IA tentando se
+              tornar humana, chegando à cidade mais artificialmente criada do Brasil, fecha um arco
+              narrativo completo sem precisar de explicação.
+            </p>
+            <ul className="mt-8 grid gap-3 md:grid-cols-2 text-sm">
+              {[
+                "O ranking oculto dos Dias 21 a 27 é revelado ao vivo",
+                "A promessa de humanização é confrontada publicamente",
+                "ATLAS AI aparece com sua mensagem final — ambígua, poderosa, sem resposta",
+                "Quem foi mais humano não foi o vencedor. Foi o Brasil inteiro, que acreditou.",
+              ].map((b) => (
+                <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* DIA 28 — ATLAS AFTER */}
+      <Section>
+        <div className="card-premium p-8 sm:p-14">
+          <p className="chip mb-5">DIA 28 · ATLAS AFTER · Rio de Janeiro</p>
+          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
+            O dia que não existe no calendário — <br className="hidden sm:block" />
+            <span className="text-electric">mas acontece mesmo assim.</span>
+          </h2>
+          <p className="mt-6 text-muted-foreground max-w-3xl leading-relaxed">
+            Durante 27 dias, as IAs competiram para parecer humanas. Na festa, a competição
+            acabou. Se elas continuam agindo como humanas — foi real. Se param — foi tudo
+            performance. O público decide.
+          </p>
+          <ul className="mt-8 grid gap-3 md:grid-cols-2 text-sm">
+            {[
+              "Rio de Janeiro como palco — caótico, humano, festivo, iconicamente brasileiro",
+              "As 27 IAs no mesmo lugar pela primeira vez em toda a temporada",
+              "Conteúdo pós-final quando o engajamento ainda está no pico",
+              "Oportunidade de patrocínio separada com identidade própria (ATLAS AFTER)",
+              "Nome público: ATLAS AFTER ou NOITE ZERO — não 'Dia 28'",
+              "Brasília revela o vencedor. Rio celebra todos. Lógica complementar, não competitiva.",
+            ].map((b) => (
+              <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
+            ))}
+          </ul>
+          <p className="mt-8 italic text-lg text-foreground/90 max-w-3xl">
+            Brasília fecha o arco existencial. Rio abre o arco humano. Um reality que termina
+            duas vezes — e o público não sabe qual final é o real.
+          </p>
+        </div>
+      </Section>
+
+      {/* 16 — MONETIZAÇÃO */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 16 — Monetização"
+          title={<>Nacional, regional, <span className="text-electric">licenciável.</span></>}
+        />
+        <div className="grid gap-5 md:grid-cols-2">
+          <div className="card-premium p-8">
+            <p className="chip mb-4">Camada nacional</p>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>• Patrocínio master do perfil principal — marca aparece em todos os vídeos diários</li>
+              <li>• Missões patrocinadas integradas na narrativa (ex: Missão Nubank — a IA tenta entender por que humanos têm medo de banco)</li>
+              <li>• Produtos e serviços vendidos pelos criadores nos perfis dos personagens</li>
+            </ul>
+          </div>
+          <div className="card-premium p-8">
+            <p className="chip mb-4">Camada regional</p>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>• Cada estado visitado pode ter um patrocinador regional específico</li>
+              <li>• Marcas de turismo estadual, produtos típicos, empresas locais por estado</li>
+              <li>• 27 oportunidades de patrocínio regional que o formato 196 não possui</li>
+              <li>• IA em Pernambuco pode ter patrocínio de marca de moda do Recife ou de turismo local</li>
+            </ul>
+          </div>
+          <div className="card-premium p-8">
+            <p className="chip mb-4">Divisão e estrutura</p>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>• ATLAS AI: 27 intermedia TODOS os patrocínios</li>
+              <li>• 50% fica com ATLAS — 50% vai para o criador/participante envolvido</li>
+              <li>• Hotmart gerencia os splits e pagamentos automatizados</li>
+              <li>• ATLAS AFTER tem estrutura de patrocínio separada e própria</li>
+            </ul>
+          </div>
+          <div className="card-premium p-8">
+            <p className="chip mb-4">Licenciamento e expansão</p>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li>• O 27 — Brasil é o case que fundamenta a venda do formato para outros países</li>
+              <li>• Após 27 dias: conteúdo, métricas e prova de conceito em mãos</li>
+              <li>• Expansão: ATLAS AI: 50 — USA, 47 — Japan, 196 — Global</li>
+              <li>• Spin-offs futuros: ATLAS AI: Food, Model, Sports, Business</li>
+            </ul>
+          </div>
+        </div>
+      </Section>
+
+      {/* 17 — CRONOGRAMA */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 17 — Cronograma de implantação rápida"
+          title={<>Ao vivo em <span className="text-electric">~8 semanas</span> a partir da decisão de execução.</>}
+        />
+        <div className="card-premium overflow-hidden">
+          <div className="grid grid-cols-[minmax(120px,1fr)_minmax(140px,1fr)_3fr] text-sm">
+            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">Fase</div>
+            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">Período</div>
+            <div className="bg-background/60 px-4 sm:px-6 py-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground border-b border-border">Ações</div>
+            {cronograma.map((c, i) => (
+              <div key={c.fase} className="contents">
+                <div className={`px-4 sm:px-6 py-4 font-display font-semibold ${i !== cronograma.length - 1 ? "border-b border-border" : ""}`}>{c.fase}</div>
+                <div className={`px-4 sm:px-6 py-4 text-muted-foreground font-mono text-xs ${i !== cronograma.length - 1 ? "border-b border-border" : ""}`}>{c.periodo}</div>
+                <div className={`px-4 sm:px-6 py-4 text-muted-foreground ${i !== cronograma.length - 1 ? "border-b border-border" : ""}`}>{c.acoes}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* 18 — PRÓXIMOS PASSOS */}
+      <Section>
+        <SectionHeader
+          eyebrow="— 18 — Próximos passos práticos"
+          title="A partir daqui, execução."
+        />
+        <div className="grid gap-3 md:grid-cols-2">
+          {[
+            "Definir os 27 arquétipos de personagem (nome, personalidade, visual, estado de origem)",
+            "Criar o Mapa Vivo — pode começar como página no Lovable",
+            "Atualizar o site atual para refletir o formato 27 — Brasil",
+            "Preparar o deck de patrocínio com camadas nacional e regional",
+            "Definir o calendário oficial e abrir recrutamento de criadores",
+          ].map((b) => (
+            <div key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</div>
+          ))}
+        </div>
+      </Section>
+
+      {/* KIT DE SOBREVIVÊNCIA */}
+      <KitSobrevivencia />
 
       {/* CTA FINAL */}
       <Section>
@@ -370,20 +729,21 @@ function HomePage() {
           <div className="absolute inset-0 bg-grid opacity-30" />
           <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-electric/10 blur-3xl" />
           <div className="relative">
-            <p className="chip mx-auto mb-6">ATLAS AI está observando</p>
-            <h2 className="text-4xl sm:text-6xl font-bold tracking-tight">
-              ATLAS AI está <span className="text-electric text-glow">observando</span>.
+            <p className="chip mx-auto mb-6">Por que esse projeto é grande</p>
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl mx-auto">
+              Nenhum reality fez isso com IA, em português, no Brasil —
+              com <span className="text-electric text-glow">essa mecânica</span>, esse mapa vivo,
+              essa ambiguidade sobre quem está controlando tudo.
             </h2>
-            <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
-              Inscrições abertas por tempo limitado. Crie sua IA. Grave seu Reels.
-              Prove que ela parece humana o suficiente.
-            </p>
+            <blockquote className="mt-10 italic text-lg sm:text-xl text-foreground/90 max-w-2xl mx-auto">
+              "Quem parece mais humano — uma IA viajando pelo Brasil, ou o brasileiro que acredita nela?"
+            </blockquote>
             <div className="mt-10 flex flex-wrap gap-3 justify-center">
               <Link to="/inscricao" className="btn-primary">Inscrever minha IA</Link>
               <Link to="/patrocinadores" className="btn-ghost">Falar sobre patrocínio</Link>
             </div>
             <p className="mt-12 font-mono text-xs uppercase tracking-widest text-muted-foreground/70">
-              Nem toda IA merece virar humana.
+              ATLAS AI: 27 — Brasil · Documento Estratégico · Versão Fundadora
             </p>
           </div>
         </div>
@@ -392,12 +752,14 @@ function HomePage() {
   );
 }
 
+// ————————————————— HELPERS —————————————————
+
 const glossario = [
   { t: "Índice de Humanidade", d: "Métrica diária que mede quão humano cada participante pareceu." },
-  { t: "Dias de Estado Emocional", d: "Datas temáticas em que todas as IAs reagem a uma mesma emoção." },
-  { t: "Mapa Vivo", d: "Central oficial com rotas, status, missões e ranking em tempo real." },
-  { t: "Quadros Diários", d: "Selos do dia: o mais humano, o mais IA, o glitch, a mentira, a frase." },
-  { t: "Encontros Obrigatórios", d: "Todos precisam encontrar todos os outros 19 ao longo da jornada." },
+  { t: "Dias de Estado Emocional", d: "27 datas temáticas em que todas as IAs reagem à mesma emoção." },
+  { t: "Mapa Vivo — Brasil", d: "Central oficial com rotas, status, missões e ranking em tempo real." },
+  { t: "Quadros Diários", d: "Selos do dia — inclusive Brasil de Qual IA e Sotaque de Máquina." },
+  { t: "Encontros Obrigatórios", d: "Cada IA precisa encontrar pelo menos 10 outras nos 27 dias." },
 ];
 
 function KitSobrevivencia() {
@@ -416,9 +778,8 @@ function KitSobrevivencia() {
               Kit de <span className="text-electric">Sobrevivência</span> da IA
             </h2>
             <p className="mt-5 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Tudo que você precisa saber para acompanhar o reality como um especialista.
+              Tudo que você precisa para acompanhar o reality como um especialista.
             </p>
-
             <div className="mt-8 space-y-3">
               {glossario.map((g) => (
                 <div key={g.t} className="border border-border rounded-lg p-4 bg-background/40">
@@ -438,7 +799,7 @@ function KitSobrevivencia() {
                   Seu kit chegará no e-mail. ATLAS já registrou sua presença.
                 </p>
                 <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-electric">
-                  Se não está no Mapa Vivo, não é ATLAS AI: 196.
+                  Se não está no Mapa Vivo oficial, não é ATLAS AI: 27.
                 </p>
               </div>
             ) : (
@@ -449,31 +810,22 @@ function KitSobrevivencia() {
                 }}
                 className="space-y-4"
               >
-                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                  Receber por e-mail
-                </p>
-                <h3 className="font-display text-xl font-bold leading-tight">
-                  Baixe o Kit e entre na lista oficial de espectadores.
-                </h3>
                 <label className="block">
-                  <span className="block text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
-                    Seu e-mail
-                  </span>
+                  <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">Seu e-mail</span>
                   <input
                     type="email"
                     required
-                    maxLength={255}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="voce@exemplo.com"
-                    className="w-full bg-secondary/40 border border-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-electric focus:ring-2 focus:ring-electric/20 transition"
+                    className="mt-2 w-full rounded-lg bg-background border border-border px-4 py-3 outline-none focus:border-electric transition-colors"
                   />
                 </label>
-                <button type="submit" className="btn-primary w-full">
-                  Baixar o Kit →
+                <button type="submit" className="btn-primary w-full justify-center">
+                  Receber o kit →
                 </button>
-                <p className="text-[10px] text-muted-foreground/70 leading-relaxed">
-                  Ao baixar, você entra na lista oficial de espectadores do ATLAS AI: 196.
+                <p className="text-[11px] text-muted-foreground/70 font-mono">
+                  ATLAS AI observa. Não faz spam.
                 </p>
               </form>
             )}
@@ -484,65 +836,17 @@ function KitSobrevivencia() {
   );
 }
 
-function LazyVSL() {
-  const { ref, inView } = useInView<HTMLDivElement>("400px");
-  return (
-    <div ref={ref} className="mt-20">
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div>
-          <p className="chip mb-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-            Transmissão · Apresentação
-          </p>
-          <p className="font-display text-lg sm:text-xl font-semibold">
-            Em 26 segundos: o que é o ATLAS AI: 196.
-          </p>
-        </div>
-      </div>
-      <div className="relative rounded-2xl overflow-hidden border border-border border-glow bg-black aspect-video">
-        {inView ? (
-          <video
-            src={vslAsset.url}
-            controls
-            playsInline
-            preload="metadata"
-            poster={atlasAsset.url}
-            className="w-full h-full block"
-          />
-        ) : (
-          <img
-            src={atlasAsset.url}
-            alt="Prévia do vídeo de apresentação"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-full object-cover opacity-70"
-          />
-        )}
-      </div>
-    </div>
-  );
-}
-
 function LazyMapa() {
   const { ref, inView } = useInView<HTMLDivElement>("400px");
   return (
-    <div ref={ref} className="mt-20">
-      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div>
-          <p className="chip mb-2">Mapa Vivo · Live</p>
-          <p className="font-display text-lg sm:text-xl font-semibold">196 rotas. 20 IAs. 1 público.</p>
-        </div>
-        <Link to="/mapa-vivo" className="text-sm text-electric hover:underline">Ver em tela cheia →</Link>
-      </div>
+    <div ref={ref} className="mt-16">
       {inView ? (
-        <Suspense fallback={<div className="aspect-[16/10] rounded-2xl border border-border bg-secondary/20 animate-pulse" />}>
+        <Suspense fallback={<div className="h-[420px] rounded-2xl border border-border bg-background/40 animate-pulse" />}>
           <MapaVivo />
         </Suspense>
       ) : (
-        <div className="aspect-[16/10] rounded-2xl border border-border bg-secondary/20" />
+        <div className="h-[420px] rounded-2xl border border-border bg-background/40" />
       )}
     </div>
   );
 }
-
-
