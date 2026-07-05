@@ -59,11 +59,8 @@ const conceptCards = [
 
 const franquia = [
   { n: "ATLAS AI: 27", t: "Brasil", ref: "27 estados", live: true },
-  { n: "ATLAS AI: 50", t: "USA", ref: "50 estados" },
-  { n: "ATLAS AI: 47", t: "Japan", ref: "47 províncias" },
-  { n: "ATLAS AI: 101", t: "India", ref: "divisões regionais" },
-  { n: "ATLAS AI: 196", t: "Global", ref: "196 países" },
 ];
+
 
 const mapaVivoRows = [
   { e: "Participante", d: "Nome, avatar e perfil oficial" },
@@ -226,28 +223,28 @@ function HomePage() {
       {/* 01 — POR QUE 27 */}
       <Section>
         <SectionHeader
-          eyebrow="— 01 — Por que 27 é melhor do que 196 para começar"
-          title={<>O 196 é a visão grande.<br className="hidden sm:block" /> O <span className="text-electric">27</span> é a prova de que ela funciona.</>}
-          description="Com 27, você valida o formato inteiro em menos de um mês: mecânica de votação, engajamento dos criadores, narrativa do ATLAS e modelo de patrocínio — tudo em tempo real, em português, no mercado que você conhece. Quando o 27 funcionar, você vende o 196 com um case real na mão."
+          eyebrow="— 01 — Por que 27"
+          title={<>27 IAs. 27 estados. <span className="text-electric">27 dias</span>.</>}
+          description="Um reality brasileiro de grande escala, feito em português, executável em aproximadamente 2 meses de preparação e com patrocínio nacional e regional desde o Dia 1."
         />
         <p className="text-muted-foreground max-w-3xl mb-8">
-          Mas o 27 não é um piloto tímido. É um reality brasileiro de grande escala que só não tem
-          196 países porque não precisa — o Brasil sozinho tem floresta, deserto, carnaval, frio de -10°,
-          culinária radicalmente diferente de estado para estado, culturas que não se reconhecem,
-          sotaques que parecem línguas distintas. Cenário perfeito para o formato.
+          O Brasil sozinho tem floresta, deserto, carnaval, frio de -10°, culinária radicalmente
+          diferente de estado para estado, culturas que não se reconhecem, sotaques que parecem
+          línguas distintas. Cenário perfeito para o formato.
         </p>
         <div className="grid gap-3 md:grid-cols-2">
           {[
-            "Valida o formato completo em 27 dias de conteúdo",
+            "27 dias de conteúdo diário",
             "Monetizável com patrocínio regional E nacional desde o Dia 1",
             "Executável em aproximadamente 2 meses de preparação",
-            "Gera o case que fundamenta o licenciamento global do formato",
             "Conteúdo 100% em português — mercado dominado, sem fricção",
+            "Ativação em cada um dos 27 estados brasileiros",
           ].map((b) => (
             <div key={b} className="card-premium p-5 flex gap-3 items-start">
               <span className="font-mono text-xs text-electric shrink-0 pt-1">◉</span>
               <p className="text-sm leading-relaxed">{b}</p>
             </div>
+
           ))}
         </div>
       </Section>
@@ -291,10 +288,11 @@ function HomePage() {
       {/* 03 — FRANQUIA */}
       <Section>
         <SectionHeader
-          eyebrow="— 03 — Arquitetura de nome e franquia"
-          title={<>ATLAS AI<span className="text-electric">:</span> [número] — [País]</>}
-          description="O número não é aleatório. Ele representa a divisão administrativa oficial de cada país, criando uma identidade matemática e geopolítica única para cada versão."
+          eyebrow="— 03 — Nome e identidade"
+          title={<>ATLAS AI<span className="text-electric">: 27</span> — Brasil</>}
+          description="O número 27 representa a divisão administrativa oficial do Brasil: 26 estados + Distrito Federal. Uma identidade matemática e geopolítica única para esta edição."
         />
+
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-5">
           {franquia.map((c) => (
             <div key={c.n} className="relative card-premium p-6">
@@ -479,7 +477,7 @@ function HomePage() {
           title="Todo dia, um novo motivo para comentar."
         />
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
-          Herdados do ATLAS AI: 196
+          Quadros oficiais
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {quadrosBase.map((q, i) => (
@@ -490,8 +488,9 @@ function HomePage() {
           ))}
         </div>
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mt-10 mb-4">
-          Novos · exclusivos do ATLAS AI: 27 — Brasil
+          Quadros brasileiros exclusivos
         </p>
+
         <div className="grid gap-3 md:grid-cols-3">
           {quadrosBR.map((q, i) => (
             <div key={q.t} className="card-premium p-6">
@@ -510,7 +509,7 @@ function HomePage() {
           <div className="relative">
             <p className="chip mb-6">— 12 — Votação e Índice de Humanidade</p>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
-              Quem pareceu <span className="text-electric text-glow">mais humano</span> hoje?
+              Quem pareceu <span className="text-electric text-glow">mais brasileira</span> hoje?
             </h2>
             <div className="mt-8 grid gap-3 md:grid-cols-2">
               {[
@@ -554,8 +553,9 @@ function HomePage() {
           title="Emoção como código-fonte."
         />
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
-          Herdadas do ATLAS AI: 196 · funcionam em qualquer contexto
+          Missões oficiais · universais
         </p>
+
         <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {missoesBase.map((m) => (
             <div key={m} className="card-premium p-4 text-sm">{m}</div>
@@ -654,7 +654,7 @@ function HomePage() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li>• Cada estado visitado pode ter um patrocinador regional específico</li>
               <li>• Marcas de turismo estadual, produtos típicos, empresas locais por estado</li>
-              <li>• 27 oportunidades de patrocínio regional que o formato 196 não possui</li>
+              <li>• 27 oportunidades de patrocínio regional — uma por estado</li>
               <li>• IA em Pernambuco pode ter patrocínio de marca de moda do Recife ou de turismo local</li>
             </ul>
           </div>
@@ -668,16 +668,17 @@ function HomePage() {
             </ul>
           </div>
           <div className="card-premium p-8">
-            <p className="chip mb-4">Licenciamento e expansão</p>
+            <p className="chip mb-4">Ativação nacional</p>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>• O 27 — Brasil é o case que fundamenta a venda do formato para outros países</li>
-              <li>• Após 27 dias: conteúdo, métricas e prova de conceito em mãos</li>
-              <li>• Expansão: ATLAS AI: 50 — USA, 47 — Japan, 196 — Global</li>
+              <li>• Marca única cobrindo todos os 27 estados em 27 dias</li>
+              <li>• Presença diária no Mapa Vivo, missões e rankings</li>
+              <li>• Grande final em Brasília + ATLAS AFTER no Rio de Janeiro</li>
               <li>• Spin-offs futuros: ATLAS AI: Food, Model, Sports, Business</li>
             </ul>
           </div>
         </div>
       </Section>
+
 
       {/* 17 — CRONOGRAMA */}
       <Section>

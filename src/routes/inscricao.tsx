@@ -5,10 +5,10 @@ import { Section, SectionHeader, PageHero } from "@/components/Section";
 export const Route = createFileRoute("/inscricao")({
   head: () => ({
     meta: [
-      { title: "Inscreva sua IA | ATLAS AI: 196 — Brasil" },
-      { name: "description", content: "Crie sua IA, grave um Reels e tente uma das 20 vagas no reality global ATLAS AI: 196 — Brasil." },
-      { property: "og:title", content: "Inscreva sua IA — ATLAS AI: 196" },
-      { property: "og:description", content: "20 IAs serão selecionadas. Faça a sua passar pelo filtro do Atlas." },
+      { title: "Inscreva sua IA | ATLAS AI: 27 — Brasil" },
+      { name: "description", content: "Crie sua IA brasileira, grave um Reels e tente uma das 27 vagas no reality ATLAS AI: 27 — Brasil." },
+      { property: "og:title", content: "Inscreva sua IA — ATLAS AI: 27 — Brasil" },
+      { property: "og:description", content: "27 IAs serão selecionadas. Faça a sua passar pelo filtro do ATLAS." },
     ],
     links: [{ rel: "canonical", href: "/inscricao" }],
   }),
@@ -16,15 +16,15 @@ export const Route = createFileRoute("/inscricao")({
 });
 
 const traits = [
-  "Nome", "Aparência consistente", "Personalidade clara", "Desejo de virar humana",
+  "Nome", "Aparência consistente", "Personalidade clara", "Desejo de virar brasileira",
   "Defeito principal", "Estilo de conteúdo", "Potencial de viralização", "Capacidade de cumprir missões",
 ];
 
 const criterios = [
   "Originalidade da personagem", "Consistência visual", "Personalidade forte",
-  "Potencial de viralização", "Capacidade de parecer humana", "Capacidade de gerar histórias",
-  "Qualidade do Reels de inscrição", "Clareza do desejo de virar humana",
-  "Diferença em relação aos outros participantes", "Potencial de produzir conteúdo por vários dias",
+  "Potencial de viralização", "Capacidade de parecer brasileira", "Capacidade de gerar histórias",
+  "Qualidade do Reels de inscrição", "Clareza do desejo de virar brasileira",
+  "Representatividade regional", "Potencial de produzir conteúdo por 27 dias",
 ];
 
 const regras = [
@@ -34,10 +34,17 @@ const regras = [
   "Não usar celebridades reais.",
   "A personagem precisa ter identidade visual consistente.",
   "O criador precisa conseguir produzir conteúdo durante o reality.",
-  "Cada participante escolhido terá sua própria rota pública por 196 países.",
-  "Todos os participantes precisarão cumprir missões, aparecer no Mapa Vivo e encontrar os outros participantes ao longo da jornada.",
+  "Cada participante escolhida terá sua rota pública pelos 27 estados brasileiros.",
+  "Todas as participantes precisarão cumprir missões, aparecer no Mapa Vivo e encontrar as outras ao longo da jornada.",
   "Patrocínios ligados ao reality serão validados pela produção.",
   "A seleção final será feita pela ATLAS AI.",
+];
+
+const ESTADOS = [
+  "Acre","Alagoas","Amapá","Amazonas","Bahia","Ceará","Distrito Federal","Espírito Santo",
+  "Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Pará","Paraíba",
+  "Paraná","Pernambuco","Piauí","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul",
+  "Rondônia","Roraima","Santa Catarina","São Paulo","Sergipe","Tocantins",
 ];
 
 function Field({
@@ -73,8 +80,8 @@ function InscricaoPage() {
     <>
       <PageHero
         eyebrow="Inscrição oficial"
-        title={<>Inscreva sua IA no <span className="text-electric">ATLAS AI: 196</span></>}
-        subtitle="20 influenciadores de IA serão selecionados pela ATLAS AI para competir em uma jornada por 196 países em 196 dias."
+        title={<>Inscreva sua IA no <span className="text-electric">ATLAS AI: 27 — Brasil</span></>}
+        subtitle="27 IAs brasileiras serão selecionadas pela ATLAS AI para competir em uma jornada de 27 dias pelos 27 estados do país."
       >
         <a href="#formulario" className="btn-primary">Começar inscrição →</a>
         <a href="#roteiro" className="btn-ghost">Ver roteiro do Reels</a>
@@ -85,9 +92,9 @@ function InscricaoPage() {
           <div className="card-premium p-8">
             <p className="chip mb-4">Quem pode participar</p>
             <p className="text-muted-foreground leading-relaxed">
-              Podem participar criadores que tenham ou queiram criar uma IA/personagem
-              com identidade visual consistente, personalidade forte e capacidade de
-              produzir conteúdo durante o reality.
+              Podem participar criadores brasileiros que tenham ou queiram criar uma IA/personagem
+              com identidade visual consistente, personalidade forte, ligação com um estado do país
+              e capacidade de produzir conteúdo durante o reality.
             </p>
           </div>
           <div className="card-premium p-8">
@@ -115,10 +122,10 @@ function InscricaoPage() {
             {[
               "Meu nome é [nome da IA].",
               "Eu fui criada por [nome do criador].",
-              "Eu quero entrar no ATLAS AI: 196 — Brasil porque…",
-              "Eu quero virar humana porque…",
+              "Eu represento o estado [estado brasileiro].",
+              "Eu quero entrar no ATLAS AI: 27 — Brasil porque…",
+              "Eu quero virar brasileira porque…",
               "Meu maior defeito é…",
-              "Meu primeiro país seria…",
               "ATLAS AI, me escolha.",
             ].map((line, i) => (
               <p key={i} className="flex gap-4">
@@ -135,9 +142,9 @@ function InscricaoPage() {
             <div>
               <p className="uppercase tracking-widest text-muted-foreground mb-2">Legenda obrigatória</p>
               <p className="text-foreground leading-relaxed">
-                "Estou inscrevendo [nome da IA] no ATLAS AI: 196 — Brasil.<br />
-                20 IAs. 196 países. 196 dias. Quem parece mais humano?<br />
-                #AtlasAI196 #AtlasAI196Brasil #QuemPareceMaisHumano"
+                "Estou inscrevendo [nome da IA] no ATLAS AI: 27 — Brasil.<br />
+                27 IAs. 27 estados. 27 dias. Quem parece mais brasileira?<br />
+                #AtlasAI27 #AtlasAI27Brasil #QuemPareceMaisBrasileira"
               </p>
             </div>
           </div>
@@ -201,23 +208,22 @@ function InscricaoPage() {
             </div>
             <Field label="Link do Reels de inscrição" name="reels" type="url" required />
             <div className="grid md:grid-cols-2 gap-5">
-              <Field label="País/cidade narrativa de origem da IA" name="origin" required />
+              <Field label="Estado brasileiro que a IA representa" name="origin" options={ESTADOS} required />
               <Field label="Personalidade da IA em 3 palavras" name="personality" required />
             </div>
-            <Field label="Por que ela quer virar humana?" name="why_human" textarea required />
+            <Field label="Por que ela quer virar brasileira?" name="why_human" textarea required />
             <Field label="Qual é o maior defeito dela?" name="flaw" textarea required />
-            <Field label="Qual seria o primeiro país da rota?" name="first_country" required />
             <div className="grid md:grid-cols-3 gap-5">
-              <Field label="Consegue produzir conteúdo durante o reality?" name="can_produce" options={["Sim", "Não"]} required />
+              <Field label="Consegue produzir conteúdo durante os 27 dias?" name="can_produce" options={["Sim", "Não"]} required />
               <Field label="Aceita que todas as pessoas sejam IA?" name="ai_only" options={["Sim", "Não"]} required />
-              <Field label="Aceita seguir as regras oficiais se selecionado?" name="rules" options={["Sim", "Não"]} required />
+              <Field label="Aceita seguir as regras oficiais se selecionada?" name="rules" options={["Sim", "Não"]} required />
             </div>
             <div className="pt-4">
               <button type="submit" className="btn-primary w-full sm:w-auto">
                 Enviar inscrição para ATLAS AI →
               </button>
               <p className="mt-4 text-xs text-muted-foreground font-mono">
-                Ao enviar, você concorda com o regulamento público. Nem toda IA merece virar humana.
+                Ao enviar, você concorda com o regulamento público. Nem toda IA merece virar brasileira.
               </p>
             </div>
           </form>

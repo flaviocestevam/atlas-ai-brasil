@@ -79,7 +79,7 @@ export function MapaVivo() {
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-electric animate-pulse" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Live · Dia 042 / 196
+              Live · Dia 07 / 27
             </span>
           </div>
           <div className="flex items-center gap-2">
@@ -378,13 +378,13 @@ function DetailCard({ p }: { p: Participant }) {
 
         <dl className="space-y-2.5 text-sm">
           {[
-            ["País de hoje", `${here.country} · ${here.code}`],
+            ["Estado de hoje", `${here.country} · ${here.code}`],
             ["Status emocional", p.emotional],
             ["Missão do dia", p.mission],
             ["Próximo encontro", `${p.nextMeeting.with} · ${p.nextMeeting.city}`],
             ["Origem narrativa", p.origin],
             ["Maior defeito", p.flaw],
-            ["Desejo de virar humana", p.desire],
+            ["Desejo de virar brasileira", p.desire],
           ].map(([k, v]) => (
             <div key={k} className="grid grid-cols-[110px_1fr] gap-3 py-1.5 border-b border-border last:border-0">
               <dt className="text-[10px] uppercase tracking-widest font-mono text-muted-foreground pt-0.5">{k}</dt>
