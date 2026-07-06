@@ -7,6 +7,7 @@ import {
   type ParticipantStatus,
   type EmotionalStatus,
 } from "@/data/participants";
+import { BRAZIL_REGION_FILL, BRAZIL_STATE_PATHS } from "@/data/brazilMap";
 
 const ALL_STATUS: ParticipantStatus[] = ["ativo", "missao", "encontro", "cancelado"];
 const ALL_EMOTIONS: EmotionalStatus[] = [
@@ -14,38 +15,7 @@ const ALL_EMOTIONS: EmotionalStatus[] = [
   "Melancolia", "Coragem", "Saudade", "Glitch",
 ];
 
-// Background dot field — silhueta aproximada do território brasileiro
-function useBackdropDots() {
-  return useMemo(() => {
-    const dots: Array<{ x: number; y: number; r: number; bright: boolean }> = [];
-    let s = 7;
-    const rand = () => ((s = (s * 9301 + 49297) % 233280) / 233280);
-    // Blobs cobrindo Norte, Nordeste, Centro-Oeste, Sudeste e Sul
-    const blobs: Array<[number, number, number, number]> = [
-      [280, 90, 180, 60],   // Norte
-      [420, 140, 160, 60],  // Norte-Nordeste
-      [680, 160, 90, 90],   // Nordeste
-      [430, 260, 140, 70],  // Centro-Oeste
-      [600, 320, 90, 70],   // Sudeste
-      [480, 410, 90, 50],   // Sul
-    ];
-    for (let i = 0; i < 900; i++) {
-      const b = blobs[Math.floor(rand() * blobs.length)];
-      const a = rand() * Math.PI * 2;
-      const r = Math.sqrt(rand());
-      dots.push({
-        x: b[0] + Math.cos(a) * b[2] * r,
-        y: b[1] + Math.sin(a) * b[3] * r,
-        r: 0.8 + rand() * 0.7,
-        bright: rand() > 0.94,
-      });
-    }
-    return dots;
-  }, []);
-}
-
 export function MapaVivo() {
-  const dots = useBackdropDots();
   const [selectedId, setSelectedId] = useState<string>(PARTICIPANTS[0].id);
   const [hoverId, setHoverId] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<Set<ParticipantStatus>>(new Set(ALL_STATUS));
@@ -65,6 +35,13 @@ export function MapaVivo() {
   const selected = PARTICIPANTS.find((p) => p.id === selectedId) ?? PARTICIPANTS[0];
   const visibleIds = new Set(filtered.map((p) => p.id));
   const highlightId = hoverId ?? selectedId;
+  const highlightedParticipant = PARTICIPANTS.find((p) => p.id === highlightId) ?? selected;
+  const highlightedUF = highlightedParticipant.route[highlightedParticipant.currentIndex].code;
+  const participantsByUF = new Map<string, Participant[]>();
+  filtered.forEach((p) => {
+    const uf = p.route[p.currentIndex].code;
+    participantsByUF.set(uf, [...(participantsByUF.get(uf) ?? []), p]);
+  });
 
   const toggleStatus = (s: ParticipantStatus) => {
     setStatusFilter((prev) => {
@@ -107,6 +84,9 @@ export function MapaVivo() {
                 <stop offset="0%" stopColor="oklch(0.78 0.17 235)" stopOpacity="0.25" />
                 <stop offset="100%" stopColor="oklch(0.78 0.17 235)" stopOpacity="0" />
               </radialGradient>
+              <filter id="state-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="oklch(0 0 0)" floodOpacity="0.35" />
+              </filter>
             </defs>
             <rect width="800" height="480" fill="url(#mv-glow)" />
             {/* Grid */}
@@ -118,17 +98,60 @@ export function MapaVivo() {
                 <line key={`v${i}`} x1={(i * 800) / 12} y1="0" x2={(i * 800) / 12} y2="480" />
               ))}
             </g>
-            {/* Continents dot field */}
-            {dots.map((d, i) => (
-              <circle
-                key={i}
-                cx={d.x}
-                cy={d.y}
-                r={d.r}
-                fill={d.bright ? "oklch(0.78 0.17 235)" : "oklch(0.7 0.04 250 / 0.5)"}
-                opacity={d.bright ? 0.7 : 0.4}
-              />
-            ))}
+            {/* Estados do Brasil */}
+            <g filter="url(#state-shadow)">
+              {BRAZIL_STATE_PATHS.map((state) => {
+                const active = state.code === highlightedUF;
+                const hasParticipants = participantsByUF.has(state.code);
+                return (
+                  <path
+                    key={state.code}
+                    d={state.d}
+                    fill={active ? "oklch(0.78 0.17 235 / 0.72)" : BRAZIL_REGION_FILL[state.region]}
+                    stroke={active ? "oklch(0.97 0.005 240)" : "oklch(0.97 0.005 240 / 0.42)"}
+                    strokeWidth={active ? 1.4 : 0.75}
+                    opacity={hasParticipants || statusFilter.size === ALL_STATUS.length ? 0.92 : 0.55}
+                    style={{ cursor: hasParticipants ? "pointer" : "default" }}
+                    onClick={() => {
+                      const first = participantsByUF.get(state.code)?.[0];
+                      if (first) setSelectedId(first.id);
+                    }}
+                  />
+                );
+              })}
+            </g>
+
+            {/* UF labels */}
+            <g fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" textAnchor="middle">
+              {BRAZIL_STATE_PATHS.map((state) => {
+                const active = state.code === highlightedUF;
+                const outside = state.label.x !== state.anchor.x || state.label.y !== state.anchor.y;
+                return (
+                  <g key={`label-${state.code}`}>
+                    {outside && (
+                      <line
+                        x1={state.anchor.x}
+                        y1={state.anchor.y}
+                        x2={state.label.x - 9}
+                        y2={state.label.y - 3}
+                        stroke="oklch(0.97 0.005 240 / 0.42)"
+                        strokeWidth="0.7"
+                      />
+                    )}
+                    <text
+                      x={state.label.x}
+                      y={state.label.y}
+                      fill={active ? "oklch(0.08 0.01 260)" : "oklch(0.97 0.005 240)"}
+                      stroke={active ? "oklch(0.97 0.005 240 / 0.8)" : "oklch(0.08 0.01 260 / 0.85)"}
+                      strokeWidth="3"
+                      paintOrder="stroke"
+                    >
+                      {state.code}
+                    </text>
+                  </g>
+                );
+              })}
+            </g>
 
             {/* Routes */}
             {showRoutes && filtered.map((p) => {
@@ -222,6 +245,14 @@ export function MapaVivo() {
           </svg>
           {/* Corner badge */}
           <div className="absolute bottom-3 left-3 chip backdrop-blur">{filtered.length} de {PARTICIPANTS.length} em exibição</div>
+          <div className="absolute top-3 left-3 hidden sm:flex flex-wrap gap-1.5 max-w-[420px]">
+            {Object.entries(BRAZIL_REGION_FILL).map(([region, color]) => (
+              <span key={region} className="chip backdrop-blur flex items-center gap-1.5">
+                <span className="h-2 w-2 rounded-sm" style={{ background: color }} />
+                {region}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Filters */}
