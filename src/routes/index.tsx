@@ -58,7 +58,7 @@ const conceptCards = [
 ];
 
 const franquia = [
-  { n: "SOUL AI — Brasil", t: "Brasil", ref: "27 estados", live: true },
+  { n: "SOUL AI", t: "Brasil", ref: "27 estados", live: true },
 ];
 
 
@@ -616,7 +616,7 @@ function HomePage() {
               "As 27 IAs no mesmo lugar pela primeira vez em toda a temporada",
               "Conteúdo pós-final quando o engajamento ainda está no pico",
               "Oportunidade de patrocínio separada com identidade própria (ATLAS AFTER)",
-              "Nome público: ATLAS AFTER ou NOITE ZERO — não 'Dia 28'",
+              
               "Brasília revela o vencedor. Rio celebra todos. Lógica complementar, não competitiva.",
             ].map((b) => (
               <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
