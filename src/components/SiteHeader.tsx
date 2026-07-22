@@ -34,7 +34,7 @@ export function SiteHeader() {
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-electric" />
           </span>
           <span className="font-display font-bold tracking-tight text-base sm:text-lg">
-            ATLAS AI<span className="text-electric">:</span> 27 — Brasil
+            ATLAS<span className="text-electric">:</span> 27 — Brasil
           </span>
         </Link>
 

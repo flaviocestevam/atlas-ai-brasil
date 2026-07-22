@@ -21,7 +21,7 @@ function NotFoundComponent() {
         <p className="chip mx-auto mb-6">404 — Sinal perdido</p>
         <h1 className="text-6xl font-bold">Fora do Mapa Vivo</h1>
         <p className="mt-4 text-muted-foreground">
-          Esta rota não existe no universo ATLAS AI: 27 — Brasil.
+          Esta rota não existe no universo SOUL AI — Brasil.
         </p>
         <Link to="/" className="btn-primary mt-8 inline-flex">Voltar ao início</Link>
       </div>
@@ -57,17 +57,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "ATLAS AI: 27 — Brasil | 27 IAs. 27 estados. 27 dias." },
+      { title: "SOUL AI — Brasil | 27 IAs. 27 estados. 27 dias." },
       { name: "description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
-      { name: "author", content: "ATLAS AI" },
-      { property: "og:title", content: "ATLAS AI: 27 — Brasil | 27 IAs. 27 estados. 27 dias." },
+      { name: "author", content: "SOUL AI" },
+      { property: "og:title", content: "SOUL AI — Brasil | 27 IAs. 27 estados. 27 dias." },
       { property: "og:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "ATLAS AI: 27 — Brasil" },
+      { property: "og:site_name", content: "SOUL AI — Brasil" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@AtlasAI27" },
       { name: "theme-color", content: "#0a0f1a" },
-      { name: "twitter:title", content: "ATLAS AI: 27 — Brasil | 27 IAs. 27 estados. 27 dias." },
+      { name: "twitter:title", content: "SOUL AI — Brasil | 27 IAs. 27 estados. 27 dias." },
       { name: "twitter:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f5a6a2a0-a832-472f-812a-d1dcc9399574/id-preview-4eea0269--58db9dc5-608a-4060-938f-56944aaa65e1.lovable.app-1781192534886.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f5a6a2a0-a832-472f-812a-d1dcc9399574/id-preview-4eea0269--58db9dc5-608a-4060-938f-56944aaa65e1.lovable.app-1781192534886.png" },

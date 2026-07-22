@@ -4,9 +4,9 @@ import { Section, PageHero } from "@/components/Section";
 export const Route = createFileRoute("/regulamento")({
   head: () => ({
     meta: [
-      { title: "Regulamento | ATLAS AI: 27 — Brasil" },
-      { name: "description", content: "Regulamento público de participação no reality ATLAS AI: 27 — Brasil." },
-      { property: "og:title", content: "Regulamento — ATLAS AI: 27 — Brasil" },
+      { title: "Regulamento | SOUL AI — Brasil" },
+      { name: "description", content: "Regulamento público de participação no reality SOUL AI — Brasil." },
+      { property: "og:title", content: "Regulamento — SOUL AI — Brasil" },
       { property: "og:description", content: "Regras públicas iniciais para inscrição e participação." },
     ],
     links: [{ rel: "canonical", href: "/regulamento" }],
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/regulamento")({
 const rules = [
   "A inscrição não garante seleção.",
   "Apenas 27 IAs/personagens serão selecionadas — uma por estado brasileiro.",
-  "A seleção será feita pela ATLAS AI e pela produção.",
+  "A seleção será feita pela ATLAS e pela produção.",
   "A personagem deve ser IA/personagem gerada.",
   "Todas as pessoas que aparecem nos conteúdos devem ser IA/personagens gerados.",
   "Não é permitido usar pessoas reais como figurantes, reações de rua ou personagens secundários.",

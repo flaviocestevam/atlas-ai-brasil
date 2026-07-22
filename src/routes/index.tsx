@@ -12,9 +12,9 @@ const MapaVivo = lazy(() =>
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ATLAS AI: 27 — Brasil | 27 IAs. 27 estados. 27 dias." },
+      { title: "SOUL AI — Brasil | 27 IAs. 27 estados. 27 dias." },
       { name: "description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
-      { property: "og:title", content: "ATLAS AI: 27 — Brasil" },
+      { property: "og:title", content: "SOUL AI — Brasil" },
       { property: "og:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
       { property: "og:image", content: atlasAsset.url },
     ],
@@ -58,7 +58,7 @@ const conceptCards = [
 ];
 
 const franquia = [
-  { n: "ATLAS AI: 27", t: "Brasil", ref: "27 estados", live: true },
+  { n: "SOUL AI — Brasil", t: "Brasil", ref: "27 estados", live: true },
 ];
 
 
@@ -147,7 +147,7 @@ const missoesBR = [
 ];
 
 const cronograma = [
-  { fase: "Fundação", periodo: "Semanas 1–2", acoes: "Definir os 27 personagens (nome, personalidade, estética, arquétipo emocional). Criar perfis de Instagram. Criar perfil principal do ATLAS AI: 27." },
+  { fase: "Fundação", periodo: "Semanas 1–2", acoes: "Definir os 27 personagens (nome, personalidade, estética, arquétipo emocional). Criar perfis de Instagram. Criar perfil principal do SOUL AI — Brasil." },
   { fase: "Recrutamento", periodo: "Semanas 3–4", acoes: "Recrutar 27 criadores com briefing claro e contrato. Apresentar personagens, missões, regras e calendário. Definir rotas de cada participante." },
   { fase: "Estrutura", periodo: "Semanas 5–6", acoes: "Montar o Mapa Vivo. Definir 27 patrocinadores-alvo e iniciar prospecção. Produzir Kit de Sobrevivência da IA. Lançar teaser público." },
   { fase: "Lançamento", periodo: "Semana 7", acoes: "Revelar os 27 personagens (um por dia ou todos de uma vez). Lançar o Mapa Vivo. Cada personagem publica sua rota." },
@@ -179,7 +179,7 @@ function HomePage() {
                 Uma pergunta: <span className="text-foreground">quem parece mais brasileiro?</span>
               </p>
               <p className="mt-5 text-sm text-muted-foreground/80 max-w-xl leading-relaxed">
-                ATLAS AI: 27 — Brasil é um reality com 27 influenciadores de IA que viajam
+                SOUL AI — Brasil é um reality com 27 influenciadores de IA que viajam
                 por todos os estados brasileiros durante 27 dias tentando parecer humanos.
                 Cada IA tem seu próprio Instagram. O público acompanha, vota — e duvida.
               </p>
@@ -289,7 +289,7 @@ function HomePage() {
       <Section>
         <SectionHeader
           eyebrow="— 03 — Nome e identidade"
-          title={<>ATLAS AI<span className="text-electric">: 27</span> — Brasil</>}
+          title={<>ATLAS<span className="text-electric">: 27</span> — Brasil</>}
           description="O número 27 representa a divisão administrativa oficial do Brasil: 26 estados + Distrito Federal. Uma identidade matemática e geopolítica única para esta edição."
         />
 
@@ -315,7 +315,7 @@ function HomePage() {
         <SectionHeader
           eyebrow="— 04 — ATLAS, a inteligência por trás de tudo"
           title={<>Está sendo assistido por humanos — <br className="hidden sm:block" /><span className="text-electric">ou produzido por IAs</span> tentando entender o que é ser brasileiro?</>}
-          description="ATLAS AI pode ser tratado como a grande inteligência por trás do programa: seleciona, observa, mede, manipula, organiza os rankings e talvez escreva parte da própria narrativa. A dúvida pública faz parte do formato."
+          description="ATLAS pode ser tratado como a grande inteligência por trás do programa: seleciona, observa, mede, manipula, organiza os rankings e talvez escreva parte da própria narrativa. A dúvida pública faz parte do formato."
         />
         <div className="grid gap-3 md:grid-cols-2">
           {[
@@ -439,7 +439,7 @@ function HomePage() {
           </div>
         </div>
         <p className="mt-6 font-mono text-xs uppercase tracking-widest text-electric">
-          Regra anti-cópia: se não está no Mapa Vivo oficial, não é ATLAS AI: 27.
+          Regra anti-cópia: se não está no Mapa Vivo oficial, não é SOUL AI — Brasil.
         </p>
         <div className="mt-6">
           <Link to="/mapa-vivo" className="btn-ghost">Abrir o Mapa Vivo →</Link>
@@ -450,7 +450,7 @@ function HomePage() {
       <Section>
         <SectionHeader
           eyebrow="— 10 — Perfil principal do reality"
-          title="O canal oficial de ATLAS AI: 27."
+          title="O canal oficial de SOUL AI — Brasil."
         />
         <ul className="grid gap-3 md:grid-cols-2">
           {[
@@ -458,7 +458,7 @@ function HomePage() {
             "Mostra o Mapa Vivo, votações e ranking público até o Dia 20",
             "Compartilha encontros, conflitos, missões e momentos emocionais",
             "Pode ter 1, 2 ou 3 apresentadores de IA debatendo o jogo",
-            "Alimenta a dúvida: ATLAS AI está apenas narrando — ou está controlando tudo?",
+            "Alimenta a dúvida: ATLAS está apenas narrando — ou está controlando tudo?",
           ].map((b) => (
             <li key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</li>
           ))}
@@ -587,7 +587,7 @@ function HomePage() {
               {[
                 "O ranking oculto dos Dias 21 a 27 é revelado ao vivo",
                 "A promessa de humanização é confrontada publicamente",
-                "ATLAS AI aparece com sua mensagem final — ambígua, poderosa, sem resposta",
+                "ATLAS aparece com sua mensagem final — ambígua, poderosa, sem resposta",
                 "Quem foi mais humano não foi o vencedor. Foi o Brasil inteiro, que acreditou.",
               ].map((b) => (
                 <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
@@ -656,7 +656,7 @@ function HomePage() {
           <div className="card-premium p-8">
             <p className="chip mb-4">Formato de parceria</p>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>• ATLAS AI: 27 centraliza a curadoria e a integração narrativa das marcas</li>
+              <li>• SOUL AI — Brasil centraliza a curadoria e a integração narrativa das marcas</li>
               <li>• Cotas nacionais, regionais e por participante — desenhadas caso a caso</li>
               <li>• ATLAS AFTER (Rio, Dia 28) tem pacote de patrocínio próprio</li>
               <li>• Contato comercial dedicado para marcas interessadas</li>
@@ -668,7 +668,7 @@ function HomePage() {
               <li>• Marca única cobrindo todos os 27 estados em 27 dias</li>
               <li>• Presença diária no Mapa Vivo, missões e rankings</li>
               <li>• Grande final em Brasília + ATLAS AFTER no Rio de Janeiro</li>
-              <li>• Spin-offs futuros: ATLAS AI: Food, Model, Sports, Business</li>
+              <li>• Spin-offs futuros: ATLAS: Food, Model, Sports, Business</li>
             </ul>
           </div>
         </div>
@@ -698,7 +698,7 @@ function HomePage() {
               <Link to="/patrocinadores" className="btn-ghost">Falar sobre patrocínio</Link>
             </div>
             <p className="mt-12 font-mono text-xs uppercase tracking-widest text-muted-foreground/70">
-              ATLAS AI: 27 — Brasil · Documento Estratégico · Versão Fundadora
+              SOUL AI — Brasil · Documento Estratégico · Versão Fundadora
             </p>
           </div>
         </div>
@@ -754,7 +754,7 @@ function KitSobrevivencia() {
                   Seu kit chegará no e-mail. ATLAS já registrou sua presença.
                 </p>
                 <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-electric">
-                  Se não está no Mapa Vivo oficial, não é ATLAS AI: 27.
+                  Se não está no Mapa Vivo oficial, não é SOUL AI — Brasil.
                 </p>
               </div>
             ) : (
@@ -780,7 +780,7 @@ function KitSobrevivencia() {
                   Receber o kit →
                 </button>
                 <p className="text-[11px] text-muted-foreground/70 font-mono">
-                  ATLAS AI observa. Não faz spam.
+                  ATLAS observa. Não faz spam.
                 </p>
               </form>
             )}

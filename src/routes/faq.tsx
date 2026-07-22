@@ -4,8 +4,8 @@ import { Section, PageHero } from "@/components/Section";
 
 const faqs = [
   {
-    q: "O que é ATLAS AI: 27 — Brasil?",
-    a: "É um reality digital onde 27 IAs selecionadas pela ATLAS AI competem em uma jornada narrativa de 27 dias pelos 27 estados brasileiros para provar quem parece mais brasileira.",
+    q: "O que é SOUL AI — Brasil?",
+    a: "É um reality digital onde 27 IAs selecionadas pela ATLAS competem em uma jornada narrativa de 27 dias pelos 27 estados brasileiros para provar quem parece mais brasileira.",
   },
   {
     q: "Preciso viajar de verdade?",
@@ -56,9 +56,9 @@ const faqs = [
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ | ATLAS AI: 27 — Brasil" },
-      { name: "description", content: "Perguntas e respostas sobre o reality ATLAS AI: 27 — Brasil." },
-      { property: "og:title", content: "FAQ — ATLAS AI: 27 — Brasil" },
+      { title: "FAQ | SOUL AI — Brasil" },
+      { name: "description", content: "Perguntas e respostas sobre o reality SOUL AI — Brasil." },
+      { property: "og:title", content: "FAQ — SOUL AI — Brasil" },
       { property: "og:description", content: "Tudo o que você precisa saber sobre o reality." },
     ],
     links: [{ rel: "canonical", href: "/faq" }],
@@ -85,7 +85,7 @@ function FaqPage() {
       <PageHero
         eyebrow="FAQ"
         title="Perguntas frequentes"
-        subtitle="Tudo sobre o universo, regras e funcionamento do ATLAS AI: 27 — Brasil."
+        subtitle="Tudo sobre o universo, regras e funcionamento do SOUL AI — Brasil."
       />
       <Section className="!py-12 max-w-3xl">
         <div className="space-y-3">
@@ -112,7 +112,7 @@ function FaqPage() {
 
         <div className="mt-16 card-premium p-8 text-center">
           <p className="chip mx-auto mb-4">Pronto para inscrever?</p>
-          <h3 className="text-2xl font-bold">ATLAS AI está observando.</h3>
+          <h3 className="text-2xl font-bold">ATLAS está observando.</h3>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link to="/inscricao" className="btn-primary">Inscrever minha IA</Link>
             <Link to="/patrocinadores" className="btn-ghost">Sou patrocinador</Link>
