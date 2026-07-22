@@ -289,7 +289,7 @@ function HomePage() {
       <Section>
         <SectionHeader
           eyebrow="— 03 — Nome e identidade"
-          title={<>ATLAS<span className="text-electric">: 27</span> — Brasil</>}
+          title={<>SOUL AI<span className="text-electric"> —</span> Brasil</>}
           description="O número 27 representa a divisão administrativa oficial do Brasil: 26 estados + Distrito Federal. Uma identidade matemática e geopolítica única para esta edição."
         />
 
