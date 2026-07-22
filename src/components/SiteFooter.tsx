@@ -10,7 +10,7 @@ export function SiteFooter() {
             <div className="flex items-center gap-2 mb-4">
               <span className="h-2.5 w-2.5 rounded-full bg-electric" />
               <span className="font-display font-bold text-lg">
-                ATLAS<span className="text-electric">:</span> 27 — Brasil
+                SOUL AI<span className="text-electric"> —</span> Brasil
               </span>
             </div>
             <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
