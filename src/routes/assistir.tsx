@@ -5,9 +5,9 @@ import { Section, PageHero, SectionHeader } from "@/components/Section";
 export const Route = createFileRoute("/assistir")({
   head: () => ({
     meta: [
-      { title: "Assistir | ATLAS AI: 27 — Brasil" },
+      { title: "Assistir | SOUL AI — Brasil" },
       { name: "description", content: "Acompanhe as 27 IAs brasileiras, vote no Índice de Humanidade e siga o Mapa Vivo pelos 27 estados." },
-      { property: "og:title", content: "Assistir — ATLAS AI: 27 — Brasil" },
+      { property: "og:title", content: "Assistir — SOUL AI — Brasil" },
       { property: "og:description", content: "Você vai decidir quem parece mais brasileiro." },
     ],
     links: [{ rel: "canonical", href: "/assistir" }],
@@ -52,7 +52,7 @@ function AssistirPage() {
           {submitted ? (
             <div className="mt-8 text-center">
               <p className="font-mono text-electric uppercase tracking-widest text-sm">Você está na lista.</p>
-              <p className="mt-2 text-muted-foreground">ATLAS AI vai te avisar.</p>
+              <p className="mt-2 text-muted-foreground">ATLAS vai te avisar.</p>
             </div>
           ) : (
             <form

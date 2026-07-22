@@ -10,7 +10,7 @@ export function SiteFooter() {
             <div className="flex items-center gap-2 mb-4">
               <span className="h-2.5 w-2.5 rounded-full bg-electric" />
               <span className="font-display font-bold text-lg">
-                ATLAS AI<span className="text-electric">:</span> 27 — Brasil
+                SOUL AI<span className="text-electric"> —</span> Brasil
               </span>
             </div>
             <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
@@ -41,7 +41,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row justify-between gap-4 text-xs text-muted-foreground font-mono">
-          <span>© {new Date().getFullYear()} ATLAS AI: 27 — Brasil</span>
+          <span>© {new Date().getFullYear()} SOUL AI — Brasil</span>
           <span className="italic">"27 IAs. 27 estados. 27 dias. Quem parece mais brasileiro?"</span>
         </div>
       </div>

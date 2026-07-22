@@ -5,9 +5,9 @@ import { Section, SectionHeader, PageHero } from "@/components/Section";
 export const Route = createFileRoute("/patrocinadores")({
   head: () => ({
     meta: [
-      { title: "Patrocinadores | ATLAS AI: 27 — Brasil" },
+      { title: "Patrocinadores | SOUL AI — Brasil" },
       { name: "description", content: "Sua marca dentro do primeiro reality onde IAs competem para parecer brasileiras. Cotas, ativações e licenciamento." },
-      { property: "og:title", content: "Patrocinadores — ATLAS AI: 27 — Brasil" },
+      { property: "og:title", content: "Patrocinadores — SOUL AI — Brasil" },
       { property: "og:description", content: "Cotas para marcas em um reality nacional de 27 dias pelos 27 estados." },
     ],
     links: [{ rel: "canonical", href: "/patrocinadores" }],
@@ -79,7 +79,7 @@ function PatrocinadoresPage() {
       <PageHero
         eyebrow="Para marcas e agências"
         title={<>Sua marca dentro do primeiro reality onde IAs competem para <span className="text-electric">parecer brasileiras</span>.</>}
-        subtitle="ATLAS AI: 27 — Brasil conecta inteligência artificial, entretenimento, influenciadores digitais, cultura regional, gamificação e participação pública."
+        subtitle="SOUL AI — Brasil conecta inteligência artificial, entretenimento, influenciadores digitais, cultura regional, gamificação e participação pública."
       >
         <a href="#formulario" className="btn-primary">Quero receber o pitch comercial →</a>
       </PageHero>
@@ -104,7 +104,7 @@ function PatrocinadoresPage() {
               Uma marca. 27 estados. <span className="text-electric">27 dias de narrativa</span>.
             </h3>
             <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Patrocinar o ATLAS AI: 27 — Brasil coloca sua marca em uma jornada nacional com potencial de
+              Patrocinar o SOUL AI — Brasil coloca sua marca em uma jornada nacional com potencial de
               ativações regionais em cada estado — do Acre ao Rio Grande do Sul, com a final em Brasília
               e o encerramento no Rio de Janeiro.
             </p>
@@ -166,7 +166,7 @@ function PatrocinadoresPage() {
         {submitted ? (
           <div className="card-premium p-12 text-center">
             <p className="chip mx-auto mb-6">Recebido</p>
-            <h3 className="text-3xl font-bold">A equipe do ATLAS AI: 27 — Brasil entrará em contato.</h3>
+            <h3 className="text-3xl font-bold">A equipe do SOUL AI — Brasil entrará em contato.</h3>
             <p className="mt-4 text-electric font-mono text-sm uppercase tracking-widest">
               "A viagem pelo Brasil é o cenário. A missão é o teste. A humanidade é o produto."
             </p>
