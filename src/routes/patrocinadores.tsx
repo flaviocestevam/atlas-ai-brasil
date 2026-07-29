@@ -85,6 +85,30 @@ function PatrocinadoresPage() {
       </PageHero>
 
       <Section>
+        <SectionHeader
+          eyebrow="Vagas limitadas"
+          title={<>Seja <span className="text-electric">Patrocinador Fundador</span></>}
+          description="Vagas de patrocínio fundador limitadas por categoria. Depois da estreia, o preço muda."
+        />
+        <div className="grid md:grid-cols-3 gap-5">
+          {founderBlocks.map((b) => (
+            <div key={b.t} className="card-premium p-7 text-center">
+              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-electric/30 bg-electric/10 text-electric">
+                {b.icon}
+              </div>
+              <h3 className="font-display text-xl font-bold tracking-tight">{b.t}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b.d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <a href="#formulario" className="btn-primary text-base px-8 py-4">
+            Garantir minha vaga de Patrocinador Fundador →
+          </a>
+        </div>
+      </Section>
+
+      <Section>
         <SectionHeader eyebrow="Por que patrocinar" title="10 alavancas de marca." />
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {whySponsor.map((w, i) => (
