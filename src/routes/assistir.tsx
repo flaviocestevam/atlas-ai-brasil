@@ -52,7 +52,7 @@ function AssistirPage() {
           {submitted ? (
             <div className="mt-8 text-center">
               <p className="font-mono text-electric uppercase tracking-widest text-sm">Você está na lista.</p>
-              <p className="mt-2 text-muted-foreground">ATLAS vai te avisar.</p>
+              <p className="mt-2 text-muted-foreground">SOUL AI vai te avisar.</p>
             </div>
           ) : (
             <form

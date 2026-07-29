@@ -17,7 +17,7 @@ export const Route = createFileRoute("/regulamento")({
 const rules = [
   "A inscrição não garante seleção.",
   "Apenas 27 IAs/personagens serão selecionadas — uma por estado brasileiro.",
-  "A seleção será feita pela ATLAS e pela produção.",
+  "A seleção será feita pela SOUL AI e pela produção.",
   "A personagem deve ser IA/personagem gerada.",
   "Todas as pessoas que aparecem nos conteúdos devem ser IA/personagens gerados.",
   "Não é permitido usar pessoas reais como figurantes, reações de rua ou personagens secundários.",
