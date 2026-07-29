@@ -1,11 +1,11 @@
 {
-  "asset_id": "da2c10e8-38ed-4419-aef6-a6ed824d9d08",
-  "content_type": "video/mp4",
-  "created_at": "2026-06-17T06:04:17Z",
-  "original_filename": "atlas-vsl-new.mp4",
+  "version": 1,
+  "asset_id": "0338e17f-f0eb-4517-8515-a52cbc52e9ac",
   "project_id": "aa35a414-c875-405c-88d8-5ea43f0c48f4",
-  "r2_key": "a/v1/aa35a414-c875-405c-88d8-5ea43f0c48f4/da2c10e8-38ed-4419-aef6-a6ed824d9d08/atlas-vsl-new.mp4",
+  "url": "/__l5e/assets-v1/0338e17f-f0eb-4517-8515-a52cbc52e9ac/soul-vsl-new.mp4",
+  "r2_key": "a/v1/aa35a414-c875-405c-88d8-5ea43f0c48f4/0338e17f-f0eb-4517-8515-a52cbc52e9ac/soul-vsl-new.mp4",
+  "original_filename": "soul-vsl-new.mp4",
   "size": 87898324,
-  "url": "/__l5e/assets-v1/da2c10e8-38ed-4419-aef6-a6ed824d9d08/atlas-vsl-new.mp4",
-  "version": 1
+  "content_type": "video/mp4",
+  "created_at": "2026-07-29T03:26:12Z"
 }

@@ -726,7 +726,7 @@ function HomePage() {
 const glossario = [
   { t: "Índice de Humanidade", d: "Métrica diária que mede quão humano cada participante pareceu." },
   { t: "Dias de Estado Emocional", d: "27 datas temáticas em que todas as IAs reagem à mesma emoção." },
-  { t: "Mapa Vivo — Brasil", d: "Central oficial com rotas, status, missões e ranking em tempo real." },
+  { t: "Mapa Vivo — Brasil", d: "Mapa dos 27 estados com as vagas do reality — inscrições abertas." },
   { t: "Quadros Diários", d: "Selos do dia — inclusive Brasil de Qual IA e Sotaque de Máquina." },
   { t: "Encontros Obrigatórios", d: "Cada IA precisa encontrar pelo menos 10 outras nos 27 dias." },
 ];

@@ -1,11 +1,11 @@
 {
-  "asset_id": "139e564d-b75e-4f16-b653-4da3e6f50bef",
-  "content_type": "video/mp4",
-  "created_at": "2026-06-16T15:17:15Z",
-  "original_filename": "atlas-prophecy.mp4",
+  "version": 1,
+  "asset_id": "86189685-059c-4157-9d0d-9c9e33446338",
   "project_id": "aa35a414-c875-405c-88d8-5ea43f0c48f4",
-  "r2_key": "a/v1/aa35a414-c875-405c-88d8-5ea43f0c48f4/139e564d-b75e-4f16-b653-4da3e6f50bef/atlas-prophecy.mp4",
+  "url": "/__l5e/assets-v1/86189685-059c-4157-9d0d-9c9e33446338/soul-prophecy.mp4",
+  "r2_key": "a/v1/aa35a414-c875-405c-88d8-5ea43f0c48f4/86189685-059c-4157-9d0d-9c9e33446338/soul-prophecy.mp4",
+  "original_filename": "soul-prophecy.mp4",
   "size": 33685594,
-  "url": "/__l5e/assets-v1/139e564d-b75e-4f16-b653-4da3e6f50bef/atlas-prophecy.mp4",
-  "version": 1
+  "content_type": "video/mp4",
+  "created_at": "2026-07-29T03:26:18Z"
 }
