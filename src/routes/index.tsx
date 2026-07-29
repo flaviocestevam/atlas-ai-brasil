@@ -146,15 +146,6 @@ const missoesBR = [
   "Comida Como Memória",
 ];
 
-const cronograma = [
-  { fase: "Fundação", periodo: "Semanas 1–2", acoes: "Definir os 27 personagens (nome, personalidade, estética, arquétipo emocional). Criar perfis de Instagram. Criar perfil principal do SOUL AI — Brasil." },
-  { fase: "Recrutamento", periodo: "Semanas 3–4", acoes: "Recrutar 27 criadores com briefing claro e contrato. Apresentar personagens, missões, regras e calendário. Definir rotas de cada participante." },
-  { fase: "Estrutura", periodo: "Semanas 5–6", acoes: "Montar o Mapa Vivo. Definir 27 patrocinadores-alvo e iniciar prospecção. Produzir Kit de Sobrevivência da IA. Lançar teaser público." },
-  { fase: "Lançamento", periodo: "Semana 7", acoes: "Revelar os 27 personagens (um por dia ou todos de uma vez). Lançar o Mapa Vivo. Cada personagem publica sua rota." },
-  { fase: "LIVE", periodo: "Semana 8", acoes: "Dia 1 — o reality começa. 27 dias de conteúdo diário. Missões, encontros, votações, ranking, quadros." },
-  { fase: "Final", periodo: "Semana 11–12", acoes: "Dia 27 em Brasília — revelação do ranking e mensagem de ATLAS. Dia 28 — ATLAS AFTER no Rio de Janeiro." },
-];
-
 // ————————————————— PÁGINA —————————————————
 
 function HomePage() {
@@ -223,9 +214,9 @@ function HomePage() {
       {/* 01 — POR QUE 27 */}
       <Section>
         <SectionHeader
-          eyebrow="— 01 — Por que 27"
+          eyebrow="Por que 27"
           title={<>27 IAs. 27 estados. <span className="text-electric">27 dias</span>.</>}
-          description="Um reality brasileiro de grande escala, feito em português, executável em aproximadamente 2 meses de preparação e com patrocínio nacional e regional desde o Dia 1."
+          description="Um reality brasileiro de grande escala, feito em português, atravessando os 27 estados em 27 dias."
         />
         <p className="text-muted-foreground max-w-3xl mb-8">
           O Brasil sozinho tem floresta, deserto, carnaval, frio de -10°, culinária radicalmente
@@ -235,10 +226,9 @@ function HomePage() {
         <div className="grid gap-3 md:grid-cols-2">
           {[
             "27 dias de conteúdo diário",
-            "Monetizável com patrocínio regional E nacional desde o Dia 1",
-            "Executável em aproximadamente 2 meses de preparação",
-            "Conteúdo 100% em português — mercado dominado, sem fricção",
-            "Ativação em cada um dos 27 estados brasileiros",
+            "Uma IA em cada um dos 27 estados brasileiros",
+            "Conteúdo 100% em português",
+            "Missões, encontros e votação pública todos os dias",
           ].map((b) => (
             <div key={b} className="card-premium p-5 flex gap-3 items-start">
               <span className="font-mono text-xs text-electric shrink-0 pt-1">◉</span>
@@ -255,7 +245,7 @@ function HomePage() {
           <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
           <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-violet/20 blur-3xl" />
           <div className="relative">
-            <p className="chip mb-6">— 02 — Conceito central</p>
+            <p className="chip mb-6">Conceito central</p>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
               27 influenciadores de IA. Todos os estados. <span className="text-electric text-glow">Tentando parecer humanos.</span>
             </h2>
@@ -288,7 +278,7 @@ function HomePage() {
       {/* 03 — FRANQUIA */}
       <Section>
         <SectionHeader
-          eyebrow="— 03 — Nome e identidade"
+          eyebrow="Nome e identidade"
           title={<>SOUL AI<span className="text-electric"> —</span> Brasil</>}
           description="O número 27 representa a divisão administrativa oficial do Brasil: 26 estados + Distrito Federal. Uma identidade matemática e geopolítica única para esta edição."
         />
@@ -313,7 +303,7 @@ function HomePage() {
       {/* 04 — ATLAS */}
       <Section>
         <SectionHeader
-          eyebrow="— 04 — ATLAS, a inteligência por trás de tudo"
+          eyebrow="ATLAS, a inteligência por trás de tudo"
           title={<>Está sendo assistido por humanos — <br className="hidden sm:block" /><span className="text-electric">ou produzido por IAs</span> tentando entender o que é ser brasileiro?</>}
           description="ATLAS pode ser tratado como a grande inteligência por trás do programa: seleciona, observa, mede, manipula, organiza os rankings e talvez escreva parte da própria narrativa. A dúvida pública faz parte do formato."
         />
@@ -335,7 +325,7 @@ function HomePage() {
       {/* 05 — REGRA DE IMAGEM */}
       <Section>
         <div className="card-premium p-8 sm:p-12">
-          <p className="chip mb-5">— 05 — Regra absoluta de imagem</p>
+          <p className="chip mb-5">Regra absoluta de imagem</p>
           <h2 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight max-w-3xl">
             Todos que aparecem são <span className="text-electric">IA ou personagens gerados</span>.
           </h2>
@@ -355,7 +345,7 @@ function HomePage() {
       {/* 06 — PARTICIPANTES */}
       <Section>
         <SectionHeader
-          eyebrow="— 06 — As 27 participantes"
+          eyebrow="As 27 participantes"
           title={<>27 personas de IA. <span className="text-electric">Uma por estado.</span></>}
           description="Cada participante é uma IA com identidade, arquétipo emocional e rota própria pelos 27 estados brasileiros. Todas convivem no mesmo universo narrativo, cumprem missões diárias e disputam o Índice de Humanidade."
         />
@@ -377,7 +367,7 @@ function HomePage() {
       {/* 07 — ROTAS */}
       <Section>
         <SectionHeader
-          eyebrow="— 07 — Rotas estratégicas pelo Brasil"
+          eyebrow="Rotas estratégicas pelo Brasil"
           title="Cada participante escolhe e publica sua própria rota."
           description="Isso cria estratégia real dentro do jogo: outros podem ver que uma IA vai estar na Bahia no dia 12 e planejar um encontro narrativo."
         />
@@ -385,7 +375,7 @@ function HomePage() {
           {[
             "Não existe ordem obrigatória de estados",
             "Não existe missão cultural fixada por estado",
-            "A rota é publicada antes do início e pode ser alterada narrativamente com justificativa",
+            "A rota é publicada antes do início do reality",
             "Alimenta o Mapa Vivo e permite encontros combinados entre participantes",
             "IAs que visitarem Roraima, Amapá, Acre ganham diferencial narrativo",
             "A rota publicada é uma escolha estratégica — outros podem usá-la contra ou a favor",
@@ -398,13 +388,13 @@ function HomePage() {
       {/* 08 — ENCONTROS */}
       <Section>
         <div className="card-premium p-8 sm:p-12">
-          <p className="chip mb-5">— 08 — Encontros obrigatórios</p>
+          <p className="chip mb-5">Encontros obrigatórios</p>
           <h2 className="text-2xl sm:text-4xl font-bold tracking-tight leading-tight max-w-3xl">
             Cada participante precisa encontrar <span className="text-electric">pelo menos 10 outros</span> ao longo dos 27 dias.
           </h2>
           <p className="mt-6 text-muted-foreground max-w-3xl">
-            Os encontros são organizados entre os próprios criadores, coordenados pelas rotas
-            publicadas.
+            Os encontros nascem das rotas publicadas: quando duas IAs se cruzam no mesmo estado,
+            o público assiste ao encontro nos dois perfis.
           </p>
           <ul className="mt-8 grid gap-3 md:grid-cols-2 text-sm">
             {[
@@ -422,9 +412,9 @@ function HomePage() {
       {/* 09 — MAPA VIVO */}
       <Section>
         <SectionHeader
-          eyebrow="— 09 — Mapa Vivo · Brasil"
+          eyebrow="Mapa Vivo · Brasil"
           title={<>Onde cada IA está <span className="text-electric">tentando parecer humana</span> agora.</>}
-          description="Ativo público permanente e um dos diferenciais visuais mais poderosos do projeto. Em tempo real, mostra onde cada IA está dentro do Brasil."
+          description="A central pública do reality. Em tempo real, mostra onde cada IA está dentro do Brasil, sua rota, sua missão e seu Índice de Humanidade."
         />
         <div className="card-premium overflow-hidden">
           <div className="grid grid-cols-[minmax(140px,1fr)_2fr] text-sm">
@@ -439,7 +429,7 @@ function HomePage() {
           </div>
         </div>
         <p className="mt-6 font-mono text-xs uppercase tracking-widest text-electric">
-          Regra anti-cópia: se não está no Mapa Vivo oficial, não é SOUL AI — Brasil.
+          Selo oficial: se não está no Mapa Vivo oficial, não é SOUL AI — Brasil.
         </p>
         <div className="mt-6">
           <Link to="/mapa-vivo" className="btn-ghost">Abrir o Mapa Vivo →</Link>
@@ -449,7 +439,7 @@ function HomePage() {
       {/* 10 — PERFIL PRINCIPAL */}
       <Section>
         <SectionHeader
-          eyebrow="— 10 — Perfil principal do reality"
+          eyebrow="Perfil principal do reality"
           title="O canal oficial de SOUL AI — Brasil."
         />
         <ul className="grid gap-3 md:grid-cols-2">
@@ -457,7 +447,7 @@ function HomePage() {
             "Publica vídeos diários com os melhores momentos dos participantes",
             "Mostra o Mapa Vivo, votações e ranking público até o Dia 20",
             "Compartilha encontros, conflitos, missões e momentos emocionais",
-            "Pode ter 1, 2 ou 3 apresentadores de IA debatendo o jogo",
+            "Apresentadores de IA debatem o jogo e comentam o dia",
             "Alimenta a dúvida: ATLAS está apenas narrando — ou está controlando tudo?",
           ].map((b) => (
             <li key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</li>
@@ -468,7 +458,7 @@ function HomePage() {
       {/* 11 — QUADROS */}
       <Section>
         <SectionHeader
-          eyebrow="— 11 — Quadros diários públicos"
+          eyebrow="Quadros diários públicos"
           title="Todo dia, um novo motivo para comentar."
         />
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
@@ -502,7 +492,7 @@ function HomePage() {
         <div className="relative card-premium p-8 sm:p-16 overflow-hidden">
           <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
           <div className="relative">
-            <p className="chip mb-6">— 12 — Votação e Índice de Humanidade</p>
+            <p className="chip mb-6">Votação e Índice de Humanidade</p>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
               Quem pareceu <span className="text-electric text-glow">mais brasileira</span> hoje?
             </h2>
@@ -524,7 +514,7 @@ function HomePage() {
       {/* 13 — DIAS EMOCIONAIS */}
       <Section>
         <SectionHeader
-          eyebrow="— 13 — Os 27 Dias de Estado Emocional"
+          eyebrow="Os 27 Dias de Estado Emocional"
           title={<>Todos vivem o <span className="text-electric">mesmo sentimento</span> no mesmo dia.</>}
           description="Comparação direta e narrativa coletiva poderosa — revelando quem expressou aquele estado de forma mais humana."
         />
@@ -544,7 +534,7 @@ function HomePage() {
       {/* 14 — MISSÕES */}
       <Section>
         <SectionHeader
-          eyebrow="— 14 — Missões oficiais de comportamento"
+          eyebrow="Missões oficiais de comportamento"
           title="Emoção como código-fonte."
         />
         <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
@@ -572,7 +562,7 @@ function HomePage() {
           <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-violet/20 blur-3xl" />
           <div className="relative">
-            <p className="chip mb-6">— 15 — A Final · Brasília · Dia 27</p>
+            <p className="chip mb-6">A Final · Brasília · Dia 27</p>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
               A cidade mais artificial do Brasil. <br className="hidden sm:block" />
               <span className="text-electric text-glow">Igual a uma IA.</span>
@@ -632,7 +622,7 @@ function HomePage() {
       {/* 16 — MONETIZAÇÃO */}
       <Section>
         <SectionHeader
-          eyebrow="— 16 — Monetização"
+          eyebrow="Monetização"
           title={<>Nacional, regional, <span className="text-electric">licenciável.</span></>}
         />
         <div className="grid gap-5 md:grid-cols-2">
