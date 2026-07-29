@@ -16,7 +16,7 @@ export function SiteFooter() {
             <p className="text-muted-foreground max-w-md text-sm leading-relaxed">
               27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?
             </p>
-            <p className="mt-6 chip">Documento Estratégico · Versão Fundadora</p>
+            <p className="mt-6 chip">Capítulo 1 · Brasil</p>
           </div>
 
           <div>
