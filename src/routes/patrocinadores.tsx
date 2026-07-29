@@ -38,6 +38,38 @@ const activations = [
   { t: "Missão de Aparência Brasileira", b: "marca de beleza" },
 ];
 
+const founderBlocks = [
+  {
+    t: "Preço travado",
+    d: "O menor valor que este patrocínio vai custar.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+        <rect x="3" y="11" width="18" height="11" rx="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      </svg>
+    ),
+  },
+  {
+    t: "Categoria exclusiva",
+    d: "Sua marca, sozinha na sua categoria. Ninguém mais entra depois.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+        <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z" />
+      </svg>
+    ),
+  },
+  {
+    t: "Desde o Dia 1",
+    d: "Sua marca no Mapa Vivo, nas missões e nos quadros diários desde o primeiro dia no ar.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+  },
+];
+
 const categories = [
   "Tecnologia", "Inteligência artificial", "Bancos digitais", "Cartões",
   "Turismo nacional", "Moda", "Beleza", "Skincare", "Delivery",
