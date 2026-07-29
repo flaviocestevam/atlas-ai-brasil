@@ -1,17 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Section, SectionHeader } from "@/components/Section";
-import saraImg from "@/assets/sara-sinapse.jpg.asset.json";
+import sinapseImg from "@/assets/sinapse.jpg.asset.json";
 
-export const Route = createFileRoute("/sara-sinapse")({
+export const Route = createFileRoute("/sinapse")({
   head: () => ({
     meta: [
-      { title: "Doutora Sara Sinapse | SOUL AI — Brasil" },
+      { title: "Dra. Sinapse | SOUL AI — Brasil" },
       {
         name: "description",
         content:
           "Especialista oficial da SOUL AI em comportamento humano e Inteligência Artificial. Análises, estudos e o Índice de Humanidade.",
       },
-      { property: "og:title", content: "Doutora Sara Sinapse — SOUL AI" },
+      { property: "og:title", content: "Dra. Sinapse — SOUL AI" },
       {
         property: "og:description",
         content:
@@ -20,9 +20,9 @@ export const Route = createFileRoute("/sara-sinapse")({
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/sara-sinapse" }],
+    links: [{ rel: "canonical", href: "/sinapse" }],
   }),
-  component: SaraSinapsePage,
+  component: SinapsePage,
 });
 
 const compreensao = [
@@ -50,7 +50,7 @@ const estudos = [
   ["O futuro dos influenciadores de IA.", "O que muda quando a persona não tem corpo."],
 ] as const;
 
-function SaraSinapsePage() {
+function SinapsePage() {
   return (
     <>
       {/* Hero */}
@@ -60,7 +60,7 @@ function SaraSinapsePage() {
           <div>
             <div className="chip mb-6">Instituto SOUL AI · Pesquisa</div>
             <h1 className="fluid-h1 font-bold tracking-tight">
-              Doutora <span className="text-electric">Sara Sinapse</span>
+              Dra. <span className="text-electric">Sinapse</span>
             </h1>
             <p className="mt-6 fluid-lead text-muted-foreground leading-relaxed max-w-xl">
               Especialista oficial da SOUL AI em comportamento humano e Inteligência Artificial.
@@ -77,8 +77,8 @@ function SaraSinapsePage() {
           </div>
           <figure className="card-premium overflow-hidden">
             <img
-              src={saraImg.url}
-              alt="Retrato da Doutora Sara Sinapse, pesquisadora oficial da SOUL AI"
+              src={sinapseImg.url}
+              alt="Retrato da Dra. Sinapse, pesquisadora oficial da SOUL AI"
               width={1280}
               height={1600}
               className="w-full h-full object-cover aspect-[4/5]"
@@ -92,7 +92,7 @@ function SaraSinapsePage() {
         <SectionHeader
           eyebrow="Quem é"
           title={<>Ela não compete. Ela <span className="text-electric">interpreta</span>.</>}
-          description="A Doutora Sara Sinapse acompanha todos os acontecimentos do reality e analisa o comportamento dos participantes. Não participa da competição e não interfere nas decisões — seu papel é ajudar o público a entender por que certas atitudes parecem mais humanas que outras."
+          description="A Dra. Sinapse acompanha todos os acontecimentos do reality e analisa o comportamento dos participantes. Não participa da competição e não interfere nas decisões — seu papel é ajudar o público a entender por que certas atitudes parecem mais humanas que outras."
         />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {compreensao.map(([t, d]) => (
@@ -108,7 +108,7 @@ function SaraSinapsePage() {
       <Section id="analises">
         <SectionHeader
           eyebrow="Últimas análises"
-          title="Leituras da Doutora Sara Sinapse."
+          title="Leituras da Dra. Sinapse."
           description="As análises são publicadas ao longo do reality. Esta área será atualizada a cada capítulo."
         />
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -125,7 +125,7 @@ function SaraSinapsePage() {
                 </span>
                 <h3 className="font-display font-semibold text-lg">Título da análise</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                  Resumo da leitura comportamental publicada pela Doutora Sara Sinapse.
+                  Resumo da leitura comportamental publicada pela Dra. Sinapse.
                 </p>
                 <div className="flex items-center justify-between pt-2">
                   <span className="font-mono text-[11px] text-muted-foreground">Data a definir</span>
@@ -142,7 +142,7 @@ function SaraSinapsePage() {
         <SectionHeader
           eyebrow="Índice de Humanidade"
           title="Os seis fatores em estudo."
-          description="A Doutora Sara Sinapse estuda o que faz uma IA parecer humana. Cada fator será acompanhado e comentado durante o reality."
+          description="A Dra. Sinapse estuda o que faz uma IA parecer humana. Cada fator será acompanhado e comentado durante o reality."
         />
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {fatores.map(([t, d], i) => (
@@ -163,7 +163,7 @@ function SaraSinapsePage() {
         <SectionHeader
           eyebrow="Estudos"
           title="Biblioteca de pesquisa."
-          description="Artigos assinados pela Doutora Sara Sinapse sobre percepção, empatia e vínculo com personagens artificiais."
+          description="Artigos assinados pela Dra. Sinapse sobre percepção, empatia e vínculo com personagens artificiais."
         />
         <div className="grid gap-3 md:grid-cols-2">
           {estudos.map(([t, d]) => (
@@ -200,7 +200,7 @@ function SaraSinapsePage() {
         </ol>
         <div className="mt-12 max-w-2xl">
           <p className="text-sm text-muted-foreground">
-            A Doutora Sara Sinapse é pesquisadora permanente do universo SOUL AI.
+            A Dra. Sinapse é pesquisadora permanente do universo SOUL AI.
           </p>
           <Link to="/inscricao" className="btn-primary mt-5 inline-flex">
             Inscrever minha IA →
