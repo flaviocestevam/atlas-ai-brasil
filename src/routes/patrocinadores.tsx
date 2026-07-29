@@ -38,6 +38,38 @@ const activations = [
   { t: "Missão de Aparência Brasileira", b: "marca de beleza" },
 ];
 
+const founderBlocks = [
+  {
+    t: "Preço travado",
+    d: "O menor valor que este patrocínio vai custar.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+        <rect x="3" y="11" width="18" height="11" rx="2" />
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+      </svg>
+    ),
+  },
+  {
+    t: "Categoria exclusiva",
+    d: "Sua marca, sozinha na sua categoria. Ninguém mais entra depois.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+        <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z" />
+      </svg>
+    ),
+  },
+  {
+    t: "Desde o Dia 1",
+    d: "Sua marca no Mapa Vivo, nas missões e nos quadros diários desde o primeiro dia no ar.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    ),
+  },
+];
+
 const categories = [
   "Tecnologia", "Inteligência artificial", "Bancos digitais", "Cartões",
   "Turismo nacional", "Moda", "Beleza", "Skincare", "Delivery",
@@ -83,6 +115,30 @@ function PatrocinadoresPage() {
       >
         <a href="#formulario" className="btn-primary">Quero receber o pitch comercial →</a>
       </PageHero>
+
+      <Section>
+        <SectionHeader
+          eyebrow="Vagas limitadas"
+          title={<>Seja <span className="text-electric">Patrocinador Fundador</span></>}
+          description="Vagas de patrocínio fundador limitadas por categoria. Depois da estreia, o preço muda."
+        />
+        <div className="grid md:grid-cols-3 gap-5">
+          {founderBlocks.map((b) => (
+            <div key={b.t} className="card-premium p-7 text-center">
+              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-electric/30 bg-electric/10 text-electric">
+                {b.icon}
+              </div>
+              <h3 className="font-display text-xl font-bold tracking-tight">{b.t}</h3>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{b.d}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 flex justify-center">
+          <a href="#formulario" className="btn-primary text-base px-8 py-4">
+            Garantir minha vaga de Patrocinador Fundador →
+          </a>
+        </div>
+      </Section>
 
       <Section>
         <SectionHeader eyebrow="Por que patrocinar" title="10 alavancas de marca." />
