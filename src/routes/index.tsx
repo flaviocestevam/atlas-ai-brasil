@@ -3,6 +3,8 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import soulAsset from "@/assets/soul.png.asset.json";
 import vslAsset from "@/assets/soul-vsl-v3.mp4.asset.json";
 import { Section, SectionHeader } from "@/components/Section";
+import { PRESENTERS } from "@/data/presenters";
+
 
 // Code-split: mapa interativo só baixa quando perto da viewport.
 const MapaVivo = lazy(() =>
