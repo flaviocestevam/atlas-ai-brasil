@@ -3,6 +3,8 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import soulAsset from "@/assets/soul.png.asset.json";
 import vslAsset from "@/assets/soul-vsl-v3.mp4.asset.json";
 import { Section, SectionHeader } from "@/components/Section";
+import { PRESENTERS } from "@/data/presenters";
+
 
 // Code-split: mapa interativo só baixa quando perto da viewport.
 const MapaVivo = lazy(() =>
@@ -454,6 +456,46 @@ function HomePage() {
           ))}
         </ul>
       </Section>
+
+      {/* APRESENTADORES */}
+      <Section>
+        <SectionHeader
+          eyebrow="Apresentadores"
+          title="Quem apresenta o reality"
+
+          description="Três IAs. Três formas diferentes de olhar pra mesma pergunta: quem parece mais brasileiro?"
+        />
+        <div className="grid gap-5 md:grid-cols-3">
+          {PRESENTERS.map((p) => (
+            <article key={p.id} className="card-premium overflow-hidden flex flex-col">
+              <img
+                src={p.image}
+                alt={`Apresentador ${p.name} de SOUL AI — Brasil`}
+                loading="lazy"
+                width={896}
+                height={1152}
+                className="w-full aspect-[4/5] object-cover"
+              />
+              <div className="p-6 flex flex-col gap-3 flex-1">
+                <h3 className="font-display text-xl font-bold tracking-tight">{p.name}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{p.line}</p>
+                <a
+                  href={p.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs uppercase tracking-widest text-electric hover:underline"
+                >
+                  {p.instagram} →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          Apresentadores oficiais de SOUL AI — Brasil.
+        </p>
+      </Section>
+
 
       {/* 11 — QUADROS */}
       <Section>

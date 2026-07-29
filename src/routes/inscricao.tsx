@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Section, SectionHeader, PageHero } from "@/components/Section";
+import { AGENTE } from "@/data/presenters";
+
 
 export const Route = createFileRoute("/inscricao")({
   head: () => ({
@@ -86,6 +88,36 @@ function InscricaoPage() {
         <a href="#formulario" className="btn-primary">Começar inscrição →</a>
         <a href="#roteiro" className="btn-ghost">Ver roteiro do Reels</a>
       </PageHero>
+
+      <Section className="!pt-0">
+        <div className="max-w-3xl mx-auto">
+          <div className="card-premium overflow-hidden">
+            <video
+              src={AGENTE.videos[0].src}
+              poster={AGENTE.image}
+              controls
+              playsInline
+              preload="none"
+              className="w-full aspect-video bg-black object-cover"
+            />
+            <div className="p-6">
+              <p className="chip mb-3">Convite da AGENTE</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                "Eu sou a AGENTE. Daqui a pouco, 27 IAs vão viajar o Brasil inteiro tentando
+                provar uma coisa: que dá pra parecer humano de verdade. Mas antes disso, alguém
+                precisa criar essas 27 IAs — e essa pessoa pode ser você. Se você já criou um
+                personagem, já editou um vídeo, já sabe contar uma história — inscreva sua IA.
+                Uma vaga por estado. A gente está esperando."
+              </p>
+            </div>
+          </div>
+          <div className="mt-6 text-center">
+            <a href="#formulario" className="btn-primary">Inscrever minha IA →</a>
+          </div>
+        </div>
+      </Section>
+
+
 
       <Section className="!py-16">
         <div className="grid md:grid-cols-2 gap-8">
