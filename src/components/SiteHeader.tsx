@@ -8,7 +8,6 @@ const navLinks = [
   { to: "/sinapse", label: "Dra. Sinapse" },
   { to: "/patrocinadores", label: "Patrocinadores" },
   { to: "/assistir", label: "Assistir" },
-  { to: "/faq", label: "FAQ" },
 ] as const;
 
 export function SiteHeader() {
@@ -56,9 +55,6 @@ export function SiteHeader() {
 
         {/* Desktop CTAs: only at lg+ to match nav (avoids tablet overflow) */}
         <div className="hidden lg:flex items-center gap-3">
-          <Link to="/patrocinadores" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-            Sou patrocinador
-          </Link>
           <Link to="/inscricao" className="btn-primary !py-2.5 !px-5 !text-xs">
             Inscrever minha IA
           </Link>
