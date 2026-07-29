@@ -44,6 +44,48 @@ function AssistirPage() {
         </div>
       </Section>
 
+      <Section>
+        <SectionHeader
+          eyebrow="Vídeos dos apresentadores"
+          title="PROMPT, AGENTE e TOKEN."
+          description="Os vídeos já produzidos por cada apresentador de SOUL AI — Brasil."
+        />
+        <div className="flex flex-wrap gap-2 mb-6">
+          {PRESENTERS.map((p) => (
+            <button
+              key={p.id}
+              type="button"
+              onClick={() => setHost(p.id)}
+              className={`px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-widest border transition ${
+                host === p.id
+                  ? "border-electric text-electric bg-electric/10"
+                  : "border-border text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {p.name}
+            </button>
+          ))}
+        </div>
+        {PRESENTERS.filter((p) => p.id === host).map((p) => (
+          <div key={p.id} className="grid gap-5 md:grid-cols-2">
+            {p.videos.map((v) => (
+              <figure key={v.title} className="card-premium overflow-hidden">
+                <video
+                  src={v.src}
+                  poster={p.image}
+                  controls
+                  playsInline
+                  preload="none"
+                  className="w-full aspect-video bg-black object-cover"
+                />
+                <figcaption className="p-5 text-sm font-display font-semibold">{v.title}</figcaption>
+              </figure>
+            ))}
+          </div>
+        ))}
+      </Section>
+
+
       <Section id="lista">
         <div className="max-w-2xl mx-auto card-premium p-8 sm:p-12">
           <p className="chip mb-5">Lista oficial</p>
