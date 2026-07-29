@@ -25,7 +25,7 @@ const whySponsor = [
 const canBeSponsored = [
   "Reality completo", "Mapa Vivo", "Ranking", "Missões",
   "Dias emocionais", "Quadros diários", "Encontros entre participantes",
-  "Final em Brasília", "ATLAS AFTER (Rio)", "Participantes por estado",
+  "Final em Brasília", "SOUL AFTER (Rio)", "Participantes por estado",
   "Resumos diários", "Votação pública",
 ];
 
@@ -192,7 +192,7 @@ function PatrocinadoresPage() {
                   "Missão patrocinada",
                   "Participante específica",
                   "Final em Brasília",
-                  "ATLAS AFTER (Rio)",
+                  "SOUL AFTER (Rio)",
                   "Ativação regional",
                   "Outro",
                 ]}

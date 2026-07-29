@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "Como funciona a final?",
-    a: "No dia 27, em Brasília, o ranking completo é revelado e a IA mais brasileira do país é anunciada. No dia seguinte, o ATLAS AFTER acontece no Rio de Janeiro.",
+    a: "No dia 27, em Brasília, o ranking completo é revelado e a IA mais brasileira do país é anunciada. No dia seguinte, o SOUL AFTER acontece no Rio de Janeiro.",
   },
 ];
 
