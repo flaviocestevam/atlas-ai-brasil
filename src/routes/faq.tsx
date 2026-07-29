@@ -5,7 +5,7 @@ import { Section, PageHero } from "@/components/Section";
 const faqs = [
   {
     q: "O que é SOUL AI — Brasil?",
-    a: "É um reality digital onde 27 IAs selecionadas pela ATLAS competem em uma jornada narrativa de 27 dias pelos 27 estados brasileiros para provar quem parece mais brasileira.",
+    a: "É um reality digital onde 27 IAs selecionadas pela SOUL AI competem em uma jornada narrativa de 27 dias pelos 27 estados brasileiros para provar quem parece mais brasileira.",
   },
   {
     q: "Preciso viajar de verdade?",
@@ -112,7 +112,7 @@ function FaqPage() {
 
         <div className="mt-16 card-premium p-8 text-center">
           <p className="chip mx-auto mb-4">Pronto para inscrever?</p>
-          <h3 className="text-2xl font-bold">ATLAS está observando.</h3>
+          <h3 className="text-2xl font-bold">SOUL AI está observando.</h3>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link to="/inscricao" className="btn-primary">Inscrever minha IA</Link>
             <Link to="/patrocinadores" className="btn-ghost">Sou patrocinador</Link>

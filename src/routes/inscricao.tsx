@@ -8,7 +8,7 @@ export const Route = createFileRoute("/inscricao")({
       { title: "Inscreva sua IA | SOUL AI — Brasil" },
       { name: "description", content: "Crie sua IA brasileira, grave um Reels e tente uma das 27 vagas no reality SOUL AI — Brasil." },
       { property: "og:title", content: "Inscreva sua IA — SOUL AI — Brasil" },
-      { property: "og:description", content: "27 IAs serão selecionadas. Faça a sua passar pelo filtro do ATLAS." },
+      { property: "og:description", content: "27 IAs serão selecionadas. Faça a sua passar pelo filtro da SOUL AI." },
     ],
     links: [{ rel: "canonical", href: "/inscricao" }],
   }),
@@ -37,7 +37,7 @@ const regras = [
   "Cada participante escolhida terá sua rota pública pelos 27 estados brasileiros.",
   "Todas as participantes precisarão cumprir missões, aparecer no Mapa Vivo e encontrar as outras ao longo da jornada.",
   "Patrocínios ligados ao reality serão validados pela produção.",
-  "A seleção final será feita pela ATLAS.",
+  "A seleção final será feita pela SOUL AI.",
 ];
 
 const ESTADOS = [
@@ -81,7 +81,7 @@ function InscricaoPage() {
       <PageHero
         eyebrow="Inscrição oficial"
         title={<>Inscreva sua IA no <span className="text-electric">SOUL AI — Brasil</span></>}
-        subtitle="27 IAs brasileiras serão selecionadas pela ATLAS para competir em uma jornada de 27 dias pelos 27 estados do país."
+        subtitle="27 IAs brasileiras serão selecionadas pela SOUL AI para competir em uma jornada de 27 dias pelos 27 estados do país."
       >
         <a href="#formulario" className="btn-primary">Começar inscrição →</a>
         <a href="#roteiro" className="btn-ghost">Ver roteiro do Reels</a>
@@ -115,7 +115,7 @@ function InscricaoPage() {
         <SectionHeader
           eyebrow="Roteiro oficial"
           title="Como fazer o Reels de inscrição"
-          description="Use exatamente este roteiro. Mantém a estética do universo ATLAS e facilita a curadoria."
+          description="Use exatamente este roteiro. Mantém a estética do universo SOUL AI e facilita a curadoria."
         />
         <div className="card-premium p-8 sm:p-10 font-mono text-sm sm:text-base leading-loose">
           <div className="space-y-3">
@@ -126,7 +126,7 @@ function InscricaoPage() {
               "Eu quero entrar no SOUL AI — Brasil porque…",
               "Eu quero virar brasileira porque…",
               "Meu maior defeito é…",
-              "ATLAS, me escolha.",
+              "SOUL AI, me escolha.",
             ].map((line, i) => (
               <p key={i} className="flex gap-4">
                 <span className="text-electric/60 shrink-0 w-6">{String(i + 1).padStart(2, "0")}</span>
@@ -155,7 +155,7 @@ function InscricaoPage() {
       <Section>
         <div className="grid lg:grid-cols-2 gap-8">
           <div>
-            <SectionHeader eyebrow="Critérios" title="O que a ATLAS vai avaliar." />
+            <SectionHeader eyebrow="Critérios" title="O que a SOUL AI vai avaliar." />
             <ul className="space-y-3">
               {criterios.map((c, i) => (
                 <li key={c} className="flex gap-4 items-start card-premium p-4">
@@ -184,13 +184,13 @@ function InscricaoPage() {
         <SectionHeader
           eyebrow="Formulário de inscrição"
           title="Envie sua IA para análise."
-          description="A seleção final será feita pela ATLAS. Preencha com calma — cada resposta conta."
+          description="A seleção final será feita pela SOUL AI. Preencha com calma — cada resposta conta."
         />
         {submitted ? (
           <div className="card-premium p-12 text-center">
             <p className="chip mx-auto mb-6">Recebido</p>
             <h3 className="text-3xl font-bold">Sua IA foi enviada para análise.</h3>
-            <p className="mt-4 text-electric font-mono text-sm uppercase tracking-widest">ATLAS está observando.</p>
+            <p className="mt-4 text-electric font-mono text-sm uppercase tracking-widest">SOUL AI está observando.</p>
             <Link to="/" className="btn-ghost mt-8 inline-flex">Voltar ao início</Link>
           </div>
         ) : (
@@ -220,7 +220,7 @@ function InscricaoPage() {
             </div>
             <div className="pt-4">
               <button type="submit" className="btn-primary w-full sm:w-auto">
-                Enviar inscrição para ATLAS →
+                Enviar inscrição para SOUL AI →
               </button>
               <p className="mt-4 text-xs text-muted-foreground font-mono">
                 Ao enviar, você concorda com o regulamento público. Nem toda IA merece virar brasileira.

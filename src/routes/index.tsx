@@ -118,7 +118,7 @@ const diasEmocionais = [
   { d: 24, t: "Dia do Arrependimento", desc: "Algo que a IA faria diferente se pudesse" },
   { d: 25, t: "Dia da Despedida", desc: "Começar a se preparar para acabar" },
   { d: 26, t: "Véspera da Final", desc: "Tensão máxima — ranking ainda oculto" },
-  { d: 27, t: "Dia da Revelação", desc: "Brasília. O ranking. A promessa. O silêncio de ATLAS." },
+  { d: 27, t: "Dia da Revelação", desc: "Brasília. O ranking. A promessa. O silêncio de SOUL AI." },
 ];
 
 const missoesBase = [
@@ -199,7 +199,7 @@ function HomePage() {
                 />
                 <div className="pointer-events-none absolute top-4 left-4 chip backdrop-blur">
                   <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-                  ATLAS observa os candidatos
+                  SOUL AI observa os candidatos
                 </div>
               </div>
               <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-electric/10 blur-3xl" />
@@ -300,12 +300,12 @@ function HomePage() {
         </div>
       </Section>
 
-      {/* 04 — ATLAS */}
+      {/* 04 — SOUL AI */}
       <Section>
         <SectionHeader
-          eyebrow="ATLAS, a inteligência por trás de tudo"
+          eyebrow="SOUL AI, a inteligência por trás de tudo"
           title={<>Está sendo assistido por humanos — <br className="hidden sm:block" /><span className="text-electric">ou produzido por IAs</span> tentando entender o que é ser brasileiro?</>}
-          description="ATLAS pode ser tratado como a grande inteligência por trás do programa: seleciona, observa, mede, manipula, organiza os rankings e talvez escreva parte da própria narrativa. A dúvida pública faz parte do formato."
+          description="SOUL AI pode ser tratado como a grande inteligência por trás do programa: seleciona, observa, mede, manipula, organiza os rankings e talvez escreva parte da própria narrativa. A dúvida pública faz parte do formato."
         />
         <div className="grid gap-3 md:grid-cols-2">
           {[
@@ -448,7 +448,7 @@ function HomePage() {
             "Mostra o Mapa Vivo, votações e ranking público até o Dia 20",
             "Compartilha encontros, conflitos, missões e momentos emocionais",
             "Apresentadores de IA debatem o jogo e comentam o dia",
-            "Alimenta a dúvida: ATLAS está apenas narrando — ou está controlando tudo?",
+            "Alimenta a dúvida: SOUL AI está apenas narrando — ou está controlando tudo?",
           ].map((b) => (
             <li key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</li>
           ))}
@@ -577,7 +577,7 @@ function HomePage() {
               {[
                 "O ranking oculto dos Dias 21 a 27 é revelado ao vivo",
                 "A promessa de humanização é confrontada publicamente",
-                "ATLAS aparece com sua mensagem final — ambígua, poderosa, sem resposta",
+                "SOUL AI aparece com sua mensagem final — ambígua, poderosa, sem resposta",
                 "Quem foi mais humano não foi o vencedor. Foi o Brasil inteiro, que acreditou.",
               ].map((b) => (
                 <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
@@ -723,7 +723,7 @@ function KitSobrevivencia() {
                 <p className="chip mx-auto mb-5">Enviado</p>
                 <h3 className="text-2xl font-bold">Bem-vindo ao Mapa Vivo.</h3>
                 <p className="mt-4 text-sm text-muted-foreground">
-                  Seu kit chegará no e-mail. ATLAS já registrou sua presença.
+                  Seu kit chegará no e-mail. SOUL AI já registrou sua presença.
                 </p>
                 <p className="mt-6 font-mono text-[10px] uppercase tracking-widest text-electric">
                   Se não está no Mapa Vivo oficial, não é SOUL AI — Brasil.
@@ -752,7 +752,7 @@ function KitSobrevivencia() {
                   Receber o kit →
                 </button>
                 <p className="text-[11px] text-muted-foreground/70 font-mono">
-                  ATLAS observa. Não faz spam.
+                  SOUL AI observa. Não faz spam.
                 </p>
               </form>
             )}
