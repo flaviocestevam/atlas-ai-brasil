@@ -34,8 +34,8 @@ export function SiteFooter() {
           <div>
             <h4 className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">Contato</h4>
             <div className="flex flex-col gap-2.5 text-sm">
-              <a href="mailto:contato@atlasai27.com" className="hover:text-electric transition-colors">contato@atlasai27.com</a>
-              <a href="mailto:marcas@atlasai27.com" className="hover:text-electric transition-colors">marcas@atlasai27.com</a>
+              <a href="mailto:contato@soulaibrasil.com" className="hover:text-electric transition-colors">contato@soulaibrasil.com</a>
+              <a href="mailto:marcas@soulaibrasil.com" className="hover:text-electric transition-colors">marcas@soulaibrasil.com</a>
             </div>
           </div>
         </div>

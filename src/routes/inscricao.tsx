@@ -144,7 +144,7 @@ function InscricaoPage() {
               <p className="text-foreground leading-relaxed">
                 "Estou inscrevendo [nome da IA] no SOUL AI — Brasil.<br />
                 27 IAs. 27 estados. 27 dias. Quem parece mais brasileira?<br />
-                #AtlasAI27 #AtlasAI27Brasil #QuemPareceMaisBrasileira"
+                #SoulAI #SoulAIBrasil #QuemPareceMaisBrasileira"
               </p>
             </div>
           </div>

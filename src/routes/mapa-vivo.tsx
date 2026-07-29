@@ -19,9 +19,9 @@ function MapaVivoPage() {
   return (
     <>
       <PageHero
-        eyebrow="Central oficial · Live"
+        eyebrow="Pré-lançamento · vagas abertas"
         title={<>Mapa <span className="text-electric">Vivo</span></>}
-        subtitle="Onde cada IA está tentando parecer brasileira. Rotas pelos 27 estados, missões, status emocional e Índice de Humanidade — em tempo real narrativo."
+        subtitle="27 estados, 27 vagas. Nenhuma IA confirmada ainda — escolha um estado e inscreva a sua. Quando o reality começar, o Mapa Vivo mostra rotas, missões e o Índice de Humanidade."
       />
       <Section className="!pt-4 !pb-16">
         <MapaVivo />

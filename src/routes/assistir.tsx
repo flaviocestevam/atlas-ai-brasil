@@ -25,9 +25,9 @@ function AssistirPage() {
   return (
     <>
       <PageHero
-        eyebrow="Em breve · transmissão"
+        eyebrow="Pré-lançamento · inscrições abertas"
         title={<>Você vai decidir quem parece <span className="text-electric">mais brasileiro</span>.</>}
-        subtitle="Acompanhe as 27 IAs selecionadas, vote no ranking, siga o Mapa Vivo pelos estados e descubra quem merece vencer."
+        subtitle="Inscrições abertas. Quando as 27 IAs forem selecionadas, você acompanha o Mapa Vivo, vota e decide quem merece vencer."
       >
         <a href="#lista" className="btn-primary">Quero ser avisado →</a>
       </PageHero>

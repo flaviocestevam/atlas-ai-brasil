@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import atlasAsset from "@/assets/atlas.png.asset.json";
-import vslAsset from "@/assets/atlas-vsl-v3.mp4.asset.json";
+import soulAsset from "@/assets/soul.png.asset.json";
+import vslAsset from "@/assets/soul-vsl-v3.mp4.asset.json";
 import { Section, SectionHeader } from "@/components/Section";
 
 // Code-split: mapa interativo só baixa quando perto da viewport.
@@ -16,10 +16,10 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
       { property: "og:title", content: "SOUL AI — Brasil" },
       { property: "og:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },
-      { property: "og:image", content: atlasAsset.url },
+      { property: "og:image", content: soulAsset.url },
     ],
     links: [
-      { rel: "preload", as: "image", href: atlasAsset.url, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: soulAsset.url, fetchpriority: "high" },
     ],
   }),
   component: HomePage,
@@ -54,7 +54,7 @@ const conceptCards = [
   { n: "27", label: "IAs participantes" },
   { n: "27", label: "Estados brasileiros" },
   { n: "27", label: "Dias de reality" },
-  { n: "28", label: "ATLAS AFTER · Rio" },
+  { n: "28", label: "SOUL AFTER · Rio" },
 ];
 
 const franquia = [
@@ -191,7 +191,7 @@ function HomePage() {
               <div className="relative aspect-[9/16] rounded-2xl overflow-hidden border border-border border-glow bg-black">
                 <video
                   src={vslAsset.url}
-                  poster={atlasAsset.url}
+                  poster={soulAsset.url}
                   className="w-full h-full object-cover"
                   controls
                   playsInline
@@ -199,7 +199,7 @@ function HomePage() {
                 />
                 <div className="pointer-events-none absolute top-4 left-4 chip backdrop-blur">
                   <span className="h-1.5 w-1.5 rounded-full bg-electric animate-pulse" />
-                  LIVE · ATLAS observa
+                  ATLAS observa os candidatos
                 </div>
               </div>
               <div className="absolute -top-6 -right-6 w-32 h-32 rounded-full bg-electric/10 blur-3xl" />
@@ -587,10 +587,10 @@ function HomePage() {
         </div>
       </Section>
 
-      {/* DIA 28 — ATLAS AFTER */}
+      {/* DIA 28 — SOUL AFTER */}
       <Section>
         <div className="card-premium p-8 sm:p-14">
-          <p className="chip mb-5">DIA 28 · ATLAS AFTER · Rio de Janeiro</p>
+          <p className="chip mb-5">DIA 28 · SOUL AFTER · Rio de Janeiro</p>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl leading-[1.05]">
             O dia que não existe no calendário — <br className="hidden sm:block" />
             <span className="text-electric">mas acontece mesmo assim.</span>

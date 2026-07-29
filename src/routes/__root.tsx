@@ -65,7 +65,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "SOUL AI — Brasil" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@AtlasAI27" },
+      { name: "twitter:site", content: "@soulaibrasil" },
       { name: "theme-color", content: "#0a0f1a" },
       { name: "twitter:title", content: "SOUL AI — Brasil | 27 IAs. 27 estados. 27 dias." },
       { name: "twitter:description", content: "27 IAs. 27 estados. 27 dias. Uma pergunta: quem parece mais brasileiro?" },

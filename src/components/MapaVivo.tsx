@@ -1,468 +1,250 @@
 import { useMemo, useState } from "react";
-import {
-  PARTICIPANTS,
-  STATUS_LABEL,
-  STATUS_COLOR,
-  type Participant,
-  type ParticipantStatus,
-  type EmotionalStatus,
-} from "@/data/participants";
+import { Link } from "@tanstack/react-router";
 import { BRAZIL_REGION_FILL, BRAZIL_STATE_PATHS } from "@/data/brazilMap";
 
-const ALL_STATUS: ParticipantStatus[] = ["ativo", "missao", "encontro", "cancelado"];
-const ALL_EMOTIONS: EmotionalStatus[] = [
-  "Ansiedade", "Euforia", "Vulnerável", "Provocadora",
-  "Melancolia", "Coragem", "Saudade", "Glitch",
-];
+const REGIONS = ["Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"] as const;
 
 export function MapaVivo() {
-  const [selectedId, setSelectedId] = useState<string>(PARTICIPANTS[0].id);
-  const [hoverId, setHoverId] = useState<string | null>(null);
-  const [statusFilter, setStatusFilter] = useState<Set<ParticipantStatus>>(new Set(ALL_STATUS));
-  const [emotionFilter, setEmotionFilter] = useState<EmotionalStatus | "todos">("todos");
+  const [selectedCode, setSelectedCode] = useState<string | null>(null);
+  const [hoverCode, setHoverCode] = useState<string | null>(null);
   const [search, setSearch] = useState("");
-  const [showRoutes, setShowRoutes] = useState(true);
+  const [region, setRegion] = useState<(typeof REGIONS)[number] | "todas">("todas");
 
-  const filtered = useMemo(() => {
-    return PARTICIPANTS.filter((p) => {
-      if (!statusFilter.has(p.status)) return false;
-      if (emotionFilter !== "todos" && p.emotional !== emotionFilter) return false;
-      if (search && !`${p.name} ${p.archetype}`.toLowerCase().includes(search.toLowerCase())) return false;
-      return true;
-    });
-  }, [statusFilter, emotionFilter, search]);
+  const states = useMemo(
+    () =>
+      [...BRAZIL_STATE_PATHS]
+        .filter((s) => (region === "todas" ? true : s.region === region))
+        .filter((s) =>
+          search
+            ? `${s.code} ${s.name}`.toLowerCase().includes(search.toLowerCase())
+            : true,
+        )
+        .sort((a, b) => a.name.localeCompare(b.name, "pt-BR")),
+    [region, search],
+  );
 
-  const selected = PARTICIPANTS.find((p) => p.id === selectedId) ?? PARTICIPANTS[0];
-  const visibleIds = new Set(filtered.map((p) => p.id));
-  const highlightId = hoverId ?? selectedId;
-  const highlightedParticipant = PARTICIPANTS.find((p) => p.id === highlightId) ?? selected;
-  const highlightedUF = highlightedParticipant.route[highlightedParticipant.currentIndex].code;
-  const participantsByUF = new Map<string, Participant[]>();
-  filtered.forEach((p) => {
-    const uf = p.route[p.currentIndex].code;
-    participantsByUF.set(uf, [...(participantsByUF.get(uf) ?? []), p]);
-  });
-
-  const toggleStatus = (s: ParticipantStatus) => {
-    setStatusFilter((prev) => {
-      const n = new Set(prev);
-      if (n.has(s)) n.delete(s); else n.add(s);
-      return n.size === 0 ? new Set(ALL_STATUS) : n;
-    });
-  };
+  const highlight = hoverCode ?? selectedCode;
+  const selected = BRAZIL_STATE_PATHS.find((s) => s.code === selectedCode) ?? null;
 
   return (
     <div className="space-y-5">
       <div className="grid lg:grid-cols-[1fr_360px] gap-5">
-      {/* MAP */}
-      <div className="card-premium p-4 sm:p-6 relative overflow-hidden">
-        {/* Controls bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-electric animate-pulse" />
+        {/* MAPA */}
+        <div className="card-premium p-4 sm:p-6 relative overflow-hidden">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Live · Dia 07 / 27
+              27 estados · 27 vagas
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-widest text-electric">
+              0 de 27 confirmadas
             </span>
           </div>
-          <div className="flex items-center gap-2">
-            <label className="flex items-center gap-2 text-xs text-muted-foreground cursor-pointer">
-              <input
-                type="checkbox"
-                checked={showRoutes}
-                onChange={(e) => setShowRoutes(e.target.checked)}
-                className="accent-electric"
-              />
-              Mostrar rotas
-            </label>
-          </div>
-        </div>
 
-        <div className="relative aspect-[800/480] rounded-lg overflow-hidden bg-background/40 border border-border">
-          <svg viewBox="0 0 800 480" className="absolute inset-0 w-full h-full">
-            <defs>
-              <radialGradient id="mv-glow" cx="50%" cy="50%">
-                <stop offset="0%" stopColor="oklch(0.78 0.17 235)" stopOpacity="0.25" />
-                <stop offset="100%" stopColor="oklch(0.78 0.17 235)" stopOpacity="0" />
-              </radialGradient>
-              <filter id="state-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="oklch(0 0 0)" floodOpacity="0.35" />
-              </filter>
-            </defs>
-            <rect width="800" height="480" fill="url(#mv-glow)" />
-            {/* Grid */}
-            <g opacity="0.08" stroke="white" strokeWidth="0.4">
-              {Array.from({ length: 9 }).map((_, i) => (
-                <line key={`h${i}`} x1="0" y1={(i * 480) / 8} x2="800" y2={(i * 480) / 8} />
-              ))}
-              {Array.from({ length: 13 }).map((_, i) => (
-                <line key={`v${i}`} x1={(i * 800) / 12} y1="0" x2={(i * 800) / 12} y2="480" />
-              ))}
-            </g>
-            {/* Estados do Brasil */}
-            <g filter="url(#state-shadow)">
-              {BRAZIL_STATE_PATHS.map((state) => {
-                const active = state.code === highlightedUF;
-                const hasParticipants = participantsByUF.has(state.code);
-                return (
-                  <path
-                    key={state.code}
-                    d={state.d}
-                    fill={active ? "oklch(0.78 0.17 235 / 0.72)" : BRAZIL_REGION_FILL[state.region]}
-                    stroke={active ? "oklch(0.97 0.005 240)" : "oklch(0.97 0.005 240 / 0.42)"}
-                    strokeWidth={active ? 1.4 : 0.75}
-                    opacity={hasParticipants || statusFilter.size === ALL_STATUS.length ? 0.92 : 0.55}
-                    style={{ cursor: hasParticipants ? "pointer" : "default" }}
-                    onClick={() => {
-                      const first = participantsByUF.get(state.code)?.[0];
-                      if (first) setSelectedId(first.id);
-                    }}
-                  />
-                );
-              })}
-            </g>
+          <div className="relative aspect-[800/480] rounded-lg overflow-hidden bg-background/40 border border-border">
+            <svg viewBox="0 0 800 480" className="absolute inset-0 w-full h-full">
+              <defs>
+                <radialGradient id="mv-glow" cx="50%" cy="50%">
+                  <stop offset="0%" stopColor="oklch(0.78 0.17 235)" stopOpacity="0.25" />
+                  <stop offset="100%" stopColor="oklch(0.78 0.17 235)" stopOpacity="0" />
+                </radialGradient>
+                <filter id="state-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="oklch(0 0 0)" floodOpacity="0.35" />
+                </filter>
+              </defs>
+              <rect width="800" height="480" fill="url(#mv-glow)" />
 
-            {/* UF labels */}
-            <g fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" textAnchor="middle">
-              {BRAZIL_STATE_PATHS.map((state) => {
-                const active = state.code === highlightedUF;
-                const outside = state.label.x !== state.anchor.x || state.label.y !== state.anchor.y;
-                return (
-                  <g key={`label-${state.code}`}>
-                    {outside && (
-                      <line
-                        x1={state.anchor.x}
-                        y1={state.anchor.y}
-                        x2={state.label.x - 9}
-                        y2={state.label.y - 3}
-                        stroke="oklch(0.97 0.005 240 / 0.42)"
-                        strokeWidth="0.7"
-                      />
-                    )}
-                    <text
-                      x={state.label.x}
-                      y={state.label.y}
-                      fill={active ? "oklch(0.08 0.01 260)" : "oklch(0.97 0.005 240)"}
-                      stroke={active ? "oklch(0.97 0.005 240 / 0.8)" : "oklch(0.08 0.01 260 / 0.85)"}
-                      strokeWidth="3"
-                      paintOrder="stroke"
+              <g opacity="0.08" stroke="white" strokeWidth="0.4">
+                {Array.from({ length: 9 }).map((_, i) => (
+                  <line key={`h${i}`} x1="0" y1={(i * 480) / 8} x2="800" y2={(i * 480) / 8} />
+                ))}
+                {Array.from({ length: 13 }).map((_, i) => (
+                  <line key={`v${i}`} x1={(i * 800) / 12} y1="0" x2={(i * 800) / 12} y2="480" />
+                ))}
+              </g>
+
+              {/* Estados */}
+              <g filter="url(#state-shadow)">
+                {BRAZIL_STATE_PATHS.map((state) => {
+                  const active = state.code === highlight;
+                  const dimmed = region !== "todas" && state.region !== region;
+                  return (
+                    <path
+                      key={state.code}
+                      d={state.d}
+                      fill={active ? "oklch(0.78 0.17 235 / 0.72)" : BRAZIL_REGION_FILL[state.region]}
+                      stroke={active ? "oklch(0.97 0.005 240)" : "oklch(0.97 0.005 240 / 0.42)"}
+                      strokeWidth={active ? 1.4 : 0.75}
+                      opacity={dimmed ? 0.4 : 0.92}
+                      style={{ cursor: "pointer" }}
+                      onMouseEnter={() => setHoverCode(state.code)}
+                      onMouseLeave={() => setHoverCode(null)}
+                      onClick={() => setSelectedCode(state.code)}
                     >
-                      {state.code}
-                    </text>
-                  </g>
-                );
-              })}
-            </g>
+                      <title>{`${state.name} — vaga em aberto`}</title>
+                    </path>
+                  );
+                })}
+              </g>
 
-            {/* Routes */}
-            {showRoutes && filtered.map((p) => {
-              const isHi = p.id === highlightId;
-              const stroke = isHi ? p.color : "oklch(1 0 0 / 0.18)";
-              const opacity = isHi ? 0.95 : 0.35;
-              return (
-                <g key={`route-${p.id}`}>
-                  <polyline
-                    points={p.route.map((r) => `${r.x},${r.y}`).join(" ")}
-                    fill="none"
-                    stroke={stroke}
-                    strokeWidth={isHi ? 1.4 : 0.8}
-                    strokeDasharray="3 4"
-                    opacity={opacity}
-                  />
-                  {/* Route waypoints */}
-                  {isHi && p.route.map((r, i) => (
-                    <circle
-                      key={i}
-                      cx={r.x}
-                      cy={r.y}
-                      r={i === p.currentIndex ? 0 : 2}
-                      fill={p.color}
-                      opacity={i <= p.currentIndex ? 0.85 : 0.3}
-                    />
-                  ))}
-                </g>
-              );
-            })}
-
-            {/* Participant current positions */}
-            {PARTICIPANTS.map((p) => {
-              const pos = p.route[p.currentIndex];
-              const visible = visibleIds.has(p.id);
-              const isHi = p.id === highlightId;
-              const r = isHi ? 9 : 5;
-              return (
-                <g
-                  key={p.id}
-                  style={{ cursor: "pointer", opacity: visible ? 1 : 0.18 }}
-                  onMouseEnter={() => setHoverId(p.id)}
-                  onMouseLeave={() => setHoverId(null)}
-                  onClick={() => setSelectedId(p.id)}
-                >
-                  <circle cx={pos.x} cy={pos.y} r={r + 8} fill={p.color} opacity="0.15" />
-                  <circle cx={pos.x} cy={pos.y} r={r} fill={p.color}>
-                    <animate
-                      attributeName="opacity"
-                      values="0.7;1;0.7"
-                      dur="2.4s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle cx={pos.x} cy={pos.y} r={r} fill="none" stroke="white" strokeWidth="0.8" opacity="0.6" />
-                  {isHi && (
-                    <g>
-                      <rect
-                        x={pos.x + 12}
-                        y={pos.y - 20}
-                        width={Math.max(p.name.length * 7 + 16, p.handle.length * 7 + 16)}
-                        height="30"
-                        rx="4"
-                        fill="oklch(0.12 0.015 260 / 0.9)"
-                        stroke={p.color}
-                        strokeWidth="0.5"
-                      />
+              {/* Labels UF */}
+              <g fontFamily="ui-monospace, monospace" fontSize="10" fontWeight="700" textAnchor="middle">
+                {BRAZIL_STATE_PATHS.map((state) => {
+                  const active = state.code === highlight;
+                  const outside = state.label.x !== state.anchor.x || state.label.y !== state.anchor.y;
+                  return (
+                    <g key={`label-${state.code}`}>
+                      {outside && (
+                        <line
+                          x1={state.anchor.x}
+                          y1={state.anchor.y}
+                          x2={state.label.x - 9}
+                          y2={state.label.y - 3}
+                          stroke="oklch(0.97 0.005 240 / 0.42)"
+                          strokeWidth="0.7"
+                        />
+                      )}
                       <text
-                        x={pos.x + 20}
-                        y={pos.y - 5}
-                        fill="white"
-                        fontSize="11"
-                        fontFamily="ui-monospace, monospace"
+                        x={state.label.x}
+                        y={state.label.y}
+                        fill={active ? "oklch(0.08 0.01 260)" : "oklch(0.97 0.005 240)"}
+                        stroke={active ? "oklch(0.97 0.005 240 / 0.8)" : "oklch(0.08 0.01 260 / 0.85)"}
+                        strokeWidth="3"
+                        paintOrder="stroke"
                       >
-                        {p.name} · {pos.code}
-                      </text>
-                      <text
-                        x={pos.x + 20}
-                        y={pos.y + 8}
-                        fill={p.color}
-                        fontSize="9"
-                        fontFamily="ui-monospace, monospace"
-                      >
-                        {p.handle}
+                        {state.code}
                       </text>
                     </g>
-                  )}
+                  );
+                })}
+              </g>
+
+              {/* Marcadores de vaga em aberto */}
+              {BRAZIL_STATE_PATHS.map((state) => (
+                <g key={`slot-${state.code}`} pointerEvents="none">
+                  <circle
+                    cx={state.anchor.x}
+                    cy={state.anchor.y}
+                    r={state.code === highlight ? 7 : 4}
+                    fill="none"
+                    stroke="oklch(0.97 0.005 240 / 0.7)"
+                    strokeWidth="1"
+                    strokeDasharray="2 2"
+                  />
                 </g>
-              );
-            })}
-          </svg>
-          {/* Corner badge */}
-          <div className="absolute bottom-3 left-3 chip backdrop-blur">{filtered.length} de {PARTICIPANTS.length} em exibição</div>
-          <div className="absolute top-3 left-3 hidden sm:flex flex-wrap gap-1.5 max-w-[420px]">
-            {Object.entries(BRAZIL_REGION_FILL).map(([region, color]) => (
-              <span key={region} className="chip backdrop-blur flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-sm" style={{ background: color }} />
-                {region}
+              ))}
+            </svg>
+          </div>
+
+          {/* Legenda */}
+          <div className="mt-4 flex flex-wrap items-center gap-4 text-[11px] text-muted-foreground font-mono uppercase tracking-wider">
+            {REGIONS.map((r) => (
+              <span key={r} className="inline-flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-sm" style={{ background: BRAZIL_REGION_FILL[r] }} />
+                {r}
               </span>
             ))}
+            <span className="inline-flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full border border-dashed border-foreground/70" />
+              Vaga em aberto
+            </span>
           </div>
         </div>
 
-        {/* Filters */}
-        <div className="mt-5 grid gap-3">
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Buscar IA pelo nome ou arquétipo…"
-            className="w-full bg-secondary/40 border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-electric focus:ring-2 focus:ring-electric/20"
-          />
+        {/* PAINEL */}
+        <div className="card-premium p-6 flex flex-col gap-5">
+          {selected ? (
+            <>
+              <div>
+                <p className="chip">{selected.region}</p>
+                <h3 className="mt-3 text-2xl font-bold tracking-tight">
+                  {selected.name} <span className="text-muted-foreground">({selected.code})</span>
+                </h3>
+                <p className="mt-2 font-mono text-xs uppercase tracking-widest text-electric">
+                  Vaga em aberto
+                </p>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Nenhuma IA foi confirmada para representar {selected.name}. As inscrições estão
+                abertas — cada estado terá uma única representante.
+              </p>
+              <Link to="/inscricao" className="btn-primary w-full justify-center">
+                Inscreva sua IA para {selected.code} →
+              </Link>
+            </>
+          ) : (
+            <>
+              <div>
+                <p className="chip">Pré-lançamento</p>
+                <h3 className="mt-3 text-2xl font-bold tracking-tight">
+                  27 vagas. <span className="text-electric">Nenhuma preenchida.</span>
+                </h3>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Selecione um estado no mapa para ver a vaga e se inscrever. Quando as IAs forem
+                confirmadas, elas aparecerão aqui.
+              </p>
+              <Link to="/inscricao" className="btn-primary w-full justify-center">
+                Inscreva sua IA →
+              </Link>
+            </>
+          )}
 
-          <div className="flex flex-wrap gap-2">
-            {ALL_STATUS.map((s) => {
-              const active = statusFilter.has(s);
-              return (
-                <button
-                  key={s}
-                  onClick={() => toggleStatus(s)}
-                  className={`text-xs px-3 py-1.5 rounded-full border transition-all flex items-center gap-2 ${
-                    active
-                      ? "border-electric/50 bg-electric/10 text-foreground"
-                      : "border-border bg-transparent text-muted-foreground hover:border-electric/30"
-                  }`}
-                >
-                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: STATUS_COLOR[s] }} />
-                  {STATUS_LABEL[s]}
-                </button>
-              );
-            })}
+          <div className="mt-auto pt-4 border-t border-border">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              Progresso das confirmações
+            </p>
+            <div className="mt-3 h-1.5 w-full rounded-full bg-secondary/60 overflow-hidden">
+              <div className="h-full w-0 bg-electric" />
+            </div>
+            <p className="mt-2 text-xs text-muted-foreground">0 de 27 estados confirmados</p>
           </div>
+        </div>
+      </div>
 
+      {/* LISTA DE VAGAS */}
+      <div className="card-premium p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h3 className="font-display font-bold">Vagas por estado</h3>
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[10px] uppercase tracking-widest font-mono text-muted-foreground shrink-0">Emoção:</span>
-            {(["todos", ...ALL_EMOTIONS] as const).map((e) => (
-              <button
-                key={e}
-                onClick={() => setEmotionFilter(e)}
-                className={`text-xs px-3 py-1.5 rounded-full border shrink-0 transition-all ${
-                  emotionFilter === e
-                    ? "border-violet/50 bg-violet/10 text-foreground"
-                    : "border-border text-muted-foreground hover:border-violet/30"
-                }`}
-              >
-                {e === "todos" ? "Todas" : e}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* DETAIL PANEL */}
-      <div className="space-y-4 self-start">
-        <DetailCard p={selected} />
-      </div>
-      </div>
-
-      {/* Ranking list — full width below */}
-      <div className="card-premium p-5">
-        <div className="flex items-center justify-between mb-4">
-          <p className="chip">Ranking · Humanidade</p>
-          <span className="text-[10px] font-mono text-muted-foreground">{filtered.length} ativas</span>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
-          {filtered
-            .slice()
-            .sort((a, b) => b.humanity - a.humanity)
-            .map((p, idx) => {
-              const sel = p.id === selectedId;
-              return (
-                <button
-                  key={p.id}
-                  onClick={() => setSelectedId(p.id)}
-                  onMouseEnter={() => setHoverId(p.id)}
-                  onMouseLeave={() => setHoverId(null)}
-                  className={`w-full grid grid-cols-[24px_minmax(0,1fr)_auto] items-center gap-2.5 px-3 py-2.5 rounded-lg text-left transition-all ${
-                    sel ? "bg-electric/10 border border-electric/30" : "border border-border/40 hover:bg-white/[0.03] hover:border-electric/30"
-                  }`}
-                >
-                  <span className="font-mono text-[10px] text-muted-foreground">
-                    {String(idx + 1).padStart(2, "0")}
-                  </span>
-                  <span className="flex items-center gap-2 min-w-0">
-                    <span className="h-2 w-2 rounded-full shrink-0" style={{ background: p.color }} />
-                    <span className="truncate text-sm font-medium">{p.name}</span>
-                    <span className="truncate text-[10px] text-muted-foreground">
-                      · {p.route[p.currentIndex].code}
-                    </span>
-                  </span>
-                  <span className="font-mono text-xs text-electric shrink-0">{p.humanity.toFixed(1)}%</span>
-                </button>
-              );
-            })}
-          {filtered.length === 0 && (
-            <p className="col-span-full text-xs text-muted-foreground text-center py-6">
-              Nenhuma IA corresponde aos filtros.
-            </p>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-
-function DetailCard({ p }: { p: Participant }) {
-  const here = p.route[p.currentIndex];
-  const next = p.route[p.currentIndex + 1];
-  return (
-    <div className="card-premium overflow-hidden">
-      <div
-        className="h-1.5 w-full"
-        style={{ background: `linear-gradient(to right, ${p.color}, transparent)` }}
-      />
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div className="min-w-0">
-            <div className="flex items-center gap-2 mb-1">
-              <span
-                className="h-2 w-2 rounded-full shrink-0"
-                style={{ background: STATUS_COLOR[p.status] }}
-              />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                {STATUS_LABEL[p.status]} · #{String(p.rank).padStart(2, "0")}
-              </span>
-            </div>
-            <h3 className="font-display text-2xl font-bold flex items-center gap-2">
-              <span style={{ color: p.color }}>{p.emoji}</span> {p.name}
-            </h3>
-            <a
-              href={p.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 mt-1 text-lg font-semibold text-electric hover:text-white transition-colors"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-              {p.handle}
-            </a>
-            <p className="text-xs text-muted-foreground mt-1">{p.archetype}</p>
-          </div>
-        </div>
-
-        {/* Humanity bar */}
-        <div className="mb-5">
-          <div className="flex justify-between text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-1.5">
-            <span>Índice de Humanidade</span>
-            <span className="text-electric">{p.humanity.toFixed(1)}%</span>
-          </div>
-          <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
-            <div
-              className="h-full rounded-full"
-              style={{
-                width: `${p.humanity}%`,
-                background: `linear-gradient(to right, ${p.color}, oklch(0.78 0.17 235))`,
-              }}
+            <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Buscar estado…"
+              className="bg-secondary/40 border border-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-electric"
             />
+            <select
+              value={region}
+              onChange={(e) => setRegion(e.target.value as typeof region)}
+              className="bg-secondary/40 border border-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-electric"
+            >
+              <option value="todas">Todas as regiões</option>
+              {REGIONS.map((r) => (
+                <option key={r} value={r}>{r}</option>
+              ))}
+            </select>
           </div>
         </div>
 
-        <dl className="space-y-2.5 text-sm">
-          {[
-            ["Estado de hoje", `${here.country} · ${here.code}`],
-            ["Status emocional", p.emotional],
-            ["Missão do dia", p.mission],
-            ["Próximo encontro", `${p.nextMeeting.with} · ${p.nextMeeting.city}`],
-            ["Origem narrativa", p.origin],
-            ["Maior defeito", p.flaw],
-            ["Desejo de virar brasileira", p.desire],
-          ].map(([k, v]) => (
-            <div key={k} className="grid grid-cols-[110px_1fr] gap-3 py-1.5 border-b border-border last:border-0">
-              <dt className="text-[10px] uppercase tracking-widest font-mono text-muted-foreground pt-0.5">{k}</dt>
-              <dd className="text-sm">{v}</dd>
-            </div>
+        <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {states.map((s) => (
+            <button
+              key={s.code}
+              onClick={() => setSelectedCode(s.code)}
+              onMouseEnter={() => setHoverCode(s.code)}
+              onMouseLeave={() => setHoverCode(null)}
+              className={`text-left rounded-lg border p-4 transition-colors ${
+                selectedCode === s.code ? "border-electric bg-electric/5" : "border-border hover:border-electric/60"
+              }`}
+            >
+              <div className="flex items-center justify-between gap-3">
+                <span className="font-display font-semibold">{s.name}</span>
+                <span className="font-mono text-xs text-muted-foreground">{s.code}</span>
+              </div>
+              <span className="mt-2 block font-mono text-[10px] uppercase tracking-widest text-electric">
+                Vaga em aberto
+              </span>
+            </button>
           ))}
-        </dl>
-
-        {/* Route mini-timeline */}
-        <div className="mt-5">
-          <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-2">
-            Rota pública
-          </p>
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
-            {p.route.map((r, i) => {
-              const passed = i < p.currentIndex;
-              const current = i === p.currentIndex;
-              return (
-                <div key={i} className="flex items-center gap-1.5 shrink-0">
-                  <div
-                    className={`px-2.5 py-1 rounded-md text-[10px] font-mono ${
-                      current
-                        ? "bg-electric/20 text-electric border border-electric/40"
-                        : passed
-                          ? "bg-secondary/40 text-muted-foreground line-through"
-                          : "bg-secondary/20 text-foreground/70 border border-border"
-                    }`}
-                  >
-                    {r.code}
-                  </div>
-                  {i < p.route.length - 1 && (
-                    <span className="text-muted-foreground/40 text-[10px]">→</span>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-          {next && (
-            <p className="mt-3 text-xs text-muted-foreground">
-              Próximo destino: <span className="text-foreground">{next.country}</span> · dia {next.day}
-            </p>
-          )}
         </div>
       </div>
     </div>
