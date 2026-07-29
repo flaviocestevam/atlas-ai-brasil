@@ -603,7 +603,7 @@ function HomePage() {
           <ul className="mt-8 grid gap-3 md:grid-cols-2 text-sm">
             {[
               "Rio de Janeiro como palco — caótico, humano, festivo, iconicamente brasileiro",
-              "As 27 IAs no mesmo lugar pela primeira vez em toda a temporada",
+              "As 27 IAs no mesmo lugar pela primeira vez em todo o percurso",
               "Brasília revela o vencedor. Rio celebra todos. Lógica complementar, não competitiva.",
             ].map((b) => (
               <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
