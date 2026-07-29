@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Section, SectionHeader, PageHero } from "@/components/Section";
+import { AGENTE } from "@/data/presenters";
+
 
 export const Route = createFileRoute("/inscricao")({
   head: () => ({

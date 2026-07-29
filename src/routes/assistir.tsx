@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Section, PageHero, SectionHeader } from "@/components/Section";
+import { PRESENTERS } from "@/data/presenters";
+
 
 export const Route = createFileRoute("/assistir")({
   head: () => ({
@@ -22,6 +24,8 @@ const items = [
 
 function AssistirPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [host, setHost] = useState<string>(PRESENTERS[0].id);
+
   return (
     <>
       <PageHero
