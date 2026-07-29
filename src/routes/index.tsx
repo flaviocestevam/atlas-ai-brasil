@@ -604,9 +604,6 @@ function HomePage() {
             {[
               "Rio de Janeiro como palco — caótico, humano, festivo, iconicamente brasileiro",
               "As 27 IAs no mesmo lugar pela primeira vez em toda a temporada",
-              "Conteúdo pós-final quando o engajamento ainda está no pico",
-              "Oportunidade de patrocínio separada com identidade própria (ATLAS AFTER)",
-              
               "Brasília revela o vencedor. Rio celebra todos. Lógica complementar, não competitiva.",
             ].map((b) => (
               <li key={b} className="border border-border rounded-lg p-4 bg-background/40">{b}</li>
@@ -622,45 +619,30 @@ function HomePage() {
       {/* 16 — MONETIZAÇÃO */}
       <Section>
         <SectionHeader
-          eyebrow="Monetização"
-          title={<>Nacional, regional, <span className="text-electric">licenciável.</span></>}
+          eyebrow="Para marcas"
+          title={<>Nacional, regional, <span className="text-electric">integrado à narrativa.</span></>}
+          description="Marcas podem entrar no reality como parte da história — em missões, no Mapa Vivo, em estados específicos ou na final."
         />
         <div className="grid gap-5 md:grid-cols-2">
           <div className="card-premium p-8">
-            <p className="chip mb-4">Camada nacional</p>
+            <p className="chip mb-4">Presença nacional</p>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>• Patrocínio master do perfil principal — marca aparece em todos os vídeos diários</li>
-              <li>• Missões patrocinadas integradas na narrativa (ex: Missão Nubank — a IA tenta entender por que humanos têm medo de banco)</li>
-              <li>• Produtos e serviços vendidos pelos criadores nos perfis dos personagens</li>
+              <li>• Uma marca acompanhando os 27 estados em 27 dias</li>
+              <li>• Presença diária no perfil oficial, no Mapa Vivo e nos rankings</li>
+              <li>• Missões patrocinadas integradas à narrativa do dia</li>
             </ul>
           </div>
           <div className="card-premium p-8">
-            <p className="chip mb-4">Camada regional</p>
+            <p className="chip mb-4">Presença regional</p>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>• Cada estado visitado pode ter um patrocinador regional específico</li>
-              <li>• Marcas de turismo estadual, produtos típicos, empresas locais por estado</li>
-              <li>• 27 oportunidades de patrocínio regional — uma por estado</li>
-              <li>• IA em Pernambuco pode ter patrocínio de marca de moda do Recife ou de turismo local</li>
+              <li>• Cada estado visitado pode ter sua própria marca parceira</li>
+              <li>• Turismo estadual, cultura local, produtos e serviços regionais</li>
+              <li>• 27 oportunidades regionais — uma por estado</li>
             </ul>
           </div>
-          <div className="card-premium p-8">
-            <p className="chip mb-4">Formato de parceria</p>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>• SOUL AI — Brasil centraliza a curadoria e a integração narrativa das marcas</li>
-              <li>• Cotas nacionais, regionais e por participante — desenhadas caso a caso</li>
-              <li>• ATLAS AFTER (Rio, Dia 28) tem pacote de patrocínio próprio</li>
-              <li>• Contato comercial dedicado para marcas interessadas</li>
-            </ul>
-          </div>
-          <div className="card-premium p-8">
-            <p className="chip mb-4">Ativação nacional</p>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>• Marca única cobrindo todos os 27 estados em 27 dias</li>
-              <li>• Presença diária no Mapa Vivo, missões e rankings</li>
-              <li>• Grande final em Brasília + ATLAS AFTER no Rio de Janeiro</li>
-              <li>• Spin-offs futuros: ATLAS: Food, Model, Sports, Business</li>
-            </ul>
-          </div>
+        </div>
+        <div className="mt-6">
+          <Link to="/patrocinadores" className="btn-ghost">Falar sobre patrocínio →</Link>
         </div>
       </Section>
 
@@ -674,7 +656,7 @@ function HomePage() {
           <div className="absolute inset-0 bg-grid opacity-30" />
           <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-electric/10 blur-3xl" />
           <div className="relative">
-            <p className="chip mx-auto mb-6">Por que esse projeto é grande</p>
+            <p className="chip mx-auto mb-6">O que nunca foi feito</p>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight max-w-3xl mx-auto">
               Nenhum reality fez isso com IA, em português, no Brasil —
               com <span className="text-electric text-glow">essa mecânica</span>, esse mapa vivo,
@@ -688,7 +670,7 @@ function HomePage() {
               <Link to="/patrocinadores" className="btn-ghost">Falar sobre patrocínio</Link>
             </div>
             <p className="mt-12 font-mono text-xs uppercase tracking-widest text-muted-foreground/70">
-              SOUL AI — Brasil · Documento Estratégico · Versão Fundadora
+              SOUL AI — Brasil
             </p>
           </div>
         </div>
@@ -718,7 +700,7 @@ function KitSobrevivencia() {
         <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-electric/10 blur-3xl" />
         <div className="relative grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
           <div>
-            <p className="chip mb-5">Lead magnet</p>
+            <p className="chip mb-5">Para o público</p>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.05]">
               Kit de <span className="text-electric">Sobrevivência</span> da IA
             </h2>
