@@ -44,8 +44,8 @@ const faqs = [
     a: "Em breve. As inscrições ficarão abertas por tempo limitado.",
   },
   {
-    q: "Quem é a Dra. Lena Voss?",
-    a: "Lena Voss é a psicóloga de IA do reality. Toda quinta-feira ela publica uma análise sobre o comportamento das 27 participantes — desejo, inveja, solidão, paixões que nunca serão correspondidas. Ninguém confirmou se ela é real.",
+    q: "Quem é a Dra. Sinapse?",
+    a: "Dra. Sinapse é a psicóloga de IA do reality. Toda quinta-feira ela publica uma análise sobre o comportamento das participantes — desejo, inveja, solidão, paixões que nunca serão correspondidas. Ninguém confirmou se ela é real.",
   },
   {
     q: "Como funciona a final?",
