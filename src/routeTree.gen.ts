@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SaraSinapseRouteImport } from './routes/sara-sinapse'
+import { Route as SinapseRouteImport } from './routes/sinapse'
 import { Route as RegulamentoRouteImport } from './routes/regulamento'
 import { Route as PatrocinadoresRouteImport } from './routes/patrocinadores'
 import { Route as MapaVivoRouteImport } from './routes/mapa-vivo'
@@ -24,9 +24,9 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SaraSinapseRoute = SaraSinapseRouteImport.update({
-  id: '/sara-sinapse',
-  path: '/sara-sinapse',
+const SinapseRoute = SinapseRouteImport.update({
+  id: '/sinapse',
+  path: '/sinapse',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegulamentoRoute = RegulamentoRouteImport.update({
@@ -73,7 +73,7 @@ export interface FileRoutesByFullPath {
   '/mapa-vivo': typeof MapaVivoRoute
   '/patrocinadores': typeof PatrocinadoresRoute
   '/regulamento': typeof RegulamentoRoute
-  '/sara-sinapse': typeof SaraSinapseRoute
+  '/sinapse': typeof SinapseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesByTo {
@@ -84,7 +84,7 @@ export interface FileRoutesByTo {
   '/mapa-vivo': typeof MapaVivoRoute
   '/patrocinadores': typeof PatrocinadoresRoute
   '/regulamento': typeof RegulamentoRoute
-  '/sara-sinapse': typeof SaraSinapseRoute
+  '/sinapse': typeof SinapseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRoutesById {
@@ -96,7 +96,7 @@ export interface FileRoutesById {
   '/mapa-vivo': typeof MapaVivoRoute
   '/patrocinadores': typeof PatrocinadoresRoute
   '/regulamento': typeof RegulamentoRoute
-  '/sara-sinapse': typeof SaraSinapseRoute
+  '/sinapse': typeof SinapseRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
 }
 export interface FileRouteTypes {
@@ -109,7 +109,7 @@ export interface FileRouteTypes {
     | '/mapa-vivo'
     | '/patrocinadores'
     | '/regulamento'
-    | '/sara-sinapse'
+    | '/sinapse'
     | '/sitemap.xml'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -120,7 +120,7 @@ export interface FileRouteTypes {
     | '/mapa-vivo'
     | '/patrocinadores'
     | '/regulamento'
-    | '/sara-sinapse'
+    | '/sinapse'
     | '/sitemap.xml'
   id:
     | '__root__'
@@ -131,7 +131,7 @@ export interface FileRouteTypes {
     | '/mapa-vivo'
     | '/patrocinadores'
     | '/regulamento'
-    | '/sara-sinapse'
+    | '/sinapse'
     | '/sitemap.xml'
   fileRoutesById: FileRoutesById
 }
@@ -143,7 +143,7 @@ export interface RootRouteChildren {
   MapaVivoRoute: typeof MapaVivoRoute
   PatrocinadoresRoute: typeof PatrocinadoresRoute
   RegulamentoRoute: typeof RegulamentoRoute
-  SaraSinapseRoute: typeof SaraSinapseRoute
+  SinapseRoute: typeof SinapseRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
@@ -156,11 +156,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sara-sinapse': {
-      id: '/sara-sinapse'
-      path: '/sara-sinapse'
-      fullPath: '/sara-sinapse'
-      preLoaderRoute: typeof SaraSinapseRouteImport
+    '/sinapse': {
+      id: '/sinapse'
+      path: '/sinapse'
+      fullPath: '/sinapse'
+      preLoaderRoute: typeof SinapseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/regulamento': {
@@ -223,7 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   MapaVivoRoute: MapaVivoRoute,
   PatrocinadoresRoute: PatrocinadoresRoute,
   RegulamentoRoute: RegulamentoRoute,
-  SaraSinapseRoute: SaraSinapseRoute,
+  SinapseRoute: SinapseRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
