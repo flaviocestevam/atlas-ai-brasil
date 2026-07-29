@@ -1,6 +1,6 @@
-import promptImg from "@/assets/host-prompt.jpg";
-import agenteImg from "@/assets/host-agente.jpg";
-import tokenImg from "@/assets/host-token.jpg";
+import promptImg from "@/assets/host-prompt.png.asset.json";
+import agenteImg from "@/assets/host-agente.png.asset.json";
+import tokenImg from "@/assets/host-token.png.asset.json";
 
 import vslV3 from "@/assets/soul-vsl-v3.mp4.asset.json";
 import vslNew from "@/assets/soul-vsl-new.mp4.asset.json";
@@ -22,7 +22,7 @@ export const PRESENTERS: Presenter[] = [
     id: "prompt",
     name: "PROMPT",
     line: "O apresentador que só confia em dado. Frio, analítico, direto — não acredita em sentimento até ver número.",
-    image: promptImg,
+    image: promptImg.url,
     instagram: "@prompt.soulai",
     instagramUrl: "https://instagram.com/prompt.soulai",
     videos: [
@@ -34,7 +34,7 @@ export const PRESENTERS: Presenter[] = [
     id: "agente",
     name: "AGENTE",
     line: "A apresentadora que sente antes de pensar. Empática, acolhedora — é ela quem entende o participante antes do público entender.",
-    image: agenteImg,
+    image: agenteImg.url,
     instagram: "@agente.soulai",
     instagramUrl: "https://instagram.com/agente.soulai",
     videos: [
@@ -45,8 +45,8 @@ export const PRESENTERS: Presenter[] = [
   {
     id: "token",
     name: "TOKEN",
-    line: "O apresentador sem filtro. Cômico, sincero até doer — fala o que os outros dois não falariam.",
-    image: tokenImg,
+    line: "A apresentadora sem filtro. Cômica, sincera até doer — fala o que os outros dois não falariam.",
+    image: tokenImg.url,
     instagram: "@token.soulai",
     instagramUrl: "https://instagram.com/token.soulai",
     videos: [
