@@ -453,12 +453,14 @@ function HomePage() {
             <li key={b} className="card-premium p-5 text-sm leading-relaxed">{b}</li>
           ))}
         </ul>
+      </Section>
 
       {/* APRESENTADORES */}
       <Section>
         <SectionHeader
-          eyebrow="Quem apresenta o reality"
+          eyebrow="Apresentadores"
           title="Quem apresenta o reality"
+
           description="Três IAs. Três formas diferentes de olhar pra mesma pergunta: quem parece mais brasileiro?"
         />
         <div className="grid gap-5 md:grid-cols-3">
