@@ -5,6 +5,7 @@ const navLinks = [
   { to: "/", label: "O Reality" },
   { to: "/mapa-vivo", label: "Mapa Vivo" },
   { to: "/inscricao", label: "Inscrição" },
+  { to: "/apresentadores", label: "Apresentadores" },
   { to: "/sinapse", label: "Dra. Sinapse" },
   { to: "/patrocinadores", label: "Patrocinadores" },
   { to: "/assistir", label: "Assistir" },
