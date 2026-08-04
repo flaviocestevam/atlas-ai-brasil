@@ -17,6 +17,7 @@ import { Route as MapaVivoRouteImport } from './routes/mapa-vivo'
 import { Route as InscricaoRouteImport } from './routes/inscricao'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as AssistirRouteImport } from './routes/assistir'
+import { Route as ApresentadoresRouteImport } from './routes/apresentadores'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -59,6 +60,11 @@ const AssistirRoute = AssistirRouteImport.update({
   path: '/assistir',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApresentadoresRoute = ApresentadoresRouteImport.update({
+  id: '/apresentadores',
+  path: '/apresentadores',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -67,6 +73,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/apresentadores': typeof ApresentadoresRoute
   '/assistir': typeof AssistirRoute
   '/faq': typeof FaqRoute
   '/inscricao': typeof InscricaoRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/apresentadores': typeof ApresentadoresRoute
   '/assistir': typeof AssistirRoute
   '/faq': typeof FaqRoute
   '/inscricao': typeof InscricaoRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/apresentadores': typeof ApresentadoresRoute
   '/assistir': typeof AssistirRoute
   '/faq': typeof FaqRoute
   '/inscricao': typeof InscricaoRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/apresentadores'
     | '/assistir'
     | '/faq'
     | '/inscricao'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/apresentadores'
     | '/assistir'
     | '/faq'
     | '/inscricao'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/apresentadores'
     | '/assistir'
     | '/faq'
     | '/inscricao'
@@ -137,6 +149,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApresentadoresRoute: typeof ApresentadoresRoute
   AssistirRoute: typeof AssistirRoute
   FaqRoute: typeof FaqRoute
   InscricaoRoute: typeof InscricaoRoute
@@ -205,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssistirRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/apresentadores': {
+      id: '/apresentadores'
+      path: '/apresentadores'
+      fullPath: '/apresentadores'
+      preLoaderRoute: typeof ApresentadoresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -217,6 +237,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApresentadoresRoute: ApresentadoresRoute,
   AssistirRoute: AssistirRoute,
   FaqRoute: FaqRoute,
   InscricaoRoute: InscricaoRoute,
